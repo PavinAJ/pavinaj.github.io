@@ -26,6 +26,7 @@
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .nav-container {
@@ -71,9 +72,27 @@
             position: relative;
         }
         
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+        
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
@@ -125,6 +144,7 @@
         .btn-primary:hover {
             background: #2980b9;
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
         }
         
         .btn-secondary {
@@ -136,6 +156,7 @@
         .btn-secondary:hover {
             background: white;
             color: #667eea;
+            transform: translateY(-2px);
         }
         
         .section {
@@ -466,6 +487,11 @@
             .contact-content {
                 grid-template-columns: 1fr;
             }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
         
         html {
@@ -523,7 +549,8 @@
                     <p>
                         Currently serving as CNC Team Lead at ENATA Industries, I'm spearheading the expansion 
                         of our CNC operations while working on revolutionary products including UAVs, flying cars, 
-                        marine vessels, and precision aerospace components.
+                        marine vessels, and precision aerospace components. My focus extends beyond traditional 
+                        manufacturing to include developing SaaS solutions for CNC industry optimization.
                     </p>
                 </div>
             </div>
@@ -562,13 +589,15 @@
                     <div class="job-date">April 2025 - Present</div>
                 </div>
                 <div class="job-description">
-                    Leading CNC operations for cutting-edge aerospace, marine, and automotive manufacturing.
+                    Leading CNC operations for cutting-edge aerospace, marine, and automotive manufacturing. 
+                    Spearheading expansion for revolutionary products including UAVs, flying cars, and precision components.
                 </div>
                 <ul class="achievements">
-                    <li>Spearheading CNC department expansion for 10x operational scaling</li>
-                    <li>Leading R&D for UAVs, flying cars, and precision aerospace components</li>
-                    <li>Implementing design modifications for improved efficiency</li>
-                    <li>Managing cross-industry manufacturing requirements</li>
+                    <li>Spearheading CNC department expansion for 10x operational scaling by end of 2025</li>
+                    <li>Leading R&D manufacturing for UAVs, flying cars, marine vessels, and carbon fiber wheels</li>
+                    <li>Implementing design modifications for molds and processes, improving efficiency standards</li>
+                    <li>Managing cross-industry requirements: aerospace, marine, automotive, and OEM production</li>
+                    <li>Establishing quality control protocols for high-precision manufacturing requirements</li>
                 </ul>
             </div>
 
@@ -581,13 +610,15 @@
                     <div class="job-date">July 2023 - March 2025</div>
                 </div>
                 <div class="job-description">
-                    Specialized in luxury yacht production with KUKA 7-axis robots and PowerMill programming.
+                    Specialized in luxury yacht production with KUKA 7-axis robots and PowerMill programming. 
+                    Managed complex yacht component manufacturing and comprehensive 3D printing operations.
                 </div>
                 <ul class="achievements">
-                    <li>Created complex milling programs for KUKA 7-axis robots</li>
-                    <li>Managed yacht component manufacturing and 3D printing</li>
-                    <li>Conducted comprehensive production analysis and planning</li>
-                    <li>Integrated technical expertise with project management</li>
+                    <li>Created and executed complex milling programs for KUKA 7-axis robots and CNC routers</li>
+                    <li>Conducted comprehensive analysis and planning for yacht plugs, molds, and components</li>
+                    <li>Utilized Creality 3D printers for prototyping and precision part production</li>
+                    <li>Supervised CNC operations ensuring efficient project completion and delivery timelines</li>
+                    <li>Integrated technical expertise with project management for premium yacht components</li>
                 </ul>
             </div>
 
@@ -600,13 +631,34 @@
                     <div class="job-date">December 2017 - June 2023</div>
                 </div>
                 <div class="job-description">
-                    Led production operations with strategic improvements achieving significant efficiency gains.
+                    Led production operations with strategic improvements achieving significant efficiency gains. 
+                    Managed team coordination and implemented advanced manufacturing processes.
                 </div>
                 <ul class="achievements">
-                    <li>Achieved 30% efficiency improvements and 50% production increases</li>
-                    <li>Implemented strategic cost-saving initiatives</li>
-                    <li>Led team development and workflow optimization</li>
-                    <li>Designed advanced manufacturing processes</li>
+                    <li>Enhanced run-flat section fixtures efficiency by 30% and optimized lathe tooling for 50% production increase</li>
+                    <li>Streamlined laser machine workloads by 15% through workflow restructuring and quality protocols</li>
+                    <li>Implemented strategic cost-saving initiatives through problem-solving methodologies</li>
+                    <li>Established structured workflow systems and provided comprehensive fixture design training</li>
+                    <li>Designed and implemented milling programs using PowerMill for multiple CNC systems</li>
+                </ul>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">CNC Programmer cum Operator</div>
+                        <div class="job-company">Intimate Machines Private Limited</div>
+                    </div>
+                    <div class="job-date">December 2015 - December 2016</div>
+                </div>
+                <div class="job-description">
+                    Operated precision CNC equipment for aerospace and defense applications, ensuring critical tolerances and quality standards.
+                </div>
+                <ul class="achievements">
+                    <li>Operated CNC lathes and milling machines for aerospace and defense industries with precision requirements</li>
+                    <li>Utilized Mastercam software and manual programming with Fanuc and Siemens controls</li>
+                    <li>Worked with advanced materials including aluminum, titanium, and stainless steel</li>
+                    <li>Conducted comprehensive machine maintenance and quality control checks</li>
                 </ul>
             </div>
         </div>
@@ -617,7 +669,7 @@
             <h2 class="section-title">Core Competencies</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>CNC Programming</h3>
+                    <h3>CNC Programming & Manufacturing</h3>
                     <div class="skill-item">
                         <span class="skill-name">PowerMill Programming</span>
                         <div class="skill-level">
@@ -634,6 +686,12 @@
                         <span class="skill-name">Multi-Axis CNC</span>
                         <div class="skill-level">
                             <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">3D Printing</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
                         </div>
                     </div>
                 </div>
@@ -658,6 +716,12 @@
                             <div class="skill-progress" style="width: 85%"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Mastercam</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="skill-category">
@@ -680,6 +744,12 @@
                             <div class="skill-progress" style="width: 88%"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Quality Systems</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -687,52 +757,36 @@
 
     <section id="projects" class="section projects">
         <div class="container">
-            <h2 class="section-title">Key Projects</h2>
+            <h2 class="section-title">Key Projects & Achievements</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">🚁</div>
                     <div class="project-content">
                         <h3 class="project-title">UAV Manufacturing at ENATA</h3>
                         <p class="project-description">
-                            Leading CNC operations for advanced UAV and drone manufacturing, including precision 
-                            aerospace-grade components with Mach 0.7 capability.
+                            Leading CNC operations for advanced UAV and drone manufacturing, including the Mistral EFT 
+                            with Mach 0.7 capability and 355km range. Implementing precision manufacturing for aerospace-grade components.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">CNC Programming</span>
-                            <span class="tech-tag">Aerospace</span>
-                            <span class="tech-tag">Quality Control</span>
+                            <span class="tech-tag">Software Development</span>
+                            <span class="tech-tag">SaaS</span>
+                            <span class="tech-tag">Manufacturing Tech</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">🛥️</div>
+                    <div class="project-image">🎯</div>
                     <div class="project-content">
-                        <h3 class="project-title">Luxury Yacht Components</h3>
+                        <h3 class="project-title">Aerospace Defense Components</h3>
                         <p class="project-description">
-                            Developed complex milling programs for KUKA 7-axis robots. Managed production 
-                            of yacht plugs, molds, and precision components.
+                            Precision manufacturing for aerospace and defense applications including titanium and aluminum 
+                            components with critical tolerances. Experience with classified OEM manufacturing projects.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">KUKA Robotics</span>
-                            <span class="tech-tag">PowerMill</span>
-                            <span class="tech-tag">Marine</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🚗</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Flying Cars & EVs</h3>
-                        <p class="project-description">
-                            Contributing to revolutionary flying car development and electric vehicle 
-                            manufacturing for next-generation transportation.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Advanced Manufacturing</span>
-                            <span class="tech-tag">R&D</span>
-                            <span class="tech-tag">Innovation</span>
+                            <span class="tech-tag">Aerospace Manufacturing</span>
+                            <span class="tech-tag">Defense Industry</span>
+                            <span class="tech-tag">Precision Engineering</span>
                         </div>
                     </div>
                 </div>
@@ -742,11 +796,13 @@
 
     <section id="contact" class="section contact">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Contact Me</h2>
+            <h2 class="section-title" style="color: white;">Let's Connect</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p style="margin-bottom: 2rem;">Ready to discuss challenging manufacturing opportunities</p>
+                    <h3>Ready to discuss your next project?</h3>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9;">
+                        I'm always interested in challenging opportunities that push the boundaries of manufacturing excellence.
+                    </p>
                     
                     <div class="contact-item">
                         <span>📧</span>
@@ -762,7 +818,7 @@
                     </div>
                     <div class="contact-item">
                         <span>💼</span>
-                        <span>Available for Senior Roles</span>
+                        <span>Available for Senior Management Roles</span>
                     </div>
                 </div>
                 
@@ -770,6 +826,9 @@
                     <h3>Professional Documents</h3>
                     <p style="margin-bottom: 2rem;">Request access to detailed CV and portfolio</p>
                     <a href="#" class="btn btn-secondary" onclick="requestCV()">Request CV Access</a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                        Your request will be logged and reviewed personally
+                    </p>
                 </div>
             </div>
         </div>
@@ -778,30 +837,173 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Pavin Anilkumar Jayakumari. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                Senior CNC Manufacturing Leader | Transforming Industries Through Innovation
+            </p>
         </div>
     </footer>
 
     <script>
+        // CV Request System
         function requestCV() {
-            const name = prompt("Your name:");
-            const email = prompt("Your email:");
-            const company = prompt("Company name:");
+            const name = prompt("Please enter your full name:");
+            if (!name) return;
             
-            if (name && email && company) {
-                alert(`Thank you ${name}! Your CV request has been logged. You will be contacted at ${email} soon.`);
-                console.log("CV Request:", { name, email, company, timestamp: new Date() });
-            }
+            const email = prompt("Please enter your email address:");
+            if (!email) return;
+            
+            const company = prompt("Please enter your company name:");
+            if (!company) return;
+            
+            const purpose = prompt("What is the purpose of your request?\n(Job Opportunity, Business Collaboration, Networking, etc.):");
+            if (!purpose) return;
+            
+            // Store the request data
+            const requestData = {
+                name: name,
+                email: email,
+                company: company,
+                purpose: purpose,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer
+            };
+            
+            // Log to console for now (you can implement email sending later)
+            console.log("CV Request Received:", requestData);
+            
+            // Store in localStorage for your review
+            let requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
+            requests.push(requestData);
+            localStorage.setItem('cvRequests', JSON.stringify(requests));
+            
+            // Show success message
+            alert(`Thank you ${name}!\n\nYour CV request has been logged and will be reviewed personally.\n\nI will contact you at ${email} within 24 hours.\n\nRequest Details:\n- Company: ${company}\n- Purpose: ${purpose}\n- Time: ${new Date().toLocaleString()}`);
         }
-
-        // Smooth scrolling
+        
+        // Admin function to view requests (for your use)
+        function viewCVRequests() {
+            const requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
+            console.table(requests);
+            return requests;
+        }
+        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.98)';
+            } else {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+            }
+        });
+        
+        // Simple visitor tracking
+        function trackVisitor() {
+            const visitorData = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer,
+                url: window.location.href,
+                screenSize: `${screen.width}x${screen.height}`,
+                language: navigator.language
+            };
+            
+            let visitors = JSON.parse(localStorage.getItem('portfolioVisitors') || '[]');
+            visitors.push(visitorData);
+            localStorage.setItem('portfolioVisitors', JSON.stringify(visitors));
+            
+            console.log('Visitor tracked:', visitorData);
+        }
+        
+        // Track visitor on page load
+        document.addEventListener('DOMContentLoaded', trackVisitor);
+        
+        // Console commands for admin (for your use)
+        console.log(`
+        Portfolio Admin Commands:
+        - viewCVRequests() - View all CV requests
+        - JSON.parse(localStorage.getItem('portfolioVisitors')) - View all visitors
+        - localStorage.clear() - Clear all data
+        `);
     </script>
 </body>
 </html>
+                            <span class="tech-tag">CNC Programming</span>
+                            <span class="tech-tag">Aerospace Manufacturing</span>
+                            <span class="tech-tag">Quality Control</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">🛥️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Luxury Yacht Components</h3>
+                        <p class="project-description">
+                            Developed complex milling programs for KUKA 7-axis robots at Sunreef Yachts. 
+                            Managed production of yacht plugs, molds, and precision components for luxury marine vessels.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">KUKA Robotics</span>
+                            <span class="tech-tag">PowerMill</span>
+                            <span class="tech-tag">Marine Manufacturing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">⚙️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Production Optimization</h3>
+                        <p class="project-description">
+                            Achieved 50% production increase through tooling optimization and 30% efficiency improvement 
+                            in run-flat section fixtures. Implemented strategic workflow systems and quality protocols.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Process Engineering</span>
+                            <span class="tech-tag">Lean Manufacturing</span>
+                            <span class="tech-tag">Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">🚗</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Flying Cars & Electric Vehicles</h3>
+                        <p class="project-description">
+                            Contributing to ENATA's revolutionary flying car development and electric vehicle manufacturing. 
+                            Managing precision component production for next-generation transportation solutions.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Advanced Manufacturing</span>
+                            <span class="tech-tag">R&D</span>
+                            <span class="tech-tag">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">💻</div>
+                    <div class="project-content">
+                        <h3 class="project-title">CNC SaaS Development</h3>
+                        <p class="project-description">
+                            Developing Software-as-a-Service solutions for CNC industry including production monitoring, 
+                            tool life management, and inventory optimization systems for manufacturing excellence.
+                        </p>
+                        <div class="project-tech">
