@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pavin Anilkumar Jayakumari - Professional Portfolio</title>
+    <meta name="description" content="Senior CNC Manufacturing Leader with 10+ years experience in aerospace, marine, and automotive industries. Professional portfolio development services.">
+    <meta name="keywords" content="CNC programming, manufacturing, aerospace, marine, portfolio development, UAE, PowerMill, KUKA robotics">
     <style>
         * {
             margin: 0;
@@ -59,6 +61,19 @@
         
         .nav-menu a:hover {
             color: #3498db;
+        }
+        
+        .tools-highlight {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .tools-highlight:hover {
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
         
         .hero {
@@ -159,6 +174,25 @@
             transform: translateY(-2px);
         }
         
+        .btn-tools {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-tools::before {
+            content: '🔧';
+            margin-right: 8px;
+        }
+        
+        .btn-tools:hover {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+        
         .section {
             padding: 5rem 0;
         }
@@ -255,6 +289,60 @@
             font-size: 1.1rem;
             color: #666;
             font-weight: 600;
+        }
+        
+        /* Tools Preview Section */
+        .tools-preview {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-top: 4px solid #3498db;
+        }
+        
+        .tools-showcase {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tools-showcase h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .tools-showcase p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .tool-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .tool-feature h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-feature p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
         }
         
         .experience {
@@ -427,6 +515,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         
         .tech-tag {
@@ -436,6 +525,40 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+        
+        .project-card .btn {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        
+        .project-card .btn-primary {
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .project-card .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .project-card .btn-tools {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            border: none;
+        }
+        
+        .project-card .btn-tools:hover {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
         }
         
         .contact {
@@ -472,7 +595,13 @@
         
         @media (max-width: 768px) {
             .nav-menu {
-                display: none;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
             }
             
             .hero h1 {
@@ -492,6 +621,15 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tool-features {
+                grid-template-columns: 1fr;
+            }
         }
         
         html {
@@ -510,6 +648,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="/tools/" class="tools-highlight">Tools</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -526,6 +665,7 @@
             </p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="/tools/" class="btn btn-tools">Try My Tools</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
@@ -550,7 +690,7 @@
                         Currently serving as CNC Team Lead at ENATA Industries, I'm spearheading the expansion 
                         of our CNC operations while working on revolutionary products including UAVs, flying cars, 
                         marine vessels, and precision aerospace components. My focus extends beyond traditional 
-                        manufacturing to include developing SaaS solutions for CNC industry optimization.
+                        manufacturing to include developing professional portfolio solutions and manufacturing tools.
                     </p>
                 </div>
             </div>
@@ -573,6 +713,44 @@
                     <div class="stat-label">Efficiency Improvements</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="tools-preview" class="section tools-preview">
+        <div class="container">
+            <h2 class="section-title">Professional Manufacturing Tools</h2>
+            <div class="tools-showcase">
+                <h3>🔧 Manufacturing Unit Converter</h3>
+                <p>
+                    I've developed professional-grade tools to help manufacturing professionals 
+                    work more efficiently. These tools demonstrate my technical expertise and 
+                    commitment to industry innovation.
+                </p>
+                
+                <div class="tool-features">
+                    <div class="tool-feature">
+                        <h4>Multi-Unit Support</h4>
+                        <p>Length, weight, temperature, and pressure conversions with precision</p>
+                    </div>
+                    <div class="tool-feature">
+                        <h4>History Tracking</h4>
+                        <p>Smart history system to track and reload previous conversions</p>
+                    </div>
+                    <div class="tool-feature">
+                        <h4>Mobile Responsive</h4>
+                        <p>Professional interface that works perfectly on all devices</p>
+                    </div>
+                    <div class="tool-feature">
+                        <h4>Manufacturing Focus</h4>
+                        <p>Units and features specifically designed for manufacturing professionals</p>
+                    </div>
+                </div>
+                
+                <a href="/tools/" class="btn btn-tools">Try the Converter</a>
+            </div>
+            <p style="text-align: center; color: #666; font-style: italic; margin-top: 2rem;">
+                More professional tools coming soon...
+            </p>
         </div>
     </section>
 
@@ -751,6 +929,34 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="skill-category">
+                    <h3>Portfolio Development Services</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Web Development</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Professional Design</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Manufacturing Tools</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Business Development</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -759,6 +965,27 @@
         <div class="container">
             <h2 class="section-title">Key Projects & Achievements</h2>
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🔧</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Manufacturing Unit Converter</h3>
+                        <p class="project-description">
+                            Professional-grade unit converter for manufacturing professionals. Convert between 
+                            metric and imperial units for length, weight, temperature, and pressure with 
+                            precision and history tracking.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">Manufacturing Tools</span>
+                            <span class="tech-tag">Professional UI</span>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <a href="/tools/" class="btn btn-tools">Try the Tool</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="project-card">
                     <div class="project-image">🚁</div>
                     <div class="project-content">
@@ -824,17 +1051,17 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">💻</div>
+                    <div class="project-image">💼</div>
                     <div class="project-content">
-                        <h3 class="project-title">CNC SaaS Development</h3>
+                        <h3 class="project-title">Professional Portfolio Development</h3>
                         <p class="project-description">
-                            Developing Software-as-a-Service solutions for CNC industry including production monitoring, 
-                            tool life management, and inventory optimization systems for manufacturing excellence.
+                            Providing professional portfolio development services for manufacturing professionals. 
+                            Creating custom websites, tools, and professional presentations for career advancement.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">Software Development</span>
-                            <span class="tech-tag">SaaS</span>
-                            <span class="tech-tag">Manufacturing Tech</span>
+                            <span class="tech-tag">Web Development</span>
+                            <span class="tech-tag">Professional Design</span>
+                            <span class="tech-tag">Business Services</span>
                         </div>
                     </div>
                 </div>
@@ -865,7 +1092,7 @@
                 <div class="contact-info">
                     <h3>Ready to discuss your next project?</h3>
                     <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9;">
-                        I'm always interested in challenging opportunities that push the boundaries of manufacturing excellence.
+                        I'm available for manufacturing leadership roles and professional portfolio development services.
                     </p>
                     
                     <div class="contact-item">
@@ -884,6 +1111,10 @@
                         <span>💼</span>
                         <span>Available for Senior Management Roles</span>
                     </div>
+                    <div class="contact-item">
+                        <span>🔧</span>
+                        <span>Portfolio Development Services: AED 6,500+</span>
+                    </div>
                 </div>
                 
                 <div style="text-align: center;">
@@ -893,6 +1124,13 @@
                     <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
                         Your request will be logged and reviewed personally
                     </p>
+                    <div style="margin-top: 2rem;">
+                        <h4>Portfolio Services</h4>
+                        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+                            Custom professional portfolios for manufacturing professionals
+                        </p>
+                        <a href="/tools/" class="btn btn-tools">View Sample Tools</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -902,7 +1140,7 @@
         <div class="container">
             <p>&copy; 2025 Pavin Anilkumar Jayakumari. All rights reserved.</p>
             <p style="margin-top: 0.5rem; opacity: 0.8;">
-                Senior CNC Manufacturing Leader | Transforming Industries Through Innovation
+                Senior CNC Manufacturing Leader | Professional Portfolio Development Services
             </p>
         </div>
     </footer>
@@ -919,7 +1157,7 @@
             const company = prompt("Please enter your company name:");
             if (!company) return;
             
-            const purpose = prompt("What is the purpose of your request?\n(Job Opportunity, Business Collaboration, Networking, etc.):");
+            const purpose = prompt("What is the purpose of your request?\n(Job Opportunity, Business Collaboration, Portfolio Services, Networking, etc.):");
             if (!purpose) return;
             
             // Store the request data
@@ -943,6 +1181,15 @@
             
             // Show success message
             alert(`Thank you ${name}!\n\nYour CV request has been logged and will be reviewed personally.\n\nI will contact you at ${email} within 24 hours.\n\nRequest Details:\n- Company: ${company}\n- Purpose: ${purpose}\n- Time: ${new Date().toLocaleString()}`);
+            
+            // Track the request
+            trackCVRequest(requestData);
+        }
+        
+        // Enhanced tracking for CV requests
+        function trackCVRequest(requestData) {
+            console.log("CV Request Tracked:", requestData);
+            // Future: Send to analytics or email notification system
         }
         
         // Admin function to view requests (for your use)
@@ -950,6 +1197,22 @@
             const requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
             console.table(requests);
             return requests;
+        }
+        
+        // Export CV requests for email follow-up
+        function exportCVRequests() {
+            const requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Name,Email,Company,Purpose,Timestamp\n"
+                + requests.map(r => `"${r.name}","${r.email}","${r.company}","${r.purpose}","${r.timestamp}"`).join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "cv_requests.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
         
         // Smooth scrolling for navigation links
@@ -997,10 +1260,22 @@
         // Track visitor on page load
         document.addEventListener('DOMContentLoaded', trackVisitor);
         
+        // Tools link click tracking
+        document.querySelectorAll('a[href="/tools/"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Tools link clicked:', {
+                    timestamp: new Date().toISOString(),
+                    linkText: this.textContent,
+                    location: this.className
+                });
+            });
+        });
+        
         // Console commands for admin (for your use)
         console.log(`
         Portfolio Admin Commands:
         - viewCVRequests() - View all CV requests
+        - exportCVRequests() - Export CV requests as CSV
         - JSON.parse(localStorage.getItem('portfolioVisitors')) - View all visitors
         - localStorage.clear() - Clear all data
         `);
