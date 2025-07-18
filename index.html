@@ -3,1242 +3,779 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavin Anilkumar Jayakumari - Professional Portfolio</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X3XY0ZN511"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-X3XY0ZN511');
-</script>
-<!-- These are like street signs for Google -->
-<meta name="description" content="Professional CNC manufacturing expert and portfolio development services in UAE. 10+ years aerospace, marine, automotive experience.">
-<meta name="keywords" content="CNC programming UAE, manufacturing portfolio, aerospace CNC, marine manufacturing, portfolio development services">
-<meta name="author" content="Pavin Anilkumar Jayakumari">
-
-<!-- This tells Google where you are located -->
-<meta name="geo.region" content="AE-SH">
-<meta name="geo.placename" content="Sharjah, UAE">
-
-<!-- This is for social media sharing -->
-<meta property="og:title" content="Pavin Anilkumar Jayakumari - CNC Manufacturing Expert">
-<meta property="og:description" content="Professional CNC manufacturing leader with 10+ years experience in UAE">
-<meta property="og:url" content="https://pavintech.com/">
-<meta property="og:type" content="website">
-    <meta name="description" content="Senior CNC Manufacturing Leader with 10+ years experience in aerospace, marine, and automotive industries. Professional portfolio development services.">
-    <meta name="keywords" content="CNC programming, manufacturing, aerospace, marine, portfolio development, UAE, PowerMill, KUKA robotics">
+    <title>Pavin Anilkumar - CNC Team Lead & Manufacturing Expert</title>
+    <meta name="description" content="CNC Team Lead with 10+ years experience in aerospace, marine, and automotive manufacturing. Specializing in precision machining and technical leadership.">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f3f4f6;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
         }
-        
-        .header {
-            position: fixed;
+
+        /* Navigation */
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
-            width: 100%;
-            background: rgba(44, 62, 80, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
             z-index: 1000;
-            transition: all 0.3s ease;
         }
-        
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            height: 70px;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #3498db;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
         }
-        
+
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 30px;
         }
-        
-        .nav-menu a {
-            color: white;
+
+        .nav-link {
             text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-menu a:hover {
-            color: #3498db;
-        }
-        
-        .tools-highlight {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-        
-        .tools-highlight:hover {
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            transition: color 0.3s;
             position: relative;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+
+        .nav-link:hover {
+            color: var(--primary-color);
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+
+        .nav-link.active {
+            color: var(--primary-color);
         }
-        
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
         .hero-content {
             max-width: 800px;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
+            margin: 0 auto;
         }
-        
+
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: slideInDown 1s ease-out;
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
         }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+
+        .hero p {
+            font-size: clamp(20px, 2.5vw, 28px);
+            margin-bottom: 30px;
             opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.2s;
+            animation-fill-mode: both;
         }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 40px;
+            opacity: 0.8;
+            animation: fadeInUp 0.8s ease-out 0.3s;
+            animation-fill-mode: both;
         }
-        
-        @keyframes slideInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
+
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s;
+            animation-fill-mode: both;
         }
-        
+
         .btn {
             padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 8px;
             text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
             display: inline-block;
         }
-        
+
         .btn-primary {
-            background: #3498db;
-            color: white;
+            background: white;
+            color: var(--primary-color);
         }
-        
+
         .btn-primary:hover {
-            background: #2980b9;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
+
         .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
-        
+
         .btn-secondary:hover {
             background: white;
-            color: #667eea;
-            transform: translateY(-2px);
+            color: var(--primary-color);
         }
-        
-        .btn-tools {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-tools::before {
-            content: '🔧';
-            margin-right: 8px;
-        }
-        
-        .btn-tools:hover {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
-        }
-        
-        .section {
-            padding: 5rem 0;
-        }
-        
-        .container {
+
+        /* Experience Section */
+        .experience {
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
-        
+
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 3rem;
-            position: relative;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 50px;
+            color: var(--text-primary);
         }
-        
-        .section-title::after {
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
             content: '';
             position: absolute;
-            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #e74c3c);
-            border-radius: 2px;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
         }
-        
-        .about {
-            background: #f8f9fa;
+
+        .timeline-item {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+            width: calc(50% - 30px);
         }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
         }
-        
-        .about-image {
-            text-align: center;
+
+        .timeline-item:nth-child(even) {
+            left: calc(50% + 30px);
         }
-        
-        .profile-image {
-            width: 300px;
-            height: 300px;
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
             border-radius: 50%;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+            top: 40px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -40px;
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-white);
+            padding: 80px 20px;
+        }
+
+        .skills-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            gap: 10px;
         }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #3498db;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 600;
-        }
-        
-        /* Tools Preview Section */
-        .tools-preview {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-top: 4px solid #3498db;
-        }
-        
-        .tools-showcase {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-bottom: 2rem;
-            border: 1px solid #e9ecef;
-        }
-        
-        .tools-showcase h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .tools-showcase p {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .tool-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .tool-feature {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .tool-feature h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tool-feature p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-        
-        .experience {
-            background: white;
-        }
-        
-        .job-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            border-left: 5px solid #3498db;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .job-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        
-        .job-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .job-company {
-            color: #3498db;
-            font-weight: 600;
-        }
-        
-        .job-date {
-            background: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .job-description {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .achievements {
+
+        .skill-list {
             list-style: none;
         }
-        
-        .achievements li {
-            margin-bottom: 0.5rem;
-            padding-left: 20px;
-            position: relative;
-            color: #555;
-        }
-        
-        .achievements li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: #3498db;
-        }
-        
-        .skills {
-            background: #f8f9fa;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .skill-item {
+
+        .skill-list li {
+            padding: 8px 0;
+            color: var(--text-secondary);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: 10px;
         }
-        
-        .skill-name {
-            font-weight: 600;
-            color: #333;
+
+        .skill-list li:before {
+            content: "▸";
+            color: var(--primary-color);
+            font-weight: bold;
         }
-        
-        .skill-level {
-            width: 60%;
-            height: 8px;
-            background: #ecf0f1;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            border-radius: 4px;
-        }
-        
+
+        /* Projects Section */
         .projects {
-            background: white;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
-        
+
         .project-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--bg-white);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
-        
+
         .project-image {
             height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 48px;
             color: white;
         }
-        
+
         .project-content {
-            padding: 2rem;
+            padding: 30px;
         }
-        
+
         .project-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 1rem;
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
-        
+
         .project-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
-        
+
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 10px;
         }
-        
+
         .tech-tag {
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
         }
-        
-        .project-card .btn {
-            display: inline-block;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            font-size: 0.9rem;
+
+        /* Achievements Section */
+        .achievements {
+            background: var(--bg-white);
+            padding: 80px 20px;
         }
-        
-        .project-card .btn-primary {
-            background: #3498db;
-            color: white;
-            border: none;
+
+        .achievements-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        .project-card .btn-primary:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .project-card .btn-tools {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            border: none;
-        }
-        
-        .project-card .btn-tools:hover {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-        
-        .contact {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-        }
-        
-        .contact-content {
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
         }
-        
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+
+        .stat-item {
+            padding: 30px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            transition: transform 0.3s;
         }
-        
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            justify-content: center;
+            gap: 10px;
+            color: white;
         }
-        
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
         .footer {
-            background: #2c3e50;
+            background: var(--text-primary);
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 40px 20px;
         }
-        
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
+                background-color: var(--bg-white);
+                width: 100%;
                 text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
             }
-            
-            .contact-content {
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 40px);
+                left: 40px !important;
+            }
+
+            .timeline-dot {
+                left: -30px !important;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .job-header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tool-features {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">PAVIN</div>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="/tools/" class="tools-highlight">Tools</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="#" class="logo">PAVIN</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="/services/" class="nav-link">Services</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
+                <li><a href="/courses/" class="nav-link">Courses</a></li>
+                <li><a href="/jobs/" class="nav-link">Job Portal</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </header>
+    </nav>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Pavin Anilkumar Jayakumari</h1>
-            <div class="subtitle">Senior CNC Manufacturing Leader</div>
-            <p class="hero-description">
-                Transforming advanced manufacturing through innovative CNC programming, team leadership, 
-                and cutting-edge technology integration across aerospace, marine, and automotive industries.
-            </p>
+            <p>CNC Team Lead & Manufacturing Expert</p>
+            <p class="hero-subtitle">10+ Years Experience in Aerospace, Marine & Automotive Manufacturing</p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="/tools/" class="btn btn-tools">Try My Tools</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="profile-image">👨‍💼</div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        I'm a passionate Senior Production Engineer with over 10 years of progressive experience 
-                        in advanced manufacturing across aerospace, defense, marine, and automotive industries. 
-                        My expertise lies in leading high-performance teams, implementing cutting-edge CNC 
-                        programming solutions, and driving operational excellence in complex manufacturing environments.
-                    </p>
-                    <br>
-                    <p>
-                        Currently serving as CNC Team Lead at ENATA Industries, I'm spearheading the expansion 
-                        of our CNC operations while working on revolutionary products including UAVs, flying cars, 
-                        marine vessels, and precision aerospace components. My focus extends beyond traditional 
-                        manufacturing to include developing professional portfolio solutions and manufacturing tools.
-                    </p>
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2021 - Present</div>
+                <h3 class="timeline-title">CNC Team Lead</h3>
+                <p class="timeline-company">ENATA Industries, UAE</p>
+                <p class="timeline-description">Leading CNC operations for aerospace and marine manufacturing. Managing team of technicians, optimizing production processes, and ensuring quality standards.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2018 - 2021</div>
+                <h3 class="timeline-title">Senior CNC Programmer</h3>
+                <p class="timeline-company">Aerospace Division</p>
+                <p class="timeline-description">Developed complex 5-axis programs for critical aerospace components. Reduced machining time by 30% through process optimization.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2014 - 2018</div>
+                <h3 class="timeline-title">CNC Machinist</h3>
+                <p class="timeline-company">Automotive Manufacturing</p>
+                <p class="timeline-description">Specialized in precision machining of automotive components. Maintained tolerances within ±0.001" on critical parts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>🔧 CNC Programming</h3>
+                <ul class="skill-list">
+                    <li>Mastercam</li>
+                    <li>Fusion 360</li>
+                    <li>G-Code & M-Code</li>
+                    <li>5-Axis Programming</li>
+                    <li>CAM Optimization</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>⚙️ Machine Operation</h3>
+                <ul class="skill-list">
+                    <li>Haas CNC Mills</li>
+                    <li>DMG Mori Centers</li>
+                    <li>Okuma Lathes</li>
+                    <li>Swiss-Type Machines</li>
+                    <li>CMM Programming</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>📏 Quality Control</h3>
+                <ul class="skill-list">
+                    <li>ISO 9001:2015</li>
+                    <li>AS9100D Standards</li>
+                    <li>Statistical Process Control</li>
+                    <li>Six Sigma Principles</li>
+                    <li>First Article Inspection</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>👥 Leadership</h3>
+                <ul class="skill-list">
+                    <li>Team Management</li>
+                    <li>Process Improvement</li>
+                    <li>Training & Development</li>
+                    <li>Production Planning</li>
+                    <li>Cross-functional Collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">✈️</div>
+                <div class="project-content">
+                    <h3 class="project-title">Aerospace Turbine Components</h3>
+                    <p class="project-description">Led the manufacturing of critical turbine blades for commercial aircraft engines. Achieved 99.8% quality rate on complex 5-axis parts.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">5-Axis CNC</span>
+                        <span class="tech-tag">Titanium</span>
+                        <span class="tech-tag">AS9100D</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="stats">
+            <div class="project-card">
+                <div class="project-image">🚤</div>
+                <div class="project-content">
+                    <h3 class="project-title">Marine Propulsion Systems</h3>
+                    <p class="project-description">Manufactured high-precision propeller components for luxury yachts. Implemented new tooling strategies reducing cycle time by 40%.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Multi-Axis</span>
+                        <span class="tech-tag">Aluminum</span>
+                        <span class="tech-tag">CAM Optimization</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🚗</div>
+                <div class="project-content">
+                    <h3 class="project-title">Automotive Performance Parts</h3>
+                    <p class="project-description">Developed manufacturing processes for high-performance engine components. Achieved micron-level accuracy on critical dimensions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CNC Turning</span>
+                        <span class="tech-tag">Steel Alloys</span>
+                        <span class="tech-tag">Lean Manufacturing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements">
+        <div class="achievements-content">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">10+</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number">500+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Industries Served</div>
+                    <div class="stat-number">99.8%</div>
+                    <div class="stat-label">Quality Rate</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">30%</div>
-                    <div class="stat-label">Efficiency Improvements</div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Team Members Led</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Efficiency Improvement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Industry Sectors</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tools-preview" class="section tools-preview">
-        <div class="container">
-            <h2 class="section-title">Professional Manufacturing Tools</h2>
-            <div class="tools-showcase">
-                <h3>🔧 Manufacturing Unit Converter</h3>
-                <p>
-                    I've developed professional-grade tools to help manufacturing professionals 
-                    work more efficiently. These tools demonstrate my technical expertise and 
-                    commitment to industry innovation.
-                </p>
-                
-                <div class="tool-features">
-                    <div class="tool-feature">
-                        <h4>Multi-Unit Support</h4>
-                        <p>Length, weight, temperature, and pressure conversions with precision</p>
-                    </div>
-                    <div class="tool-feature">
-                        <h4>History Tracking</h4>
-                        <p>Smart history system to track and reload previous conversions</p>
-                    </div>
-                    <div class="tool-feature">
-                        <h4>Mobile Responsive</h4>
-                        <p>Professional interface that works perfectly on all devices</p>
-                    </div>
-                    <div class="tool-feature">
-                        <h4>Manufacturing Focus</h4>
-                        <p>Units and features specifically designed for manufacturing professionals</p>
-                    </div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Looking for manufacturing expertise or interested in collaboration? Let's connect!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:pavinjanilkumar@gmail.com">pavinjanilkumar@gmail.com</a>
                 </div>
-                
-                <a href="/tools/" class="btn btn-tools">Try the Converter</a>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+971547585733">+971 547585733</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Sharjah, UAE</span>
+                </div>
             </div>
-            <p style="text-align: center; color: #666; font-style: italic; margin-top: 2rem;">
-                More professional tools coming soon...
-            </p>
-        </div>
-    </section>
-
-    <section id="experience" class="section experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">CNC Team Lead</div>
-                        <div class="job-company">ENATA Industries</div>
-                    </div>
-                    <div class="job-date">April 2025 - Present</div>
-                </div>
-                <div class="job-description">
-                    Leading CNC operations for cutting-edge aerospace, marine, and automotive manufacturing. 
-                    Spearheading expansion for revolutionary products including UAVs, flying cars, and precision components.
-                </div>
-                <ul class="achievements">
-                    <li>Spearheading CNC department expansion for 10x operational scaling by end of 2025</li>
-                    <li>Leading R&D manufacturing for UAVs, flying cars, marine vessels, and carbon fiber wheels</li>
-                    <li>Implementing design modifications for molds and processes, improving efficiency standards</li>
-                    <li>Managing cross-industry requirements: aerospace, marine, automotive, and OEM production</li>
-                    <li>Establishing quality control protocols for high-precision manufacturing requirements</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">CNC Programmer (Deputy Team Lead)</div>
-                        <div class="job-company">Sunreef Yachts RMC FZC</div>
-                    </div>
-                    <div class="job-date">July 2023 - March 2025</div>
-                </div>
-                <div class="job-description">
-                    Specialized in luxury yacht production with KUKA 7-axis robots and PowerMill programming. 
-                    Managed complex yacht component manufacturing and comprehensive 3D printing operations.
-                </div>
-                <ul class="achievements">
-                    <li>Created and executed complex milling programs for KUKA 7-axis robots and CNC routers</li>
-                    <li>Conducted comprehensive analysis and planning for yacht plugs, molds, and components</li>
-                    <li>Utilized Creality 3D printers for prototyping and precision part production</li>
-                    <li>Supervised CNC operations ensuring efficient project completion and delivery timelines</li>
-                    <li>Integrated technical expertise with project management for premium yacht components</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Production Supervisor & CNC Programmer</div>
-                        <div class="job-company">Cemar International Industrial FZCO</div>
-                    </div>
-                    <div class="job-date">December 2017 - June 2023</div>
-                </div>
-                <div class="job-description">
-                    Led production operations with strategic improvements achieving significant efficiency gains. 
-                    Managed team coordination and implemented advanced manufacturing processes.
-                </div>
-                <ul class="achievements">
-                    <li>Enhanced run-flat section fixtures efficiency by 30% and optimized lathe tooling for 50% production increase</li>
-                    <li>Streamlined laser machine workloads by 15% through workflow restructuring and quality protocols</li>
-                    <li>Implemented strategic cost-saving initiatives through problem-solving methodologies</li>
-                    <li>Established structured workflow systems and provided comprehensive fixture design training</li>
-                    <li>Designed and implemented milling programs using PowerMill for multiple CNC systems</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">CNC Programmer cum Operator</div>
-                        <div class="job-company">Intimate Machines Private Limited</div>
-                    </div>
-                    <div class="job-date">December 2015 - December 2016</div>
-                </div>
-                <div class="job-description">
-                    Operated precision CNC equipment for aerospace and defense applications, ensuring critical tolerances and quality standards.
-                </div>
-                <ul class="achievements">
-                    <li>Operated CNC lathes and milling machines for aerospace and defense industries with precision requirements</li>
-                    <li>Utilized Mastercam software and manual programming with Fanuc and Siemens controls</li>
-                    <li>Worked with advanced materials including aluminum, titanium, and stainless steel</li>
-                    <li>Conducted comprehensive machine maintenance and quality control checks</li>
-                </ul>
+            <div class="cta-buttons" style="margin-top: 40px;">
+                <a href="mailto:pavinjanilkumar@gmail.com" class="btn btn-primary">Send Email</a>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section skills">
-        <div class="container">
-            <h2 class="section-title">Core Competencies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>CNC Programming & Manufacturing</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">PowerMill Programming</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">KUKA 7-Axis Robotics</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Multi-Axis CNC</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">3D Printing</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>CAD/CAM Software</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">AutoCAD</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">SolidWorks</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">NX Unigraphics</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Mastercam</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Leadership & Management</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">Team Leadership</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 92%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Process Optimization</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Project Management</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Quality Systems</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Portfolio Development Services</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">Web Development</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Professional Design</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Manufacturing Tools</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Business Development</span>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section projects">
-        <div class="container">
-            <h2 class="section-title">Key Projects & Achievements</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">🔧</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Manufacturing Unit Converter</h3>
-                        <p class="project-description">
-                            Professional-grade unit converter for manufacturing professionals. Convert between 
-                            metric and imperial units for length, weight, temperature, and pressure with 
-                            precision and history tracking.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">Manufacturing Tools</span>
-                            <span class="tech-tag">Professional UI</span>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <a href="/tools/" class="btn btn-tools">Try the Tool</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🚁</div>
-                    <div class="project-content">
-                        <h3 class="project-title">UAV Manufacturing at ENATA</h3>
-                        <p class="project-description">
-                            Leading CNC operations for advanced UAV and drone manufacturing, including the Mistral EFT 
-                            with Mach 0.7 capability and 355km range. Implementing precision manufacturing for aerospace-grade components.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CNC Programming</span>
-                            <span class="tech-tag">Aerospace Manufacturing</span>
-                            <span class="tech-tag">Quality Control</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🛥️</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Luxury Yacht Components</h3>
-                        <p class="project-description">
-                            Developed complex milling programs for KUKA 7-axis robots at Sunreef Yachts. 
-                            Managed production of yacht plugs, molds, and precision components for luxury marine vessels.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">KUKA Robotics</span>
-                            <span class="tech-tag">PowerMill</span>
-                            <span class="tech-tag">Marine Manufacturing</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">⚙️</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Production Optimization</h3>
-                        <p class="project-description">
-                            Achieved 50% production increase through tooling optimization and 30% efficiency improvement 
-                            in run-flat section fixtures. Implemented strategic workflow systems and quality protocols.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Process Engineering</span>
-                            <span class="tech-tag">Lean Manufacturing</span>
-                            <span class="tech-tag">Team Leadership</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🚗</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Flying Cars & Electric Vehicles</h3>
-                        <p class="project-description">
-                            Contributing to ENATA's revolutionary flying car development and electric vehicle manufacturing. 
-                            Managing precision component production for next-generation transportation solutions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Advanced Manufacturing</span>
-                            <span class="tech-tag">R&D</span>
-                            <span class="tech-tag">Innovation</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">💼</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Professional Portfolio Development</h3>
-                        <p class="project-description">
-                            Providing professional portfolio development services for manufacturing professionals. 
-                            Creating custom websites, tools, and professional presentations for career advancement.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Web Development</span>
-                            <span class="tech-tag">Professional Design</span>
-                            <span class="tech-tag">Business Services</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">🎯</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Aerospace Defense Components</h3>
-                        <p class="project-description">
-                            Precision manufacturing for aerospace and defense applications including titanium and aluminum 
-                            components with critical tolerances. Experience with classified OEM manufacturing projects.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Aerospace Manufacturing</span>
-                            <span class="tech-tag">Defense Industry</span>
-                            <span class="tech-tag">Precision Engineering</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Let's Connect</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ready to discuss your next project?</h3>
-                    <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9;">
-                        I'm available for manufacturing leadership roles and professional portfolio development services.
-                    </p>
-                    
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>pavinjanilkumar@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <span>+971 547585733</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Sharjah, UAE</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💼</span>
-                        <span>Available for Senior Management Roles</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>🔧</span>
-                        <span>Portfolio Development Services: AED 6,500+</span>
-                    </div>
-                </div>
-                
-                <div style="text-align: center;">
-                    <h3>Professional Documents</h3>
-                    <p style="margin-bottom: 2rem;">Request access to detailed CV and portfolio</p>
-                    <a href="#" class="btn btn-secondary" onclick="requestCV()">Request CV Access</a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-                        Your request will be logged and reviewed personally
-                    </p>
-                    <div style="margin-top: 2rem;">
-                        <h4>Portfolio Services</h4>
-                        <p style="margin-bottom: 1rem; font-size: 0.9rem;">
-                            Custom professional portfolios for manufacturing professionals
-                        </p>
-                        <a href="/tools/" class="btn btn-tools">View Sample Tools</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Pavin Anilkumar Jayakumari. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; opacity: 0.8;">
-                Senior CNC Manufacturing Leader | Professional Portfolio Development Services
-            </p>
-        </div>
+        <p>&copy; 2024 Pavin Anilkumar. All rights reserved.</p>
+        <p>CNC Team Lead | Manufacturing Expert | Technical Consultant</p>
     </footer>
 
     <script>
-        // CV Request System
-        function requestCV() {
-            const name = prompt("Please enter your full name:");
-            if (!name) return;
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
             
-            const email = prompt("Please enter your email address:");
-            if (!email) return;
-            
-            const company = prompt("Please enter your company name:");
-            if (!company) return;
-            
-            const purpose = prompt("What is the purpose of your request?\n(Job Opportunity, Business Collaboration, Portfolio Services, Networking, etc.):");
-            if (!purpose) return;
-            
-            // Store the request data
-            const requestData = {
-                name: name,
-                email: email,
-                company: company,
-                purpose: purpose,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer
-            };
-            
-            // Log to console for now (you can implement email sending later)
-            console.log("CV Request Received:", requestData);
-            
-            // Store in localStorage for your review
-            let requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
-            requests.push(requestData);
-            localStorage.setItem('cvRequests', JSON.stringify(requests));
-            
-            // Show success message
-            alert(`Thank you ${name}!\n\nYour CV request has been logged and will be reviewed personally.\n\nI will contact you at ${email} within 24 hours.\n\nRequest Details:\n- Company: ${company}\n- Purpose: ${purpose}\n- Time: ${new Date().toLocaleString()}`);
-            
-            // Track the request
-            trackCVRequest(requestData);
-        }
-        
-        // Enhanced tracking for CV requests
-        function trackCVRequest(requestData) {
-            console.log("CV Request Tracked:", requestData);
-            // Future: Send to analytics or email notification system
-        }
-        
-        // Admin function to view requests (for your use)
-        function viewCVRequests() {
-            const requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
-            console.table(requests);
-            return requests;
-        }
-        
-        // Export CV requests for email follow-up
-        function exportCVRequests() {
-            const requests = JSON.parse(localStorage.getItem('cvRequests') || '[]');
-            const csvContent = "data:text/csv;charset=utf-8," 
-                + "Name,Email,Company,Purpose,Timestamp\n"
-                + requests.map(r => `"${r.name}","${r.email}","${r.company}","${r.purpose}","${r.timestamp}"`).join("\n");
-            
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "cv_requests.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-        
-        // Smooth scrolling for navigation links
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1252,56 +789,24 @@
             });
         });
 
-        // Header background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(44, 62, 80, 0.98)';
-            } else {
-                header.style.background = 'rgba(44, 62, 80, 0.95)';
-            }
-        });
-        
-        // Simple visitor tracking
-        function trackVisitor() {
-            const visitorData = {
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer,
-                url: window.location.href,
-                screenSize: `${screen.width}x${screen.height}`,
-                language: navigator.language
-            };
-            
-            let visitors = JSON.parse(localStorage.getItem('portfolioVisitors') || '[]');
-            visitors.push(visitorData);
-            localStorage.setItem('portfolioVisitors', JSON.stringify(visitors));
-            
-            console.log('Visitor tracked:', visitorData);
-        }
-        
-        // Track visitor on page load
-        document.addEventListener('DOMContentLoaded', trackVisitor);
-        
-        // Tools link click tracking
-        document.querySelectorAll('a[href="/tools/"]').forEach(link => {
-            link.addEventListener('click', function() {
-                console.log('Tools link clicked:', {
-                    timestamp: new Date().toISOString(),
-                    linkText: this.textContent,
-                    location: this.className
-                });
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                }
             });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.timeline-item, .skill-category, .project-card, .stat-item').forEach(item => {
+            observer.observe(item);
         });
-        
-        // Console commands for admin (for your use)
-        console.log(`
-        Portfolio Admin Commands:
-        - viewCVRequests() - View all CV requests
-        - exportCVRequests() - Export CV requests as CSV
-        - JSON.parse(localStorage.getItem('portfolioVisitors')) - View all visitors
-        - localStorage.clear() - Clear all data
-        `);
     </script>
 </body>
 </html>
