@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Development Services - PavinTech</title>
+    <meta name="description" content="Professional portfolio development services for manufacturing professionals. Stand out with a custom-built digital portfolio.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f3f4f6;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 18px;
+        }
+
+        .service-main {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 60px;
+        }
+
+        .service-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .service-content h2 {
+            font-size: 32px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .service-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .service-image {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            color: white;
+        }
+
+        /* Process Section */
+        .process {
+            margin: 60px 0;
+        }
+
+        .process h3 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Features Grid */
+        .features {
+            margin: 60px 0;
+        }
+
+        .features h3 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 60px 40px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            margin: 60px 0;
+        }
+
+        .cta-section h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Sample Work */
+        .samples {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .sample-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .sample-card:hover {
+            transform: scale(1.02);
+        }
+
+        .sample-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .sample-content {
+            padding: 25px;
+        }
+
+        .sample-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .sample-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--bg-white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .service-main {
+                padding: 40px 20px;
+            }
+
+            .service-header {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sample-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">PAVIN</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#experience" class="nav-link">Experience</a></li>
+                <li><a href="/#skills" class="nav-link">Skills</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="/services/" class="nav-link active">Services</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
+                <li><a href="/courses/" class="nav-link">Courses</a></li>
+                <li><a href="/jobs/" class="nav-link">Job Portal</a></li>
+                <li><a href="/#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Portfolio Development Services</h1>
+        <p>Stand out in the competitive manufacturing industry with a professional digital portfolio</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2 class="section-title">Professional Portfolio Development</h2>
+        <p class="section-subtitle">Helping manufacturing professionals showcase their expertise through custom-built digital portfolios</p>
+
+        <div class="service-main">
+            <div class="service-header">
+                <div class="service-content">
+                    <h2>Your Skills Deserve a Professional Showcase</h2>
+                    <p>In today's competitive manufacturing industry, having a strong online presence is crucial. I help experienced professionals like you create impressive digital portfolios that highlight your technical expertise, projects, and achievements.</p>
+                    <p>With my combined expertise in manufacturing and web development, I create portfolios that speak the language of your industry while presenting your skills in the most professional way possible.</p>
+                </div>
+                <div class="service-image">
+                    📁
+                </div>
+            </div>
+
+            <!-- Process Section -->
+            <div class="process">
+                <h3>How It Works</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Consultation</h4>
+                        <p>We discuss your experience, achievements, and career goals to understand your unique value proposition</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Content Development</h4>
+                        <p>I help you organize and present your projects, skills, and accomplishments in the most impactful way</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Design & Build</h4>
+                        <p>Your portfolio is custom-designed and built with modern technologies, ensuring it looks professional on all devices</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Launch & Support</h4>
+                        <p>Your portfolio goes live with your own domain, and I provide ongoing support to keep it updated</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <h3>What You Get</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Custom Design</h4>
+                        <p>Unique, professional design tailored to your personal brand and the manufacturing industry standards</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h4>Mobile Responsive</h4>
+                        <p>Your portfolio looks perfect on all devices - desktop, tablet, and mobile phones</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔍</div>
+                        <h4>SEO Optimized</h4>
+                        <p>Built with search engines in mind to help recruiters and employers find you easily</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Fast Loading</h4>
+                        <p>Optimized performance ensures your portfolio loads quickly for the best user experience</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h4>Secure Hosting</h4>
+                        <p>Reliable hosting with SSL certificate and regular backups to keep your portfolio safe</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h4>Analytics Integration</h4>
+                        <p>Track visitors and understand how people interact with your portfolio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to Build Your Professional Portfolio?</h3>
+            <p>Let's create something that truly represents your expertise and achievements</p>
+            <a href="mailto:pavinjanilkumar@gmail.com?subject=Portfolio Development Inquiry" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Sample Work -->
+    <section class="samples">
+        <h2 class="section-title">Portfolio Examples</h2>
+        <p class="section-subtitle">See what a professional manufacturing portfolio looks like</p>
+        
+        <div class="sample-grid">
+            <div class="sample-card">
+                <div class="sample-image">CNC Specialist Portfolio</div>
+                <div class="sample-content">
+                    <h3 class="sample-title">CNC Programming Expert</h3>
+                    <p class="sample-description">Showcasing 15+ years of experience in aerospace CNC programming with project gallery and technical skills matrix</p>
+                </div>
+            </div>
+            <div class="sample-card">
+                <div class="sample-image">Quality Engineer Portfolio</div>
+                <div class="sample-content">
+                    <h3 class="sample-title">Quality Assurance Lead</h3>
+                    <p class="sample-description">Highlighting certifications, process improvements, and quality metrics achievements</p>
+                </div>
+            </div>
+            <div class="sample-card">
+                <div class="sample-image">Production Manager Portfolio</div>
+                <div class="sample-content">
+                    <h3 class="sample-title">Manufacturing Manager</h3>
+                    <p class="sample-description">Demonstrating leadership, efficiency improvements, and team management successes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Pavin Anilkumar. All rights reserved.</p>
+        <p>Professional Portfolio Development for Manufacturing Professionals</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
