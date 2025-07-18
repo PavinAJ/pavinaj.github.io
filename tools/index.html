@@ -1,19 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Street signs for your tools page -->
-<meta name="description" content="Free professional manufacturing calculator. Convert units for length, weight, temperature, pressure. Made by CNC expert.">
-<meta name="keywords" content="manufacturing calculator, unit converter, CNC tools, engineering calculator, free manufacturing tools">
-
-<!-- Social media info -->
-<meta property="og:title" content="Free Manufacturing Calculator - Professional Tools">
-<meta property="og:description" content="Professional manufacturing unit converter for engineers. Free to use, made by CNC expert.">
-<meta property="og:url" content="https://pavintech.com/tools/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manufacturing Unit Converter | Professional Tools</title>
-    <meta name="description" content="Professional manufacturing unit converter for engineers. Convert between metric and imperial units: mm↔inches, kg↔lbs, °C↔°F. Built by manufacturing expert.">
+    <title>Manufacturing Unit Converter</title>
+    <meta name="description" content="Professional engineering tools for manufacturing professionals, built by Pavin Anilkumar Jayakumari.">
     <style>
         * {
             margin: 0;
@@ -21,210 +12,268 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #1d4ed8;
+            --secondary-color: #3b82f6;
+            --accent-color: #93c5fd;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --transition: all 0.3s ease;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f8fafc;
-            min-height: 100vh;
-            color: #1a202c;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
         }
 
-        .header {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
+        /* Navigation */
+        .navbar {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .header-content {
-            max-width: 800px;
+        .nav-container {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
         }
 
-        .header h1 {
-            font-size: 3rem;
+        .logo {
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 16px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .header p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            font-weight: 300;
+        .logo:hover {
+            color: var(--secondary-color);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
-            padding: 40px 0;
-        }
-
-        .calculators-section {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        .nav-menu {
+            display: flex;
+            list-style: none;
             gap: 32px;
         }
 
-        .calculator-card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            height: fit-content;
-        }
-
-        .calculator-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.06);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 16px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #111827;
-            margin: 0;
-        }
-
-        .input-group {
-            margin-bottom: 0;
-        }
-
-        .input-label {
-            display: block;
-            margin-bottom: 12px;
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
             font-weight: 500;
-            color: #374151;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-size: 16px;
+            position: relative;
+            transition: var(--transition);
         }
 
-        .input-container {
-            display: flex;
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
             flex-direction: column;
-            gap: 16px;
+            cursor: pointer;
+            padding: 8px;
         }
 
-        .input-row {
+        .mobile-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 4px 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 24px;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            margin-bottom: 32px;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+
+        /* Converter Section */
+        .converters {
+            padding: 80px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 60px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .converter-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .converter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .converter-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .input-field {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #111827;
-            background: white;
-            transition: all 0.2s ease;
-            min-width: 0;
+        .converter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .input-field:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        .converter-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .input-field:read-only {
-            background: #f9fafb;
-            color: #6b7280;
-        }
-
-        .unit-select {
-            min-width: 100px;
-            padding: 12px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .unit-select:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .swap-button {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
+        .converter-input {
+            padding: 12px;
+            border: 1px solid var(--text-secondary);
             border-radius: 8px;
             font-size: 16px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+            transition: var(--transition);
         }
 
-        .swap-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+        .converter-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
 
-        .swap-button:active {
-            transform: scale(0.95);
+        .converter-select {
+            padding: 12px;
+            border: 1px solid var(--text-secondary);
+            border-radius: 8px;
+            font-size: 16px;
+            background: var(--bg-white);
+            transition: var(--transition);
         }
 
-        /* History Panel */
-        .history-panel {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-            border: 1px solid #e5e7eb;
-            height: fit-content;
-            max-height: 70vh;
-            overflow-y: auto;
-            position: sticky;
-            top: 20px;
+        .converter-select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .converter-result {
+            margin-top: 16px;
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .converter-result.error {
+            color: var(--error-color);
+        }
+
+        /* History Section */
+        .history {
+            padding: 80px 24px;
+            background: var(--bg-white);
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
         .history-header {
@@ -232,994 +281,582 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .history-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #111827;
-            margin: 0;
-        }
-
-        .clear-history {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .clear-history:hover {
-            background: #dc2626;
-            transform: translateY(-1px);
         }
 
         .history-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
 
         .history-item {
-            background: #f8fafc;
+            background: var(--bg-light);
             padding: 16px;
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
             cursor: pointer;
-            transition: all 0.2s ease;
+            border: none;
+            background: var(--primary-color);
+            color: white;
         }
 
-        .history-item:hover {
-            background: #e2e8f0;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
-        .history-type {
-            font-size: 0.75rem;
-            color: #3b82f6;
-            font-weight: 600;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        /* Upcoming Tools Section */
+        .upcoming {
+            padding: 80px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
-        .history-conversion {
-            font-size: 0.875rem;
-            color: #111827;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .history-time {
-            font-size: 0.75rem;
-            color: #6b7280;
-        }
-
-        .empty-history {
-            text-align: center;
-            color: #6b7280;
-            font-style: italic;
-            padding: 40px 20px;
-        }
-
-        /* Suggestions Panel */
-        .suggestions-panel {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-top: 40px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-            border: 1px solid #e5e7eb;
-        }
-
-        .suggestions-title {
-            color: #111827;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        .suggestions-grid {
+        .upcoming-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            gap: 32px;
         }
 
-        .suggestion-item {
-            background: #f8fafc;
+        .upcoming-card {
+            background: var(--bg-white);
             padding: 24px;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
-        .suggestion-item:hover {
-            background: #e2e8f0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .upcoming-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .suggestion-icon {
-            font-size: 2.5rem;
+        .upcoming-title {
+            font-size: 20px;
+            color: var(--primary-color);
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .suggestion-name {
-            color: #111827;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+        .upcoming-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .suggestion-desc {
-            color: #6b7280;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
+        /* Footer */
         .footer {
-            background: #1f2937;
+            background: var(--text-primary);
             color: white;
-            padding: 40px 0;
             text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer h3 {
-            margin-bottom: 16px;
-            font-size: 1.25rem;
-            font-weight: 600;
+            padding: 48px 24px;
         }
 
         .footer p {
-            opacity: 0.8;
-            line-height: 1.6;
+            font-size: 15px;
             margin-bottom: 8px;
         }
 
         .footer a {
-            color: #60a5fa;
+            color: var(--accent-color);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
+            transition: var(--transition);
         }
 
         .footer a:hover {
-            color: #3b82f6;
-            text-decoration: underline;
+            color: white;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                padding: 32px 0;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .history-panel {
-                position: static;
-                max-height: none;
-                order: 2;
-            }
-            
-            .calculators-section {
-                order: 1;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+            .nav-container {
+                height: 64px;
             }
-            
-            .header p {
-                font-size: 1.1rem;
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 64px;
+                flex-direction: column;
+                background: var(--bg-white);
+                width: 100%;
+                height: calc(100vh - 64px);
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+                padding: 24px 0;
+                overflow-y: auto;
             }
-            
-            .calculators-section {
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 18px;
+                padding: 12px 0;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .converter-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
             }
-            
-            .calculator-card {
-                padding: 24px;
+
+            .hero {
+                padding: 60px 24px;
             }
-            
-            .history-panel {
-                padding: 24px;
+
+            .hero h1 {
+                font-size: clamp(28px, 5vw, 40px);
             }
-            
-            .suggestions-panel {
-                padding: 32px 24px;
-            }
-            
-            .suggestions-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+
+            .hero p {
+                font-size: clamp(16px, 2.5vw, 20px);
             }
         }
 
         @media (max-width: 480px) {
-            .header {
-                padding: 40px 0;
+            .section-title {
+                font-size: clamp(24px, 4vw, 32px);
             }
-            
-            .header h1 {
-                font-size: 2rem;
+
+            .converter-card {
+                padding: 24px;
             }
-            
-            .header p {
-                font-size: 1rem;
+
+            .converter-input, .converter-select {
+                font-size: 14px;
             }
-            
-            .calculator-card, .history-panel {
-                padding: 20px;
-            }
-            
-            .suggestions-panel {
-                padding: 24px 20px;
-            }
-            
-            .input-container {
-                gap: 12px;
-            }
-            
-            .input-row {
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            
-            .input-field {
-                min-width: 120px;
-            }
-            
-            .unit-select {
-                min-width: 80px;
-                font-size: 12px;
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
             }
         }
 
-        /* Animation for new history items */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
         }
 
-        .history-item.new {
-            animation: slideIn 0.3s ease;
+        :focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="header-content">
-            <h1>Manufacturing Unit Converter</h1>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/index.html" class="logo" aria-label="Pavin Anilkumar Home">PAVIN</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li><a href="/index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="/index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="/index.html#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="/services/" class="nav-link">Services</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+                <li><a href="/courses/" class="nav-link">Courses</a></li>
+                <li><a href="/jobs/" class="nav-link">Job Portal</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenu" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <h1 id="hero-title">Manufacturing Unit Converter</h1>
             <p>Professional engineering tools for manufacturing professionals</p>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <div class="main-content">
-            <div class="calculators-section">
-                <!-- Length Converter -->
-                <div class="calculator-card">
-                    <div class="card-header">
-                        <div class="card-icon">📏</div>
-                        <div class="card-title">Length Converter</div>
+    <!-- Converters Section -->
+    <section id="converters" class="converters" aria-labelledby="converters-title">
+        <h2 id="converters-title" class="section-title">Unit Converters</h2>
+        <div class="converter-grid">
+            <!-- Length Converter -->
+            <div class="converter-card" role="region" aria-label="Length Converter">
+                <h3 class="converter-title">📏 Length Converter</h3>
+                <div class="converter-form">
+                    <div class="converter-input-group">
+                        <input type="number" id="lengthInput" class="converter-input" placeholder="Enter value" aria-label="Length input value">
+                        <select id="lengthFromUnit" class="converter-select" aria-label="Select input length unit">
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                            <option value="m">m</option>
+                            <option value="inches">inches</option>
+                            <option value="feet">feet</option>
+                            <option value="yards">yards</option>
+                            <option value="mils">mils</option>
+                        </select>
                     </div>
-                    <div class="input-group">
-                        <label class="input-label">Convert Length Units</label>
-                        <div class="input-container">
-                            <div class="input-row">
-                                <input type="number" class="input-field" id="length-input" placeholder="Enter value" step="any">
-                                <select class="unit-select" id="length-unit-from">
-                                    <option value="mm">mm</option>
-                                    <option value="cm">cm</option>
-                                    <option value="m">m</option>
-                                    <option value="inches">inches</option>
-                                    <option value="feet">feet</option>
-                                    <option value="yards">yards</option>
-                                    <option value="mil">mils</option>
-                                </select>
-                            </div>
-                            <div class="input-row">
-                                <button class="swap-button" onclick="swapUnits('length')" title="Swap units">⇄</button>
-                            </div>
-                            <div class="input-row">
-                                <select class="unit-select" id="length-unit-to">
-                                    <option value="mm">mm</option>
-                                    <option value="cm">cm</option>
-                                    <option value="m">m</option>
-                                    <option value="inches" selected>inches</option>
-                                    <option value="feet">feet</option>
-                                    <option value="yards">yards</option>
-                                    <option value="mil">mils</option>
-                                </select>
-                                <input type="number" class="input-field" id="length-result-input" placeholder="Result" readonly>
-                            </div>
-                        </div>
+                    <span>⇄</span>
+                    <div class="converter-input-group">
+                        <input type="number" id="lengthOutput" class="converter-input" readonly aria-label="Converted length value">
+                        <select id="lengthToUnit" class="converter-select" aria-label="Select output length unit">
+                            <option value="mm">mm</option>
+                            <option value="cm">cm</option>
+                            <option value="m">m</option>
+                            <option value="inches">inches</option>
+                            <option value="feet">feet</option>
+                            <option value="yards">yards</option>
+                            <option value="mils">mils</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Weight Converter -->
-                <div class="calculator-card">
-                    <div class="card-header">
-                        <div class="card-icon">⚖️</div>
-                        <div class="card-title">Weight Converter</div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Convert Weight Units</label>
-                        <div class="input-container">
-                            <div class="input-row">
-                                <input type="number" class="input-field" id="weight-input" placeholder="Enter value" step="any">
-                                <select class="unit-select" id="weight-unit-from">
-                                    <option value="mg">mg</option>
-                                    <option value="g">g</option>
-                                    <option value="kg" selected>kg</option>
-                                    <option value="oz">oz</option>
-                                    <option value="lbs">lbs</option>
-                                    <option value="tons">tons</option>
-                                    <option value="tons_us">US tons</option>
-                                </select>
-                            </div>
-                            <div class="input-row">
-                                <button class="swap-button" onclick="swapUnits('weight')" title="Swap units">⇄</button>
-                            </div>
-                            <div class="input-row">
-                                <select class="unit-select" id="weight-unit-to">
-                                    <option value="mg">mg</option>
-                                    <option value="g">g</option>
-                                    <option value="kg">kg</option>
-                                    <option value="oz">oz</option>
-                                    <option value="lbs" selected>lbs</option>
-                                    <option value="tons">tons</option>
-                                    <option value="tons_us">US tons</option>
-                                </select>
-                                <input type="number" class="input-field" id="weight-result-input" placeholder="Result" readonly>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Temperature Converter -->
-                <div class="calculator-card">
-                    <div class="card-header">
-                        <div class="card-icon">🌡️</div>
-                        <div class="card-title">Temperature Converter</div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Convert Temperature Units</label>
-                        <div class="input-container">
-                            <div class="input-row">
-                                <input type="number" class="input-field" id="temp-input" placeholder="Enter value" step="any">
-                                <select class="unit-select" id="temp-unit-from">
-                                    <option value="C" selected>°C</option>
-                                    <option value="F">°F</option>
-                                    <option value="K">K</option>
-                                </select>
-                            </div>
-                            <div class="input-row">
-                                <button class="swap-button" onclick="swapUnits('temp')" title="Swap units">⇄</button>
-                            </div>
-                            <div class="input-row">
-                                <select class="unit-select" id="temp-unit-to">
-                                    <option value="C">°C</option>
-                                    <option value="F" selected>°F</option>
-                                    <option value="K">K</option>
-                                </select>
-                                <input type="number" class="input-field" id="temp-result-input" placeholder="Result" readonly>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pressure Converter -->
-                <div class="calculator-card">
-                    <div class="card-header">
-                        <div class="card-icon">💨</div>
-                        <div class="card-title">Pressure Converter</div>
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label">Convert Pressure Units</label>
-                        <div class="input-container">
-                            <div class="input-row">
-                                <input type="number" class="input-field" id="pressure-input" placeholder="Enter value" step="any">
-                                <select class="unit-select" id="pressure-unit-from">
-                                    <option value="Pa">Pa</option>
-                                    <option value="kPa">kPa</option>
-                                    <option value="MPa">MPa</option>
-                                    <option value="bar" selected>bar</option>
-                                    <option value="psi">psi</option>
-                                    <option value="atm">atm</option>
-                                    <option value="torr">torr</option>
-                                    <option value="mmHg">mmHg</option>
-                                </select>
-                            </div>
-                            <div class="input-row">
-                                <button class="swap-button" onclick="swapUnits('pressure')" title="Swap units">⇄</button>
-                            </div>
-                            <div class="input-row">
-                                <select class="unit-select" id="pressure-unit-to">
-                                    <option value="Pa">Pa</option>
-                                    <option value="kPa">kPa</option>
-                                    <option value="MPa">MPa</option>
-                                    <option value="bar">bar</option>
-                                    <option value="psi" selected>psi</option>
-                                    <option value="atm">atm</option>
-                                    <option value="torr">torr</option>
-                                    <option value="mmHg">mmHg</option>
-                                </select>
-                                <input type="number" class="input-field" id="pressure-result-input" placeholder="Result" readonly>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="converter-result" id="lengthResult"></div>
                 </div>
             </div>
 
-            <!-- History Panel -->
-            <div class="history-panel">
-                <div class="history-header">
-                    <div class="history-title">Conversion History</div>
-                    <button class="clear-history" onclick="clearHistory()">Clear</button>
-                </div>
-                <div class="history-list" id="history-list">
-                    <div class="empty-history" id="empty-history">
-                        No conversions yet.<br>Start converting to see history!
+            <!-- Weight Converter -->
+            <div class="converter-card" role="region" aria-label="Weight Converter">
+                <h3 class="converter-title">⚖️ Weight Converter</h3>
+                <div class="converter-form">
+                    <div class="converter-input-group">
+                        <input type="number" id="weightInput" class="converter-input" placeholder="Enter value" aria-label="Weight input value">
+                        <select id="weightFromUnit" class="converter-select" aria-label="Select input weight unit">
+                            <option value="mg">mg</option>
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="oz">oz</option>
+                            <option value="lbs">lbs</option>
+                            <option value="tons">tons</option>
+                            <option value="us-tons">US tons</option>
+                        </select>
                     </div>
+                    <span>⇄</span>
+                    <div class="converter-input-group">
+                        <input type="number" id="weightOutput" class="converter-input" readonly aria-label="Converted weight value">
+                        <select id="weightToUnit" class="converter-select" aria-label="Select output weight unit">
+                            <option value="mg">mg</option>
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="oz">oz</option>
+                            <option value="lbs">lbs</option>
+                            <option value="tons">tons</option>
+                            <option value="us-tons">US tons</option>
+                        </select>
+                    </div>
+                    <div class="converter-result" id="weightResult"></div>
+                </div>
+            </div>
+
+            <!-- Temperature Converter -->
+            <div class="converter-card" role="region" aria-label="Temperature Converter">
+                <h3 class="converter-title">🌡️ Temperature Converter</h3>
+                <div class="converter-form">
+                    <div class="converter-input-group">
+                        <input type="number" id="tempInput" class="converter-input" placeholder="Enter value" aria-label="Temperature input value">
+                        <select id="tempFromUnit" class="converter-select" aria-label="Select input temperature unit">
+                            <option value="celsius">°C</option>
+                            <option value="fahrenheit">°F</option>
+                            <option value="kelvin">K</option>
+                        </select>
+                    </div>
+                    <span>⇄</span>
+                    <div class="converter-input-group">
+                        <input type="number" id="tempOutput" class="converter-input" readonly aria-label="Converted temperature value">
+                        <select id="tempToUnit" class="converter-select" aria-label="Select output temperature unit">
+                            <option value="celsius">°C</option>
+                            <option value="fahrenheit">°F</option>
+                            <option value="kelvin">K</option>
+                        </select>
+                    </div>
+                    <div class="converter-result" id="tempResult"></div>
+                </div>
+            </div>
+
+            <!-- Pressure Converter -->
+            <div class="converter-card" role="region" aria-label="Pressure Converter">
+                <h3 class="converter-title">💨 Pressure Converter</h3>
+                <div class="converter-form">
+                    <div class="converter-input-group">
+                        <input type="number" id="pressureInput" class="converter-input" placeholder="Enter value" aria-label="Pressure input value">
+                        <select id="pressureFromUnit" class="converter-select" aria-label="Select input pressure unit">
+                            <option value="pa">Pa</option>
+                            <option value="kpa">kPa</option>
+                            <option value="mpa">MPa</option>
+                            <option value="bar">bar</option>
+                            <option value="psi">psi</option>
+                            <option value="atm">atm</option>
+                            <option value="torr">torr</option>
+                            <option value="mmhg">mmHg</option>
+                        </select>
+                    </div>
+                    <span>⇄</span>
+                    <div class="converter-input-group">
+                        <input type="number" id="pressureOutput" class="converter-input" readonly aria-label="Converted pressure value">
+                        <select id="pressureToUnit" class="converter-select" aria-label="Select output pressure unit">
+                            <option value="pa">Pa</option>
+                            <option value="kpa">kPa</option>
+                            <option value="mpa">MPa</option>
+                            <option value="bar">bar</option>
+                            <option value="psi">psi</option>
+                            <option value="atm">atm</option>
+                            <option value="torr">torr</option>
+                            <option value="mmhg">mmHg</option>
+                        </select>
+                    </div>
+                    <div class="converter-result" id="pressureResult"></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Suggestions Panel -->
-        <div class="suggestions-panel">
-            <div class="suggestions-title">Upcoming Manufacturing Tools</div>
-            <div class="suggestions-grid">
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">⚙️</div>
-                    <div class="suggestion-name">Speeds & Feeds Calculator</div>
-                    <div class="suggestion-desc">Calculate optimal cutting speeds and feed rates for CNC machining operations</div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">⏱️</div>
-                    <div class="suggestion-name">Machining Time Calculator</div>
-                    <div class="suggestion-desc">Estimate machining time and costs for accurate project planning</div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">🔬</div>
-                    <div class="suggestion-name">Material Properties Lookup</div>
-                    <div class="suggestion-desc">Quick reference for material properties and specifications</div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">🏗️</div>
-                    <div class="suggestion-name">Composite Layup Calculator</div>
-                    <div class="suggestion-desc">Calculate fiber orientation and layup sequences for composite materials</div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">🔧</div>
-                    <div class="suggestion-name">Tool Life Calculator</div>
-                    <div class="suggestion-desc">Predict tool wear and replacement schedules for cost optimization</div>
-                </div>
-                <div class="suggestion-item">
-                    <div class="suggestion-icon">🔍</div>
-                    <div class="suggestion-name">Tolerance Calculator</div>
-                    <div class="suggestion-desc">Calculate dimensional tolerances and fits for precision manufacturing</div>
-                </div>
+    <!-- History Section -->
+    <section id="history" class="history" aria-labelledby="history-title">
+        <div class="history-header">
+            <h2 id="history-title" class="section-title">Conversion History</h2>
+            <button class="btn" id="clearHistory" aria-label="Clear conversion history">Clear</button>
+        </div>
+        <ul class="history-list" id="historyList">
+            <li class="history-item">No conversions yet. Start converting to see history!</li>
+        </ul>
+    </section>
+
+    <!-- Upcoming Tools Section -->
+    <section id="upcoming" class="upcoming" aria-labelledby="upcoming-title">
+        <h2 id="upcoming-title" class="section-title">Upcoming Manufacturing Tools</h2>
+        <div class="upcoming-grid">
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">⚙️ Speeds & Feeds Calculator</h3>
+                <p class="upcoming-description">Calculate optimal cutting speeds and feed rates for CNC machining operations.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">⏱️ Machining Time Calculator</h3>
+                <p class="upcoming-description">Estimate machining time and costs for accurate project planning.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🔍 Tolerance Calculator</h3>
+                <p class="upcoming-description">Calculate dimensional tolerances and fits for precision manufacturing.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🛠️ Drill Size Converter</h3>
+                <p class="upcoming-description">Convert between drill sizes (metric, fractional, letter, number) for CNC drilling.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🔪 Material Removal Rate Calculator</h3>
+                <p class="upcoming-description">Compute material removal rate for milling operations.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🏗️ Composite Layup Calculator</h3>
+                <p class="upcoming-description">Calculate fiber orientation and layup sequences for composite materials.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🔧 Tool Life Calculator</h3>
+                <p class="upcoming-description">Predict tool wear and replacement schedules for cost optimization.</p>
+            </div>
+            <div class="upcoming-card">
+                <h3 class="upcoming-title">🔬 Material Properties Lookup</h3>
+                <p class="upcoming-description">Quick reference for material properties and specifications.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer">
-        <div class="footer-content">
-            <h3>Built by Manufacturing Expert</h3>
-            <p>
-                Developed by <strong>Pavin Anilkumar Jayakumari</strong> - CNC Team Lead at ENATA Industries
-            </p>
-            <p>
-                10+ years manufacturing experience | Professional portfolio development services
-            </p>
-            <p>
-                <a href="mailto:contact@pavintech.com">Contact for custom portfolio development</a>
-            </p>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <p>Built by <a href="/index.html" aria-label="Pavin Anilkumar's Portfolio">Pavin Anilkumar Jayakumari</a> - CNC Team Lead at ENATA Industries</p>
+        <p>10+ years manufacturing experience | Professional portfolio development services</p>
+        <p><a href="/index.html#contact" aria-label="Contact for custom portfolio development">Contact for custom portfolio development</a></p>
+    </footer>
 
     <script>
-        // Conversion factors and unit configurations
-        const conversions = {
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenu.addEventListener('click', () => {
+            const isExpanded = mobileMenu.getAttribute('aria-expanded') === 'true';
+            mobileMenu.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Conversion Logic
+        const conversionFactors = {
             length: {
-                units: {
-                    'mm': { name: 'Millimeters', factor: 1 },
-                    'cm': { name: 'Centimeters', factor: 10 },
-                    'm': { name: 'Meters', factor: 1000 },
-                    'inches': { name: 'Inches', factor: 25.4 },
-                    'feet': { name: 'Feet', factor: 304.8 },
-                    'yards': { name: 'Yards', factor: 914.4 },
-                    'mil': { name: 'Mils (0.001")', factor: 0.0254 }
-                },
-                defaultFrom: 'mm',
-                defaultTo: 'inches'
+                mm: { mm: 1, cm: 0.1, m: 0.001, inches: 0.0393701, feet: 0.00328084, yards: 0.00109361, mils: 39.3701 },
+                cm: { mm: 10, cm: 1, m: 0.01, inches: 0.393701, feet: 0.0328084, yards: 0.0109361, mils: 393.701 },
+                m: { mm: 1000, cm: 100, m: 1, inches: 39.3701, feet: 3.28084, yards: 1.09361, mils: 39370.1 },
+                inches: { mm: 25.4, cm: 2.54, m: 0.0254, inches: 1, feet: 0.0833333, yards: 0.0277778, mils: 1000 },
+                feet: { mm: 304.8, cm: 30.48, m: 0.3048, inches: 12, feet: 1, yards: 0.333333, mils: 12000 },
+                yards: { mm: 914.4, cm: 91.44, m: 0.9144, inches: 36, feet: 3, yards: 1, mils: 36000 },
+                mils: { mm: 0.0254, cm: 0.00254, m: 0.0000254, inches: 0.001, feet: 0.0000833333, yards: 0.0000277778, mils: 1 }
             },
             weight: {
-                units: {
-                    'mg': { name: 'Milligrams', factor: 0.001 },
-                    'g': { name: 'Grams', factor: 1 },
-                    'kg': { name: 'Kilograms', factor: 1000 },
-                    'oz': { name: 'Ounces', factor: 28.3495 },
-                    'lbs': { name: 'Pounds', factor: 453.592 },
-                    'tons': { name: 'Metric Tons', factor: 1000000 },
-                    'tons_us': { name: 'US Tons', factor: 907185 }
-                },
-                defaultFrom: 'kg',
-                defaultTo: 'lbs'
+                mg: { mg: 1, g: 0.001, kg: 0.000001, oz: 0.000035274, lbs: 0.00000220462, tons: 0.000000001, 'us-tons': 0.00000000110231 },
+                g: { mg: 1000, g: 1, kg: 0.001, oz: 0.035274, lbs: 0.00220462, tons: 0.000001, 'us-tons': 0.00000110231 },
+                kg: { mg: 1000000, g: 1000, kg: 1, oz: 35.274, lbs: 2.20462, tons: 0.001, 'us-tons': 0.00110231 },
+                oz: { mg: 28349.5, g: 28.3495, kg: 0.0283495, oz: 1, lbs: 0.0625, tons: 0.0000283495, 'us-tons': 0.00003125 },
+                lbs: { mg: 453592, g: 453.592, kg: 0.453592, oz: 16, lbs: 1, tons: 0.000453592, 'us-tons': 0.0005 },
+                tons: { mg: 1000000000, g: 1000000, kg: 1000, oz: 35274, lbs: 2204.62, tons: 1, 'us-tons': 1.10231 },
+                'us-tons': { mg: 907184740, g: 907184.74, kg: 907.18474, oz: 32000, lbs: 2000, tons: 0.907185, 'us-tons': 1 }
             },
-            temp: {
-                units: {
-                    'C': { name: 'Celsius', factor: null },
-                    'F': { name: 'Fahrenheit', factor: null },
-                    'K': { name: 'Kelvin', factor: null }
+            temperature: {
+                celsius: {
+                    celsius: (val) => val,
+                    fahrenheit: (val) => (val * 9 / 5) + 32,
+                    kelvin: (val) => val + 273.15
                 },
-                defaultFrom: 'C',
-                defaultTo: 'F'
+                fahrenheit: {
+                    celsius: (val) => (val - 32) * 5 / 9,
+                    fahrenheit: (val) => val,
+                    kelvin: (val) => ((val - 32) * 5 / 9) + 273.15
+                },
+                kelvin: {
+                    celsius: (val) => val - 273.15,
+                    fahrenheit: (val) => ((val - 273.15) * 9 / 5) + 32,
+                    kelvin: (val) => val
+                }
             },
             pressure: {
-                units: {
-                    'Pa': { name: 'Pascals', factor: 1 },
-                    'kPa': { name: 'Kilopascals', factor: 1000 },
-                    'MPa': { name: 'Megapascals', factor: 1000000 },
-                    'bar': { name: 'Bar', factor: 100000 },
-                    'psi': { name: 'PSI', factor: 6894.76 },
-                    'atm': { name: 'Atmospheres', factor: 101325 },
-                    'torr': { name: 'Torr', factor: 133.322 },
-                    'mmHg': { name: 'mmHg', factor: 133.322 }
-                },
-                defaultFrom: 'bar',
-                defaultTo: 'psi'
+                pa: { pa: 1, kpa: 0.001, mpa: 0.000001, bar: 0.00001, psi: 0.000145038, atm: 0.00000986923, torr: 0.00750062, mmhg: 0.00750062 },
+                kpa: { pa: 1000, kpa: 1, mpa: 0.001, bar: 0.01, psi: 0.145038, atm: 0.00986923, torr: 7.50062, mmhg: 7.50062 },
+                mpa: { pa: 1000000, kpa: 1000, mpa: 1, bar: 10, psi: 145.038, atm: 9.86923, torr: 7500.62, mmhg: 7500.62 },
+                bar: { pa: 100000, kpa: 100, mpa: 0.1, bar: 1, psi: 14.5038, atm: 0.986923, torr: 750.062, mmhg: 750.062 },
+                psi: { pa: 6894.76, kpa: 6.89476, mpa: 0.00689476, bar: 0.0689476, psi: 1, atm: 0.0680459, torr: 51.7149, mmhg: 51.7149 },
+                atm: { pa: 101325, kpa: 101.325, mpa: 0.101325, bar: 1.01325, psi: 14.6959, atm: 1, torr: 760, mmhg: 760 },
+                torr: { pa: 133.322, kpa: 0.133322, mpa: 0.000133322, bar: 0.00133322, psi: 0.0193368, atm: 0.00131579, torr: 1, mmhg: 1 },
+                mmhg: { pa: 133.322, kpa: 0.133322, mpa: 0.000133322, bar: 0.00133322, psi: 0.0193368, atm: 0.00131579, torr: 1, mmhg: 1 }
             }
         };
 
-        // Track current conversion units for each type
-        const conversionState = {
-            length: { from: 'mm', to: 'inches' },
-            weight: { from: 'kg', to: 'lbs' },
-            temp: { from: 'C', to: 'F' },
-            pressure: { from: 'bar', to: 'psi' }
+        // Conversion History
+        let history = JSON.parse(localStorage.getItem('conversionHistory') || '[]');
+
+        function updateHistory(type, input, fromUnit, output, toUnit) {
+            const historyItem = `${type}: ${input} ${fromUnit} → ${output} ${toUnit}`;
+            history.unshift(historyItem);
+            if (history.length > 10) history.pop();
+            localStorage.setItem('conversionHistory', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = history.length ? history.map(item => `<li class="history-item">${item}</li>`).join('') : '<li class="history-item">No conversions yet. Start converting to see history!</li>';
+        }
+
+        document.getElementById('clearHistory').addEventListener('click', () => {
+            history = [];
+            localStorage.setItem('conversionHistory', '[]');
+            renderHistory();
+        });
+
+        // Converter Logic
+        function setupConverter(inputId, fromUnitId, outputId, toUnitId, resultId, type) {
+            const input = document.getElementById(inputId);
+            const fromUnit = document.getElementById(fromUnitId);
+            const output = document.getElementById(outputId);
+            const toUnit = document.getElementById(toUnitId);
+            const result = document.getElementById(resultId);
+
+            function convert() {
+                const value = parseFloat(input.value);
+                if (isNaN(value)) {
+                    output.value = '';
+                    result.textContent = '';
+                    return;
+                }
+
+                let convertedValue;
+                if (type === 'temperature') {
+                    convertedValue = conversionFactors[type][fromUnit.value][toUnit.value](value);
+                } else {
+                    convertedValue = value * conversionFactors[type][fromUnit.value][toUnit.value];
+                }
+
+                output.value = convertedValue.toFixed(4);
+                result.textContent = `${value} ${fromUnit.value} = ${convertedValue.toFixed(4)} ${toUnit.value}`;
+                updateHistory(type.charAt(0).toUpperCase() + type.slice(1), value, fromUnit.value, convertedValue.toFixed(4), toUnit.value);
+            }
+
+            input.addEventListener('input', convert);
+            fromUnit.addEventListener('change', convert);
+            toUnit.addEventListener('change', convert);
+        }
+
+        // Initialize converters
+        setupConverter('lengthInput', 'lengthFromUnit', 'lengthOutput', 'lengthToUnit', 'lengthResult', 'length');
+        setupConverter('weightInput', 'weightFromUnit', 'weightOutput', 'weightToUnit', 'weightResult', 'weight');
+        setupConverter('tempInput', 'tempFromUnit', 'tempOutput', 'tempToUnit', 'tempResult', 'temperature');
+        setupConverter('pressureInput', 'pressureFromUnit', 'pressureOutput', 'pressureToUnit', 'pressureResult', 'pressure');
+
+        // Load history on page load
+        renderHistory();
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        // History storage
-        let conversionHistory = [];
-        let historyTimeout = null;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-        // Initialize calculators
-        document.addEventListener('DOMContentLoaded', function() {
-            setupCalculators();
-            loadHistory();
+        document.querySelectorAll('.converter-card, .upcoming-card').forEach(item => {
+            item.style.opacity = '0';
+            observer.observe(item);
         });
-
-        function setupCalculators() {
-            // Add event listeners for all input fields with debouncing
-            document.getElementById('length-input').addEventListener('input', () => convertUnits('length'));
-            document.getElementById('weight-input').addEventListener('input', () => convertUnits('weight'));
-            document.getElementById('temp-input').addEventListener('input', () => convertUnits('temp'));
-            document.getElementById('pressure-input').addEventListener('input', () => convertUnits('pressure'));
-
-            // Add event listeners for unit selectors (immediate history save)
-            document.getElementById('length-unit-from').addEventListener('change', () => {
-                convertUnits('length');
-                // Force immediate history save when units change
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('length-input').value) || 0;
-                    const fromUnit = document.getElementById('length-unit-from').value;
-                    const toUnit = document.getElementById('length-unit-to').value;
-                    const resultValue = document.getElementById('length-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('length', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            document.getElementById('length-unit-to').addEventListener('change', () => {
-                convertUnits('length');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('length-input').value) || 0;
-                    const fromUnit = document.getElementById('length-unit-from').value;
-                    const toUnit = document.getElementById('length-unit-to').value;
-                    const resultValue = document.getElementById('length-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('length', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            // Similar for weight
-            document.getElementById('weight-unit-from').addEventListener('change', () => {
-                convertUnits('weight');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('weight-input').value) || 0;
-                    const fromUnit = document.getElementById('weight-unit-from').value;
-                    const toUnit = document.getElementById('weight-unit-to').value;
-                    const resultValue = document.getElementById('weight-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('weight', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            document.getElementById('weight-unit-to').addEventListener('change', () => {
-                convertUnits('weight');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('weight-input').value) || 0;
-                    const fromUnit = document.getElementById('weight-unit-from').value;
-                    const toUnit = document.getElementById('weight-unit-to').value;
-                    const resultValue = document.getElementById('weight-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('weight', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            // Similar for temperature
-            document.getElementById('temp-unit-from').addEventListener('change', () => {
-                convertUnits('temp');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('temp-input').value) || 0;
-                    const fromUnit = document.getElementById('temp-unit-from').value;
-                    const toUnit = document.getElementById('temp-unit-to').value;
-                    const resultValue = document.getElementById('temp-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('temp', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            document.getElementById('temp-unit-to').addEventListener('change', () => {
-                convertUnits('temp');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('temp-input').value) || 0;
-                    const fromUnit = document.getElementById('temp-unit-from').value;
-                    const toUnit = document.getElementById('temp-unit-to').value;
-                    const resultValue = document.getElementById('temp-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('temp', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            // Similar for pressure
-            document.getElementById('pressure-unit-from').addEventListener('change', () => {
-                convertUnits('pressure');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('pressure-input').value) || 0;
-                    const fromUnit = document.getElementById('pressure-unit-from').value;
-                    const toUnit = document.getElementById('pressure-unit-to').value;
-                    const resultValue = document.getElementById('pressure-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('pressure', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-            
-            document.getElementById('pressure-unit-to').addEventListener('change', () => {
-                convertUnits('pressure');
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                    const inputValue = parseFloat(document.getElementById('pressure-input').value) || 0;
-                    const fromUnit = document.getElementById('pressure-unit-from').value;
-                    const toUnit = document.getElementById('pressure-unit-to').value;
-                    const resultValue = document.getElementById('pressure-result-input').value;
-                    if (inputValue !== 0 && fromUnit !== toUnit) {
-                        addToHistory('pressure', inputValue, fromUnit, resultValue, toUnit);
-                    }
-                }
-            });
-
-            // Initialize with default values
-            convertUnits('length');
-            convertUnits('weight');
-            convertUnits('temp');
-            convertUnits('pressure');
-        }
-
-        function convertUnits(type) {
-            const inputField = document.getElementById(`${type}-input`);
-            const resultField = document.getElementById(`${type}-result-input`);
-            const fromUnitSelect = document.getElementById(`${type}-unit-from`);
-            const toUnitSelect = document.getElementById(`${type}-unit-to`);
-            
-            const inputValue = parseFloat(inputField.value) || 0;
-            const fromUnit = fromUnitSelect.value;
-            const toUnit = toUnitSelect.value;
-            
-            let result;
-            
-            if (type === 'temp') {
-                // Temperature conversion (special case)
-                result = convertTemperature(inputValue, fromUnit, toUnit);
-            } else {
-                // Length, weight, and pressure conversions
-                const config = conversions[type];
-                const fromFactor = config.units[fromUnit].factor;
-                const toFactor = config.units[toUnit].factor;
-                
-                // Convert to base unit, then to target unit
-                result = (inputValue * fromFactor) / toFactor;
-            }
-            
-            // Handle invalid results
-            if (isNaN(result) || !isFinite(result)) {
-                result = 0;
-            }
-            
-            // Format result with appropriate decimal places
-            const formattedResult = result.toFixed(6).replace(/\.?0+$/, '');
-            resultField.value = formattedResult;
-            
-            // Add to history with delay to prevent multiple entries while typing
-            if (inputValue !== 0 && (fromUnit !== toUnit)) {
-                // Clear existing timeout
-                if (historyTimeout) {
-                    clearTimeout(historyTimeout);
-                }
-                
-                // Set new timeout to add to history after user stops typing
-                historyTimeout = setTimeout(() => {
-                    addToHistory(type, inputValue, fromUnit, formattedResult, toUnit);
-                }, 1000); // Wait 1 second after user stops typing
-            }
-        }
-
-        function convertTemperature(value, fromUnit, toUnit) {
-            if (fromUnit === toUnit) return value;
-            
-            // Convert to Celsius first
-            let celsius;
-            switch (fromUnit) {
-                case 'C':
-                    celsius = value;
-                    break;
-                case 'F':
-                    celsius = (value - 32) * 5/9;
-                    break;
-                case 'K':
-                    celsius = value - 273.15;
-                    break;
-                default:
-                    return 0;
-            }
-            
-            // Convert from Celsius to target unit
-            switch (toUnit) {
-                case 'C':
-                    return celsius;
-                case 'F':
-                    return (celsius * 9/5) + 32;
-                case 'K':
-                    return celsius + 273.15;
-                default:
-                    return 0;
-            }
-        }
-
-        function swapUnits(type) {
-            const fromUnitSelect = document.getElementById(`${type}-unit-from`);
-            const toUnitSelect = document.getElementById(`${type}-unit-to`);
-            const inputField = document.getElementById(`${type}-input`);
-            const resultField = document.getElementById(`${type}-result-input`);
-            
-            // Swap the values and units
-            const fromValue = fromUnitSelect.value;
-            const toValue = toUnitSelect.value;
-            const inputValue = inputField.value;
-            const resultValue = resultField.value;
-            
-            // Swap units
-            fromUnitSelect.value = toValue;
-            toUnitSelect.value = fromValue;
-            
-            // Swap values
-            inputField.value = resultValue;
-            
-            // Recalculate with swapped values
-            convertUnits(type);
-            
-            // Add visual feedback
-            const swapButton = event.target;
-            swapButton.style.transform = 'rotate(180deg) scale(1.1)';
-            setTimeout(() => {
-                swapButton.style.transform = 'rotate(0deg) scale(1)';
-            }, 300);
-        }
-
-        function addToHistory(type, inputValue, fromUnit, resultValue, toUnit) {
-            const historyItem = {
-                type: type,
-                input: inputValue,
-                fromUnit: fromUnit,
-                result: resultValue,
-                toUnit: toUnit,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            // Remove duplicate entries (same type, input, fromUnit, toUnit)
-            conversionHistory = conversionHistory.filter(item => 
-                !(item.type === type && 
-                  item.input === inputValue && 
-                  item.fromUnit === fromUnit && 
-                  item.toUnit === toUnit)
-            );
-            
-            // Add to beginning of array
-            conversionHistory.unshift(historyItem);
-            
-            // Keep only last 5 conversions
-            if (conversionHistory.length > 5) {
-                conversionHistory = conversionHistory.slice(0, 5);
-            }
-            
-            // Save to localStorage
-            saveHistory();
-            
-            // Update display
-            updateHistoryDisplay();
-        }
-
-        function updateHistoryDisplay() {
-            const historyList = document.getElementById('history-list');
-            
-            if (conversionHistory.length === 0) {
-                historyList.innerHTML = '<div class="empty-history" id="empty-history">No conversions yet.<br>Start converting to see history!</div>';
-                return;
-            }
-            
-            historyList.innerHTML = conversionHistory.map((item, index) => {
-                const unitSymbol = getUnitSymbol(item.fromUnit, item.type);
-                const resultSymbol = getUnitSymbol(item.toUnit, item.type);
-                
-                return `
-                    <div class="history-item ${index === 0 ? 'new' : ''}" onclick="loadFromHistory(${index})">
-                        <div class="history-type">${item.type.toUpperCase()}</div>
-                        <div class="history-conversion">${item.input} ${unitSymbol} → ${item.result} ${resultSymbol}</div>
-                        <div class="history-time">${item.timestamp}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function getUnitSymbol(unit, type) {
-            if (type === 'temp') {
-                return unit === 'C' ? '°C' : unit === 'F' ? '°F' : 'K';
-            }
-            return unit;
-        }
-
-        function loadFromHistory(index) {
-            const item = conversionHistory[index];
-            const inputField = document.getElementById(`${item.type}-input`);
-            const fromUnitSelect = document.getElementById(`${item.type}-unit-from`);
-            const toUnitSelect = document.getElementById(`${item.type}-unit-to`);
-            
-            // Set the input value and units
-            inputField.value = item.input;
-            fromUnitSelect.value = item.fromUnit;
-            toUnitSelect.value = item.toUnit;
-            
-            // Trigger conversion
-            convertUnits(item.type);
-            
-            // Scroll to the calculator
-            document.querySelector(`.calculator-card`).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function clearHistory() {
-            // Clear the history array
-            conversionHistory = [];
-            
-            // Remove from localStorage
-            try {
-                localStorage.removeItem('manufacturing_converter_history');
-            } catch (e) {
-                console.log('Cannot clear localStorage');
-            }
-            
-            // Update display immediately
-            updateHistoryDisplay();
-            
-            // Add visual feedback
-            const clearButton = document.querySelector('.clear-history');
-            const originalText = clearButton.textContent;
-            clearButton.textContent = 'Cleared!';
-            clearButton.style.background = '#10b981';
-            
-            setTimeout(() => {
-                clearButton.textContent = originalText;
-                clearButton.style.background = '#ef4444';
-            }, 1000);
-        }
-
-        function saveHistory() {
-            try {
-                localStorage.setItem('manufacturing_converter_history', JSON.stringify(conversionHistory));
-                console.log('History saved:', conversionHistory.length, 'items');
-            } catch (e) {
-                console.log('Cannot save to localStorage:', e);
-            }
-        }
-
-        function loadHistory() {
-            try {
-                const saved = localStorage.getItem('manufacturing_converter_history');
-                if (saved) {
-                    conversionHistory = JSON.parse(saved);
-                    console.log('History loaded:', conversionHistory.length, 'items');
-                    updateHistoryDisplay();
-                }
-            } catch (e) {
-                console.log('Cannot load from localStorage:', e);
-                conversionHistory = [];
-            }
-        }
-
-        // Add keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.altKey) {
-                switch(e.key) {
-                    case '1':
-                        document.getElementById('length-input').focus();
-                        break;
-                    case '2':
-                        document.getElementById('weight-input').focus();
-                        break;
-                    case '3':
-                        document.getElementById('temp-input').focus();
-                        break;
-                    case '4':
-                        document.getElementById('pressure-input').focus();
-                        break;
-                    case 'h':
-                        document.getElementById('history-list').scrollIntoView({ behavior: 'smooth' });
-                        break;
-                }
-            }
-        });
-
-        // Add smooth transitions
-        document.querySelectorAll('.input-field').forEach(field => {
-            field.style.transition = 'all 0.3s ease';
-        });
-
-        // Analytics tracking (placeholder for future implementation)
-        function trackUsage(calculatorType, conversion) {
-            // Future: Google Analytics or other tracking
-            console.log(`Calculator used: ${calculatorType}, Conversion: ${conversion}`);
-        }
     </script>
 </body>
 </html>
