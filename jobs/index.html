@@ -1,1 +1,251 @@
-jobs/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Courses - Coming Soon | PavinTech</title>
+    <meta name="description" content="Professional manufacturing courses coming soon. Learn CNC programming, advanced manufacturing techniques, and industry best practices.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-light: #f3f4f6;
+            --bg-white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .coming-soon-container {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .icon-container {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 48px;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        h1 {
+            color: var(--text-primary);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .course-preview {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .course-preview h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .course-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .course-list li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .course-list li:before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .notify-form {
+            margin-top: 40px;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .coming-soon-container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="coming-soon-container">
+        <div class="icon-container">📚</div>
+        <h1>Manufacturing Courses</h1>
+        <p>We're developing comprehensive courses to help you advance your manufacturing career!</p>
+        
+        <div class="loader"></div>
+        
+        <div class="course-preview">
+            <h3>What's Coming:</h3>
+            <ul class="course-list">
+                <li>CNC Programming Masterclass</li>
+                <li>Advanced CAD/CAM Techniques</li>
+                <li>Quality Control & Inspection Methods</li>
+                <li>Lean Manufacturing Principles</li>
+                <li>Aerospace Manufacturing Standards</li>
+                <li>Industry 4.0 & Smart Manufacturing</li>
+                <li>Materials Science for Engineers</li>
+                <li>Project Management for Manufacturing</li>
+            </ul>
+        </div>
+
+        <div class="notify-form">
+            <p>Get notified when courses launch:</p>
+            <form onsubmit="handleSubmit(event)">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" class="btn">Notify Me</button>
+            </form>
+        </div>
+
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest! We\'ll notify you when our courses launch.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
