@@ -1,83 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavin Anilkumar - CNC Team Lead & Manufacturing Expert</title>
-    <meta name="description" content="Senior CNC Manufacturing Leader with 10+ years experience in aerospace, marine, and automotive industries. Specializing in advanced CNC programming and team leadership.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavin Anilkumar – CNC Team Lead & Manufacturing Expert | PavinTech</title>
 
-        :root {
-            --primary-color: #1d4ed8;
-            --secondary-color: #3b82f6;
-            --accent-color: #93c5fd;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --bg-light: #f9fafb;
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Pavin Anilkumar is a CNC Team Lead with 10+ years of experience in aerospace, marine, and automotive manufacturing. Expert in precision machining, technical leadership, and advanced manufacturing solutions.">
+  <meta name="keywords" content="CNC expert, CNC programming, manufacturing leadership, aerospace machining, marine parts, automotive CNC, precision engineering, CNC team lead Dubai, PavinTech, G-code, CAD CAM, toolpath simulation, CNC SaaS">
+  <meta name="author" content="Pavin Anilkumar">
+
+  <!-- ✅ Open Graph for Social Sharing -->
+  <meta property="og:title" content="Pavin Anilkumar – CNC Team Lead & Manufacturing Expert | PavinTech">
+  <meta property="og:description" content="Precision CNC expert in aerospace, marine, and automotive manufacturing. Based in Dubai. Founder of PavinTech.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pavintech.com/">
+  <meta property="og:image" content="https://www.pavintech.com/preview.jpg">
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pavin Anilkumar – CNC Team Lead | PavinTech">
+  <meta name="twitter:description" content="CNC expert with 10+ years of experience in precision machining and manufacturing leadership. Based in Dubai.">
+  <meta name="twitter:image" content="https://www.pavintech.com/preview.jpg">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- ✅ Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3XY0ZN511"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X3XY0ZN511');
+  </script>
+
+  <!-- ✅ Styles Start -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #3b82f6;
+      --accent-color: #60a5fa;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+            --bg-light: #f3f4f6;
             --bg-white: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
-            --success-color: #10b981;
-            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --linkedin-color: #0077b5;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--text-primary);
-            background-color: var(--bg-light);
-            scroll-behavior: smooth;
+            background-color: #fafbfc;
         }
 
         /* Navigation */
         .navbar {
-            background: var(--bg-white);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 70px;
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            color: var(--secondary-color);
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 32px;
+            gap: 30px;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--text-primary);
             font-weight: 500;
-            font-size: 16px;
+            transition: color 0.3s;
             position: relative;
-            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
         .nav-link:hover {
@@ -86,57 +131,28 @@
 
         .nav-link.active {
             color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
         }
 
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 8px;
+            padding: 5px;
         }
 
         .mobile-menu-toggle span {
-            width: 28px;
+            width: 25px;
             height: 3px;
             background: var(--text-primary);
-            margin: 4px 0;
-            transition: var(--transition);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             color: white;
-            padding: 120px 24px;
-            text-align: center;
+            padding: 120px 20px;
             position: relative;
             overflow: hidden;
         }
@@ -146,29 +162,29 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            z-index: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
+            text-align: center;
             position: relative;
             z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 6vw, 64px);
-            margin-bottom: 24px;
-            font-weight: 700;
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 20px;
             animation: fadeInUp 0.8s ease-out;
         }
 
         .hero p {
             font-size: clamp(20px, 2.5vw, 28px);
-            margin-bottom: 32px;
+            margin-bottom: 20px;
             opacity: 0.95;
             animation: fadeInUp 0.8s ease-out 0.2s;
             animation-fill-mode: both;
@@ -176,7 +192,7 @@
 
         .hero-subtitle {
             font-size: clamp(16px, 2vw, 20px);
-            margin-bottom: 48px;
+            margin-bottom: 40px;
             opacity: 0.85;
             animation: fadeInUp 0.8s ease-out 0.3s;
             animation-fill-mode: both;
@@ -184,7 +200,7 @@
 
         .cta-buttons {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.4s;
@@ -192,27 +208,24 @@
         }
 
         .btn {
-            padding: 14px 36px;
+            padding: 12px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
-            transition: var(--transition);
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
         .btn-primary {
-            background: var(--bg-white);
+            background: white;
             color: var(--primary-color);
-            box-shadow: var(--shadow);
         }
 
         .btn-primary:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .btn-secondary {
@@ -224,27 +237,113 @@
         .btn-secondary:hover {
             background: white;
             color: var(--primary-color);
-            border-color: white;
+        }
+
+        .btn-linkedin {
+            background: var(--linkedin-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-linkedin:hover {
+            background: #005885;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Access Section */
+        .quick-access {
+            background: white;
+            padding: 60px 20px;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-access-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .quick-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 2px solid transparent;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .quick-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .quick-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 5px;
+            animation: pulse 2s infinite;
         }
 
         /* Experience Section */
         .experience {
-            padding: 100px 24px;
-            max-width: 1280px;
+            padding: 80px 20px;
+            background: #fafbfc;
+        }
+
+        .experience-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(32px, 4vw, 40px);
-            margin-bottom: 60px;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 20px;
             color: var(--text-primary);
-            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .timeline {
             position: relative;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -253,25 +352,24 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 3px;
+            width: 2px;
             height: 100%;
-            background: var(--primary-color);
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
         }
 
         .timeline-item {
-            background: var(--bg-white);
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
             position: relative;
-            width: calc(50% - 40px);
-            transition: var(--transition);
+            width: calc(50% - 30px);
+            transition: all 0.3s;
         }
 
         .timeline-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
         .timeline-item:nth-child(odd) {
@@ -279,293 +377,223 @@
         }
 
         .timeline-item:nth-child(even) {
-            left: calc(50% + 40px);
+            left: calc(50% + 30px);
         }
 
         .timeline-dot {
             position: absolute;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background: var(--primary-color);
-            border: 3px solid var(--bg-white);
             border-radius: 50%;
             top: 40px;
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.2);
+            box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2);
         }
 
         .timeline-item:nth-child(odd) .timeline-dot {
-            right: -51px;
+            right: -40px;
         }
 
         .timeline-item:nth-child(even) .timeline-dot {
-            left: -51px;
-        }
-
-        .timeline-date {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 12px;
-        }
-
-        .timeline-title {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .timeline-company {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 16px;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .timeline-tech {
-            margin-top: 16px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-style: italic;
+            left: -40px;
         }
 
         /* Skills Section */
         .skills {
-            background: var(--bg-white);
-            padding: 100px 24px;
+            background: white;
+            padding: 80px 20px;
         }
 
         .skills-grid {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            gap: 30px;
         }
 
         .skill-category {
-            background: var(--bg-light);
-            padding: 32px;
-            border-radius: 12px;
-            transition: var(--transition);
+            background: #fafbfc;
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
         }
 
         .skill-category:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .skill-category h3 {
             color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 20px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
-        .skill-list {
-            list-style: none;
+        /* Projects Section */
+        .projects {
+            padding: 80px 20px;
+            background: #fafbfc;
         }
 
-        .skill-list li {
-            padding: 10px 0;
-            color: var(--text-secondary);
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .skill-list li::before {
-            content: "▸";
-            color: var(--success-color);
-            font-weight: bold;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 24px;
-            max-width: 1280px;
+        .projects-grid {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        .portfolio-card {
-            background: var(--bg-white);
-            border-radius: 12px;
+        .project-card {
+            background: white;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
         }
 
-        .portfolio-card:hover {
+        .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
-        .portfolio-image {
-            height: 220px;
+        .project-image {
+            height: 200px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 56px;
+            font-size: 48px;
             color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .portfolio-image::after {
+        .project-image::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.1);
             opacity: 0;
-            transition: var(--transition);
+            transition: opacity 0.3s;
         }
 
-        .portfolio-card:hover .portfolio-image::after {
+        .project-card:hover .project-image::after {
             opacity: 1;
-        }
-
-        .portfolio-content {
-            padding: 32px;
-        }
-
-        .portfolio-title {
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .portfolio-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 15px;
-            margin-bottom: 24px;
-        }
-
-        .portfolio-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .tech-tag {
-            background: var(--bg-light);
-            color: var(--primary-color);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
         }
 
         /* Achievements Section */
         .achievements {
-            background: var(--bg-white);
-            padding: 100px 24px;
-        }
-
-        .achievements-content {
-            max-width: 1280px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            padding: 80px 20px;
         }
 
         .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
             text-align: center;
         }
 
         .stat-item {
-            padding: 32px;
-            background: var(--bg-light);
-            border-radius: 12px;
-            transition: var(--transition);
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
         }
 
         .stat-item:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow);
         }
 
         .stat-number {
             font-size: 48px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.5;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
         /* Contact Section */
         .contact {
-            padding: 100px 24px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             color: white;
         }
 
         .contact-content {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
             text-align: center;
         }
 
         .contact-content h2 {
             color: white;
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
 
         .contact-info {
-            margin-top: 48px;
+            margin-top: 40px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 20px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            font-size: 16px;
+            gap: 10px;
+            color: white;
         }
 
         .contact-item a {
             color: white;
             text-decoration: none;
-            transition: var(--transition);
+            transition: opacity 0.3s;
         }
 
         .contact-item a:hover {
-            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 24px;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
 
         /* Footer */
@@ -573,39 +601,7 @@
             background: var(--text-primary);
             color: white;
             text-align: center;
-            padding: 48px 24px;
-        }
-
-        .footer p {
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-
-        /* Floating Tools Button */
-        .tools-button {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background: var(--primary-color);
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            text-decoration: none;
-            opacity: 0.9;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .tools-button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            opacity: 1;
-            box-shadow: var(--shadow-lg);
+            padding: 40px 20px;
         }
 
         /* Animations */
@@ -621,29 +617,28 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-container {
-                height: 64px;
-            }
-
             .nav-menu {
                 position: fixed;
                 left: -100%;
-                top: 64px;
+                top: 70px;
                 flex-direction: column;
-                background: var(--bg-white);
+                background-color: var(--bg-white);
                 width: 100%;
-                height: calc(100vh - 64px);
                 text-align: center;
-                transition: var(--transition);
+                transition: 0.3s;
                 box-shadow: var(--shadow);
-                padding: 24px 0;
+                padding: 20px 0;
+                max-height: calc(100vh - 70px);
                 overflow-y: auto;
             }
 
@@ -651,169 +646,170 @@
                 left: 0;
             }
 
-            .nav-link {
-                font-size: 18px;
-                padding: 12px 0;
-            }
-
             .mobile-menu-toggle {
                 display: flex;
             }
 
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .quick-access-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
             .timeline::before {
-                left: 24px;
+                left: 20px;
             }
 
             .timeline-item {
-                width: calc(100% - 48px);
-                left: 48px !important;
+                width: calc(100% - 40px);
+                left: 40px !important;
             }
 
             .timeline-dot {
-                left: -39px !important;
+                left: -30px !important;
             }
 
             .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .portfolio-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 80px 24px;
-            }
-
-            .hero h1 {
-                font-size: clamp(32px, 5vw, 48px);
-            }
-
-            .hero p {
-                font-size: clamp(18px, 2.5vw, 24px);
-            }
-
-            .tools-button {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .section-title {
-                font-size: clamp(28px, 4vw, 36px);
+            .quick-access-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .btn {
-                padding: 12px 24px;
-                font-size: 14px;
+                width: 100%;
+                justify-content: center;
             }
-
-            .portfolio-image {
-                height: 180px;
-            }
-        }
-
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        :focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Pavin Anilkumar Home">PAVIN</a>
+            <a href="#" class="logo">PAVIN</a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="/services/" class="nav-link">Services</a></li>
                 <li><a href="/tools/" class="nav-link">Tools</a></li>
+                <li><a href="/games/" class="nav-link">Games <span class="new-badge">NEW</span></a></li>
                 <li><a href="/courses/" class="nav-link">Courses</a></li>
                 <li><a href="/jobs/" class="nav-link">Job Portal</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle" id="mobileMenu" aria-label="Toggle mobile menu" aria-expanded="false">
+            <div class="mobile-menu-toggle" id="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero" aria-labelledby="hero-title">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1 id="hero-title">Pavin Anilkumar Jayakumari</h1>
-            <p>Senior CNC Manufacturing Leader & Advanced Production Specialist</p>
-            <p class="hero-subtitle">10+ Years Experience in Aerospace, Marine, Automotive & Defense Manufacturing</p>
+            <h1>Pavin Anilkumar Jayakumari</h1>
+            <p>CNC Team Lead & Manufacturing Expert</p>
+            <p class="hero-subtitle">10+ Years Experience in Aerospace, Marine & Automotive Manufacturing</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary" aria-label="Contact Pavin">Contact Me</a>
-                <a href="#portfolio" class="btn btn-secondary" aria-label="View Pavin's portfolio">View My Work</a>
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="https://www.linkedin.com/in/pavinjanilkumar" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn Profile
+                </a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
             </div>
         </div>
     </section>
 
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <div class="quick-access-container">
+            <a href="/tools/" class="quick-card">
+                <span class="quick-card-icon">🔧</span>
+                <h3>Manufacturing Tools</h3>
+                <p>Professional calculators & converters</p>
+            </a>
+            <a href="/games/" class="quick-card">
+                <span class="quick-card-icon">🎮</span>
+                <h3>Learning Games <span class="new-badge">NEW</span></h3>
+                <p>Master manufacturing skills through play</p>
+            </a>
+            <a href="/services/" class="quick-card">
+                <span class="quick-card-icon">📁</span>
+                <h3>Portfolio Services</h3>
+                <p>Professional portfolio development</p>
+            </a>
+            <a href="/courses/" class="quick-card">
+                <span class="quick-card-icon">📚</span>
+                <h3>Courses</h3>
+                <p>Coming soon - Expert-led training</p>
+            </a>
+            <a href="/jobs/" class="quick-card">
+                <span class="quick-card-icon">💼</span>
+                <h3>Job Portal</h3>
+                <p>Manufacturing opportunities in UAE</p>
+            </a>
+        </div>
+    </section>
+
     <!-- Experience Section -->
-    <section id="experience" class="experience" aria-labelledby="experience-title">
-        <h2 id="experience-title" class="section-title">Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item" role="article">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">Apr 2025 - Present</div>
-                <h3 class="timeline-title">CNC Team Lead</h3>
-                <p class="timeline-company">ENATA Industries, UAE</p>
-                <p class="timeline-description">Leading CNC operations for advanced technology manufacturing in aerospace, marine, automotive, and architectural solutions. Spearheading department expansion for 10x operational scaling by 2025, optimizing processes for UAVs, flying cars, and marine vessels, and establishing quality control protocols.</p>
-                <p class="timeline-tech">Technologies: Advanced CNC Programming, Multi-Axis Manufacturing, Aerospace-Grade Quality Systems, ERP Integration</p>
-            </div>
-            <div class="timeline-item" role="article">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">Jul 2023 - Mar 2025</div>
-                <h3 class="timeline-title">CNC Programmer (Deputy Team Lead)</h3>
-                <p class="timeline-company">Sunreef Yachts RMC FZC</p>
-                <p class="timeline-description">Specialized in advanced manufacturing for luxury yacht production, creating complex milling programs for KUKA 7-axis robots and CNC routers using PowerMill. Integrated 3D printing for prototyping and ensured efficient project completion with high-quality standards.</p>
-                <p class="timeline-tech">Technologies: KUKA 7-Axis Robots, PowerMill, 3D Printing, Precision Milling</p>
-            </div>
-            <div class="timeline-item" role="article">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">Dec 2017 - Jun 2023</div>
-                <h3 class="timeline-title">Production Supervisor & CNC Programmer</h3>
-                <p class="timeline-company">Cemar International Industrial FZCO</p>
-                <p class="timeline-description">Led production operations and CNC programming, enhancing run-flat section fixtures efficiency by 30% and laser machine workloads by 15%. Implemented cost-saving initiatives and provided fixture design training for improved operational efficiency.</p>
-                <p class="timeline-tech">Technologies: PowerMill, AutoCAD, SolidWorks, CYPCUT, CNCKad, Advanced Fiber Laser Systems</p>
-            </div>
-            <div class="timeline-item" role="article">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">Dec 2015 - Dec 2016</div>
-                <h3 class="timeline-title">CNC Programmer cum Operator</h3>
-                <p class="timeline-company">Intimate Machines Private Limited</p>
-                <p class="timeline-description">Operated CNC lathes and milling machines for aerospace and defense applications, achieving critical tolerances with advanced materials like aluminum, titanium, and stainless steel using Mastercam and manual programming with Fanuc and Siemens controls.</p>
-                <p class="timeline-tech">Technologies: Mastercam, Fanuc Controls, Siemens Controls, Precision Manufacturing</p>
+    <section id="experience" class="experience">
+        <div class="experience-container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">A decade of excellence in precision manufacturing across multiple industries</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - Present</div>
+                    <h3 class="timeline-title">CNC Team Lead</h3>
+                    <p class="timeline-company">ENATA Industries, UAE</p>
+                    <p class="timeline-description">Leading CNC operations for aerospace and marine manufacturing. Managing team of technicians, optimizing production processes, and ensuring quality standards.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2018 - 2021</div>
+                    <h3 class="timeline-title">Senior CNC Programmer</h3>
+                    <p class="timeline-company">Aerospace Division</p>
+                    <p class="timeline-description">Developed complex 5-axis programs for critical aerospace components. Reduced machining time by 30% through process optimization.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2014 - 2018</div>
+                    <h3 class="timeline-title">CNC Machinist</h3>
+                    <p class="timeline-company">Automotive Manufacturing</p>
+                    <p class="timeline-description">Specialized in precision machining of automotive components. Maintained tolerances within ±0.001" on critical parts.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills" aria-labelledby="skills-title">
-        <h2 id="skills-title" class="section-title">Technical Expertise</h2>
+    <section id="skills" class="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <p class="section-subtitle">Comprehensive skills across manufacturing technologies and leadership</p>
         <div class="skills-grid">
-            <div class="skill-category" role="region" aria-label="CNC Programming Skills">
+            <div class="skill-category">
                 <h3>🔧 CNC Programming</h3>
                 <ul class="skill-list">
                     <li>Mastercam</li>
@@ -823,7 +819,7 @@
                     <li>CAM Optimization</li>
                 </ul>
             </div>
-            <div class="skill-category" role="region" aria-label="Machine Operation Skills">
+            <div class="skill-category">
                 <h3>⚙️ Machine Operation</h3>
                 <ul class="skill-list">
                     <li>Haas CNC Mills</li>
@@ -833,7 +829,7 @@
                     <li>CMM Programming</li>
                 </ul>
             </div>
-            <div class="skill-category" role="region" aria-label="Quality Control Skills">
+            <div class="skill-category">
                 <h3>📏 Quality Control</h3>
                 <ul class="skill-list">
                     <li>ISO 9001:2015</li>
@@ -843,7 +839,7 @@
                     <li>First Article Inspection</li>
                 </ul>
             </div>
-            <div class="skill-category" role="region" aria-label="Leadership Skills">
+            <div class="skill-category">
                 <h3>👥 Leadership</h3>
                 <ul class="skill-list">
                     <li>Team Management</li>
@@ -856,59 +852,44 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio" aria-labelledby="portfolio-title">
-        <h2 id="portfolio-title" class="section-title">Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-card" role="article">
-                <div class="portfolio-image" role="img" aria-label="Aerospace & Marine Manufacturing">✈️</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">CNC Team Lead - ENATA Industries</h3>
-                    <p class="portfolio-description">Spearheaded CNC operations for aerospace, marine, automotive, and architectural solutions, driving 10x operational scaling by 2025. Optimized manufacturing processes for UAVs, flying cars, and marine vessels, achieving high-precision quality standards.</p>
-                    <div class="portfolio-tech">
-                        <span class="tech-tag">Advanced CNC Programming</span>
-                        <span class="tech-tag">Multi-Axis Manufacturing</span>
-                        <span class="tech-tag">Aerospace-Grade Quality</span>
-                        <span class="tech-tag">ERP Integration</span>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Showcasing excellence in precision manufacturing</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">✈️</div>
+                <div class="project-content">
+                    <h3 class="project-title">Aerospace Turbine Components</h3>
+                    <p class="project-description">Led the manufacturing of critical turbine blades for commercial aircraft engines. Achieved 99.8% quality rate on complex 5-axis parts.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">5-Axis CNC</span>
+                        <span class="tech-tag">Titanium</span>
+                        <span class="tech-tag">AS9100D</span>
                     </div>
                 </div>
             </div>
-            <div class="portfolio-card" role="article">
-                <div class="portfolio-image" role="img" aria-label="Luxury Yacht Production">🚤</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">CNC Programmer - Sunreef Yachts</h3>
-                    <p class="portfolio-description">Developed complex milling programs for KUKA 7-axis robots and CNC routers for luxury yacht production. Reduced cycle times through advanced PowerMill programming and integrated 3D printing for prototyping.</p>
-                    <div class="portfolio-tech">
-                        <span class="tech-tag">KUKA 7-Axis Robots</span>
-                        <span class="tech-tag">PowerMill</span>
-                        <span class="tech-tag">3D Printing</span>
-                        <span class="tech-tag">Precision Milling</span>
+            <div class="project-card">
+                <div class="project-image">🚤</div>
+                <div class="project-content">
+                    <h3 class="project-title">Marine Propulsion Systems</h3>
+                    <p class="project-description">Manufactured high-precision propeller components for luxury yachts. Implemented new tooling strategies reducing cycle time by 40%.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Multi-Axis</span>
+                        <span class="tech-tag">Aluminum</span>
+                        <span class="tech-tag">CAM Optimization</span>
                     </div>
                 </div>
             </div>
-            <div class="portfolio-card" role="article">
-                <div class="portfolio-image" role="img" aria-label="Production Optimization">⚙️</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Production Supervisor - Cemar International</h3>
-                    <p class="portfolio-description">Enhanced production efficiency by 30% through fixture optimization and streamlined laser machine workflows by 15%. Implemented cost-saving initiatives and provided fixture design training.</p>
-                    <div class="portfolio-tech">
-                        <span class="tech-tag">PowerMill</span>
-                        <span class="tech-tag">AutoCAD</span>
-                        <span class="tech-tag">Fiber Laser Systems</span>
+            <div class="project-card">
+                <div class="project-image">🚗</div>
+                <div class="project-content">
+                    <h3 class="project-title">Automotive Performance Parts</h3>
+                    <p class="project-description">Developed manufacturing processes for high-performance engine components. Achieved micron-level accuracy on critical dimensions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CNC Turning</span>
+                        <span class="tech-tag">Steel Alloys</span>
                         <span class="tech-tag">Lean Manufacturing</span>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-card" role="article">
-                <div class="portfolio-image" role="img" aria-label="Aerospace & Defense Manufacturing">🛡️</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">CNC Programmer - Intimate Machines</h3>
-                    <p class="portfolio-description">Operated CNC lathes and milling machines for aerospace and defense components, achieving critical tolerances with advanced materials like titanium and stainless steel using Mastercam and manual programming.</p>
-                    <div class="portfolio-tech">
-                        <span class="tech-tag">Mastercam</span>
-                        <span class="tech-tag">Fanuc Controls</span>
-                        <span class="tech-tag">Siemens Controls</span>
-                        <span class="tech-tag">Precision Manufacturing</span>
                     </div>
                 </div>
             </div>
@@ -916,9 +897,9 @@
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="achievements" aria-labelledby="achievements-title">
+    <section class="achievements">
         <div class="achievements-content">
-            <h2 id="achievements-title" class="section-title">Key Achievements</h2>
+            <h2 class="section-title">Key Achievements</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">10+</div>
@@ -941,7 +922,7 @@
                     <div class="stat-label">Efficiency Improvement</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">4</div>
+                    <div class="stat-number">3</div>
                     <div class="stat-label">Industry Sectors</div>
                 </div>
             </div>
@@ -949,38 +930,42 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact" aria-labelledby="contact-title">
+    <section id="contact" class="contact">
         <div class="contact-content">
-            <h2 id="contact-title" class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Get In Touch</h2>
             <p>Looking for manufacturing expertise or interested in collaboration? Let's connect!</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <span aria-hidden="true">📧</span>
-                    <a href="mailto:pavinjanilkumar@gmail.com" aria-label="Email Pavin">pavinjanilkumar@gmail.com</a>
+                    <span>📧</span>
+                    <a href="mailto:pavinjanilkumar@gmail.com">pavinjanilkumar@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <span aria-hidden="true">📱</span>
-                    <a href="tel:+971547585733" aria-label="Call Pavin">+971 547585733</a>
+                    <span>📱</span>
+                    <a href="tel:+971547585733">+971 547585733</a>
                 </div>
                 <div class="contact-item">
-                    <span aria-hidden="true">📍</span>
+                    <span>📍</span>
                     <span>Sharjah, UAE</span>
                 </div>
             </div>
-            <div class="cta-buttons" style="margin-top: 48px;">
-                <a href="mailto:pavinjanilkumar@gmail.com" class="btn btn-primary" aria-label="Send email to Pavin">Send Email</a>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/pavinjanilkumar" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="cta-buttons" style="margin-top: 40px;">
+                <a href="mailto:pavinjanilkumar@gmail.com" class="btn btn-primary">Send Email</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <p>© 2025 Pavin Anilkumar. All rights reserved.</p>
-        <p>Senior CNC Manufacturing Leader | Advanced Production Specialist</p>
+    <footer class="footer">
+        <p>&copy; 2024 Pavin Anilkumar. All rights reserved.</p>
+        <p>CNC Team Lead | Manufacturing Expert | Technical Consultant</p>
     </footer>
-
-    <!-- Floating Tools Button -->
-    <a href="/tools/" class="tools-button" aria-label="Navigate to Tools section">🛠️</a>
 
     <script>
         // Mobile menu toggle
@@ -988,20 +973,25 @@
         const navMenu = document.getElementById('navMenu');
 
         mobileMenu.addEventListener('click', () => {
-            const isExpanded = mobileMenu.getAttribute('aria-expanded') === 'true';
-            mobileMenu.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
+        // Close mobile menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
                 navMenu.classList.remove('active');
-                mobileMenu.setAttribute('aria-expanded', 'false');
             });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
         // Active nav link on scroll
@@ -1011,17 +1001,16 @@
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 100) {
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                link.removeAttribute('aria-current');
                 if (link.getAttribute('href').includes(current)) {
                     link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
                 }
             });
         });
@@ -1040,30 +1029,23 @@
             });
         });
 
-        // Animation on scroll
+        // Add animation on scroll
         const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.8s ease-out';
-                    entry.target.style.opacity = '1';
-                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.timeline-item, .skill-category, .portfolio-card, .stat-item').forEach(item => {
-            item.style.opacity = '0';
+        // Observe all sections
+        document.querySelectorAll('.timeline-item, .skill-category, .project-card, .stat-item, .quick-card').forEach(item => {
             observer.observe(item);
-        });
-
-        // Lazy load portfolio images
-        document.querySelectorAll('.portfolio-image').forEach(img => {
-            img.setAttribute('loading', 'lazy');
         });
     </script>
 </body>
