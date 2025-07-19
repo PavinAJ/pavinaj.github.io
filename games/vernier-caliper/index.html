@@ -3,7 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vernier Caliper Master - Professional Edition</title>
+    <title>Vernier Caliper Game - Learn Precision Measurement | Engineering Training UAE</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Master vernier caliper measurement with our interactive game. Free precision measurement training for engineering students and professionals in Dubai, Sharjah, Abu Dhabi, UAE. Learn by playing!">
+    <meta name="keywords" content="vernier caliper game, measurement training game, precision measurement simulator, engineering games online, technical training games UAE, caliper reading practice, manufacturing education game, free engineering games Dubai, metrology game, quality control training, CNC measurement tools">
+    <meta name="author" content="Pavin Anilkumar Jayakumari">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pavintech.com/games/vernier-caliper/">
+    
+    <!-- Geo Tags for Local SEO -->
+    <meta name="geo.region" content="AE">
+    <meta name="geo.placename" content="United Arab Emirates">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Vernier Caliper Mastery Game - Learn Precision Measurement">
+    <meta property="og:description" content="Interactive game to master vernier caliper measurement. Perfect for engineering students and manufacturing professionals. Free to play!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pavintech.com/games/vernier-caliper/">
+    <meta property="og:image" content="https://pavintech.com/assets/vernier-game-preview.jpg">
+    <meta property="og:site_name" content="PavinTech Manufacturing Games">
+    <meta property="og:locale" content="en_AE">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vernier Caliper Game - Master Precision Measurement">
+    <meta name="twitter:description" content="Learn to use vernier calipers through interactive gameplay. Perfect for engineering students!">
+    <meta name="twitter:image" content="https://pavintech.com/assets/vernier-game-twitter.jpg">
+    
+    <!-- Language and Region -->
+    <link rel="alternate" hreflang="en-ae" href="https://pavintech.com/games/vernier-caliper/">
+    <link rel="alternate" hreflang="en-sa" href="https://pavintech.com/games/vernier-caliper/">
+    <link rel="alternate" hreflang="en-qa" href="https://pavintech.com/games/vernier-caliper/">
+    <link rel="alternate" hreflang="en-kw" href="https://pavintech.com/games/vernier-caliper/">
+    <link rel="alternate" hreflang="en-om" href="https://pavintech.com/games/vernier-caliper/">
+    <link rel="alternate" hreflang="en-bh" href="https://pavintech.com/games/vernier-caliper/">
+    
+    <!-- Structured Data for Game -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Vernier Caliper Mastery",
+        "description": "Interactive game to learn precision measurement with vernier calipers",
+        "url": "https://pavintech.com/games/vernier-caliper/",
+        "genre": ["Educational", "Engineering", "Training"],
+        "gameMode": "Single player",
+        "gamePlatform": ["Web browser", "Mobile", "Desktop"],
+        "audience": {
+            "@type": "PeopleAudience",
+            "suggestedMinAge": "14",
+            "audienceType": ["Engineering Students", "Manufacturing Professionals", "Technical Trainees"]
+        },
+        "creator": {
+            "@type": "Person",
+            "name": "Pavin Anilkumar Jayakumari",
+            "url": "https://pavintech.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "AED",
+            "availability": "https://schema.org/InStock"
+        },
+        "educationalUse": ["Training", "Practice", "Assessment"],
+        "teaches": "Precision measurement using vernier calipers",
+        "isAccessibleForFree": true
+    }
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3XY0ZN511"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X3XY0ZN511', {
+            'page_title': 'Vernier Caliper Game',
+            'page_path': '/games/vernier-caliper/'
+        });
+
+        // Track game events
+        function trackGameEvent(action, category = 'Game', label = null, value = null) {
+            gtag('event', action, {
+                'event_category': category,
+                'event_label': label,
+                'value': value
+            });
+        }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -441,6 +530,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Vernier Caliper Master loading...');
 
+            // Track game start
+            trackGameEvent('game_start', 'Game', 'Vernier Caliper');
+
             // ========== DOM ELEMENTS ==========
             const elements = {
                 levelDisplay: document.getElementById('level-display'),
@@ -646,6 +738,9 @@
                 elements.achievementToast.style.transform = 'translateX(0)';
                 
                 playSound('achievement');
+                
+                // Track achievement
+                trackGameEvent('achievement_unlocked', 'Game', achievement.name);
                 
                 setTimeout(() => {
                     elements.achievementToast.style.transform = 'translateX(100%)';
@@ -899,6 +994,9 @@
                 if (state.totalAttempts < 3) {
                     showHint("Drag the sliding jaw to measure the object", 4000);
                 }
+                
+                // Track level start
+                trackGameEvent('level_start', 'Game', `Level ${state.level}`, state.level);
             }
 
             function updateEnhancedUI() {
@@ -1077,6 +1175,9 @@
                 const isCorrect = Math.abs(chosenAnswer - state.targetMeasurement) < 0.001;
                 const responseTime = (Date.now() - state.roundStartTime) / 1000;
                 
+                // Track answer
+                trackGameEvent('answer_selected', 'Game', isCorrect ? 'Correct' : 'Incorrect', Math.round(responseTime * 10) / 10);
+                
                 // Enhanced visual feedback
                 Array.from(elements.optionsContainer.children).forEach(btn => {
                     const btnValue = parseFloat(btn.textContent);
@@ -1204,6 +1305,11 @@
                 // Update button text
                 if (state.level >= 10) {
                     elements.nextBtn.textContent = isCorrect ? 'Mastery Complete!' : 'Try Again';
+                    
+                    // Track game completion
+                    if (isCorrect) {
+                        trackGameEvent('game_complete', 'Game', 'All levels completed', state.score);
+                    }
                 } else {
                     elements.nextBtn.textContent = isCorrect ? `Level ${state.level}` : 'Retry';
                 }
@@ -1228,6 +1334,9 @@
                 if (typeof Tone !== 'undefined') {
                     Tone.start().then(() => console.log('Tone.js started'));
                 }
+                
+                // Track tutorial completion
+                trackGameEvent('tutorial_complete', 'Game', 'Tutorial completed');
             }
 
             // ========== ENHANCED EVENT LISTENERS ==========
