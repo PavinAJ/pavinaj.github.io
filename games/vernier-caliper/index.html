@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vernier Caliper Master - Professional Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --success-green: #10b981;
+            --error-red: #ef4444;
+            --warning-yellow: #f59e0b;
+            --metal-light: #f1f5f9;
+            --metal-dark: #475569;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            overflow: hidden;
+            touch-action: none;
+            user-select: none;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .game-container {
+            background: 
+                linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 8 0 L 0 0 0 8" fill="none" stroke="%23334155" stroke-width="0.3" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .caliper-body {
+            cursor: grab;
+            touch-action: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .caliper-body:hover {
+            filter: brightness(1.1);
+            transform: scale(1.01);
+        }
+
+        .caliper-body:active {
+            cursor: grabbing;
+            filter: brightness(1.2);
+            transform: scale(1.02);
+        }
+
+        .option-btn {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: perspective(1000px) rotateX(0deg) translateY(0px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .option-btn:hover::before { left: 100%; }
+
+        .option-btn:hover {
+            transform: perspective(1000px) rotateX(-5deg) translateY(-4px);
+            box-shadow: 
+                0 12px 25px rgba(6, 182, 212, 0.3),
+                0 0 0 1px rgba(6, 182, 212, 0.5);
+            border-color: var(--accent-cyan);
+        }
+
+        .option-btn.correct {
+            background: linear-gradient(135deg, var(--success-green), #059669) !important;
+            transform: perspective(1000px) rotateX(0deg) translateY(0px) scale(1.05) !important;
+            box-shadow: 
+                0 0 30px rgba(16, 185, 129, 0.7),
+                0 0 0 2px rgba(16, 185, 129, 0.8) !important;
+            animation: correctPulse 0.6s ease-out;
+        }
+
+        .option-btn.incorrect {
+            background: linear-gradient(135deg, var(--error-red), #dc2626) !important;
+            transform: perspective(1000px) rotateX(5deg) translateY(2px) scale(0.95) !important;
+            box-shadow: 
+                0 0 20px rgba(239, 68, 68, 0.5),
+                0 0 0 1px rgba(239, 68, 68, 0.6) !important;
+            animation: incorrectShake 0.5s ease-out;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: perspective(1000px) rotateX(0deg) translateY(0px) scale(1); }
+            50% { transform: perspective(1000px) rotateX(0deg) translateY(-3px) scale(1.1); }
+            100% { transform: perspective(1000px) rotateX(0deg) translateY(0px) scale(1.05); }
+        }
+
+        @keyframes incorrectShake {
+            0%, 100% { transform: perspective(1000px) rotateX(5deg) translateY(2px) scale(0.95) translateX(0); }
+            25% { transform: perspective(1000px) rotateX(5deg) translateY(2px) scale(0.95) translateX(-3px); }
+            75% { transform: perspective(1000px) rotateX(5deg) translateY(2px) scale(0.95) translateX(3px); }
+        }
+
+        .progress-bar-inner {
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+            animation: progressGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes progressGlow {
+            from { box-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
+            to { box-shadow: 0 0 25px rgba(6, 182, 212, 0.8); }
+        }
+
+        .modal {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-hidden {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            pointer-events: none;
+        }
+
+        .modal-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .option-btn-enter {
+            opacity: 0;
+            transform: translateY(30px) rotateX(-15deg);
+            animation: enterAnimation 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes enterAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) rotateX(-15deg) scale(0.9);
+            }
+            70% {
+                opacity: 0.8;
+                transform: translateY(-3px) rotateX(2deg) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg) scale(1);
+            }
+        }
+
+        .streak-glow {
+            animation: streakPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.7);
+        }
+
+        @keyframes streakPulse {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(6, 182, 212, 0.7);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(6, 182, 212, 0.9);
+                transform: scale(1.05);
+            }
+        }
+
+        .object-shadow {
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+        }
+
+        .measurement-highlight {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .tutorial-overlay {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(30px);
+        }
+
+        .floating-score {
+            animation: floatUp 1.5s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.2);
+            }
+        }
+
+        .hint-tooltip {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .hint-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: levelShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes levelShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .achievement-badge {
+            animation: achievementBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes achievementBounce {
+            0% { transform: scale(0) rotate(-180deg); }
+            50% { transform: scale(1.2) rotate(-10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen text-gray-200">
+
+    <!-- Achievement Toast -->
+    <div id="achievement-toast" class="fixed top-4 right-4 z-50 glass-panel rounded-xl p-4 transform translate-x-full transition-transform duration-500 hidden">
+        <div class="flex items-center gap-3">
+            <div class="text-2xl achievement-badge">🏆</div>
+            <div>
+                <p class="font-bold text-yellow-400">Achievement!</p>
+                <p id="achievement-text" class="text-sm text-gray-300">Perfect Streak x5</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorial-overlay" class="tutorial-overlay fixed inset-0 z-40 flex items-center justify-center p-4">
+        <div class="glass-panel rounded-2xl p-8 max-w-2xl w-full">
+            <h2 class="text-3xl font-bold mb-6 text-center level-badge">Vernier Caliper Master</h2>
+            <div class="space-y-4 mb-8 text-gray-300">
+                <p class="text-lg text-center">Master precision measurement with professional vernier calipers!</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass-panel p-4 rounded-lg">
+                        <h3 class="font-bold text-cyan-400 mb-2">🎯 How to Play</h3>
+                        <ul class="text-sm space-y-1">
+                            <li>• Drag the sliding jaw to measure objects</li>
+                            <li>• Get close for auto-snap assistance</li>
+                            <li>• Select the correct measurement</li>
+                            <li>• Build streaks for bonus points</li>
+                        </ul>
+                    </div>
+                    <div class="glass-panel p-4 rounded-lg">
+                        <h3 class="font-bold text-green-400 mb-2">📈 Progression</h3>
+                        <ul class="text-sm space-y-1">
+                            <li>• 10 levels of increasing difficulty</li>
+                            <li>• Tolerance gets tighter each level</li>
+                            <li>• Unlock achievements</li>
+                            <li>• Master precision measurement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button id="start-tutorial" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105">
+                Start Challenge
+            </button>
+        </div>
+    </div>
+
+    <div id="game-container" class="game-container relative w-full h-full max-w-7xl mx-auto flex flex-col items-center justify-center p-4 overflow-hidden rounded-2xl">
+
+        <!-- Enhanced Top UI Bar -->
+        <div class="w-full absolute top-0 left-0 p-6 glass-panel z-20 border-b border-gray-600/30">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-8">
+                    <div class="text-center">
+                        <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Level</span>
+                        <p id="level-display" class="text-3xl font-bold level-badge mono">1</p>
+                        <span id="level-description" class="text-xs text-cyan-400">Beginner</span>
+                    </div>
+                    <div class="text-center relative">
+                        <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Score</span>
+                        <p id="score-display" class="text-3xl font-bold mono">0</p>
+                        <div id="floating-score-container" class="absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Streak</span>
+                        <p id="streak-display" class="text-3xl font-bold text-cyan-300 mono">x1.0</p>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">Tolerance</span>
+                        <p id="tolerance-display" class="text-lg font-bold text-yellow-400 mono">±0.05mm</p>
+                    </div>
+                </div>
+                <div class="w-1/3 min-w-[200px]">
+                    <div class="w-full bg-gray-700/40 rounded-full h-3 glass-panel">
+                        <div id="progress-bar" class="progress-bar-inner h-3 rounded-full" style="width: 10%"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1 text-center">Progress to Mastery</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Measurement Area -->
+        <div id="measurement-area" class="w-full h-full flex flex-col items-center justify-center mt-20">
+            <!-- Object to Measure -->
+            <div id="object-container" class="absolute left-24 bottom-1/2 translate-y-1/2 z-10">
+                <svg id="object-to-measure" width="100" height="150" viewBox="0 0 100 150" class="object-shadow"></svg>
+            </div>
+
+            <!-- Enhanced Vernier Caliper SVG -->
+            <svg id="vernier-caliper" class="absolute bottom-1/2 translate-y-1/2 w-[90%] max-w-[900px]" viewBox="0 0 800 200">
+                <defs>
+                    <linearGradient id="brushed-metal" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#f8fafc" />
+                        <stop offset="20%" stop-color="#e2e8f0" />
+                        <stop offset="50%" stop-color="#cbd5e1" />
+                        <stop offset="80%" stop-color="#94a3b8" />
+                        <stop offset="100%" stop-color="#64748b" />
+                    </linearGradient>
+                    <linearGradient id="jaw-metal" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="30%" stop-color="#f1f5f9" />
+                        <stop offset="70%" stop-color="#e2e8f0" />
+                        <stop offset="100%" stop-color="#cbd5e1" />
+                    </linearGradient>
+                    <filter id="caliper-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                    </filter>
+                    <pattern id="metal-texture" patternUnits="userSpaceOnUse" width="2" height="10">
+                        <rect width="2" height="10" fill="rgba(255,255,255,0.02)"/>
+                        <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                
+                <!-- Enhanced Main Scale -->
+                <g id="main-scale" style="filter: url(#caliper-shadow);">
+                    <rect x="0" y="45" width="750" height="55" fill="url(#brushed-metal)" stroke="#475569" stroke-width="1" rx="3"/>
+                    <rect x="0" y="45" width="750" height="55" fill="url(#metal-texture)" rx="3"/>
+                    <rect x="5" y="50" width="740" height="45" fill="rgba(255,255,255,0.08)" stroke="rgba(71, 85, 105, 0.3)" stroke-width="0.5" rx="2"/>
+                    <rect x="0" y="75" width="50" height="45" fill="url(#brushed-metal)" stroke="#475569" stroke-width="1" rx="3"/>
+                    <g id="main-scale-markings" stroke="#1f2937" stroke-width="0.8" shape-rendering="crispEdges"></g>
+                </g>
+                
+                <!-- Enhanced Sliding Jaw -->
+                <g id="sliding-jaw" class="caliper-body" style="transform: translateX(0px); filter: url(#caliper-shadow);">
+                    <rect x="50" y="20" width="100" height="55" fill="url(#jaw-metal)" stroke="#475569" stroke-width="1" rx="3"/>
+                    <rect x="50" y="20" width="100" height="55" fill="url(#metal-texture)" rx="3"/>
+                    <rect x="100" y="75" width="50" height="65" fill="url(#jaw-metal)" stroke="#475569" stroke-width="1" rx="3"/>
+                    <rect x="55" y="30" width="90" height="20" fill="rgba(255,255,255,0.95)" stroke="#64748b" stroke-width="0.5" rx="2"/>
+                    <rect x="58" y="33" width="84" height="14" fill="rgba(241, 245, 249, 0.8)" rx="1"/>
+                    <g id="vernier-scale-markings" stroke="#1f2937" stroke-width="0.6" shape-rendering="crispEdges"></g>
+                    <!-- Jaw details -->
+                    <circle cx="125" cy="107" r="3" fill="#64748b"/>
+                    <circle cx="125" cy="107" r="1.5" fill="#334155"/>
+                    <line x1="100" y1="75" x2="100" y2="140" stroke="#334155" stroke-width="1.5" stroke-linecap="round"/>
+                </g>
+            </svg>
+
+            <!-- Measurement Hint -->
+            <div id="measurement-hint" class="hint-tooltip absolute top-16 left-1/2 transform -translate-x-1/2 glass-panel rounded-lg p-3 text-sm">
+                <p class="mono text-cyan-300">Drag the sliding jaw to measure the object</p>
+            </div>
+        </div>
+        
+        <!-- Enhanced Bottom UI -->
+        <div class="w-full absolute bottom-0 left-0 p-6 glass-panel z-20 border-t border-gray-600/30">
+            <div class="flex flex-col items-center gap-6">
+                <div class="measurement-highlight rounded-xl p-4 text-center">
+                    <p class="text-xs uppercase tracking-widest text-gray-400 font-medium mb-2">Current Measurement</p>
+                    <p id="reading-display" class="text-4xl font-bold tracking-wider mono text-white">0.00 mm</p>
+                    <div id="measurement-breakdown" class="text-sm text-gray-400 mt-2 mono">
+                        Main: 0mm + Vernier: 0.00mm
+                    </div>
+                    <div id="target-hint" class="text-xs text-cyan-400 mt-1 mono opacity-0 transition-opacity">
+                        Target: ---.-- mm (±---.--mm)
+                    </div>
+                </div>
+                <div id="options-container" class="flex gap-4 min-h-[60px] items-center justify-center flex-wrap"></div>
+            </div>
+        </div>
+
+        <!-- Enhanced Feedback Modal -->
+        <div id="feedback-modal" class="modal modal-hidden absolute inset-0 bg-black/70 flex items-center justify-center z-30 p-4">
+            <div id="modal-content" class="glass-panel text-center p-8 rounded-2xl shadow-2xl w-full max-w-lg">
+                <div id="feedback-icon" class="text-6xl mb-4">🎯</div>
+                <h2 id="feedback-title" class="text-4xl font-bold mb-4">Perfect!</h2>
+                <p id="feedback-text" class="text-lg text-gray-300 mb-6"></p>
+                <div id="feedback-details" class="text-sm text-gray-400 mb-6 mono">
+                    <div>Accuracy: <span id="accuracy-percent" class="text-green-400">100%</span></div>
+                    <div>Response Time: <span id="response-time" class="text-cyan-400">2.1s</span></div>
+                </div>
+                <button id="next-btn" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Vernier Caliper Master loading...');
+
+            // ========== DOM ELEMENTS ==========
+            const elements = {
+                levelDisplay: document.getElementById('level-display'),
+                levelDescription: document.getElementById('level-description'),
+                scoreDisplay: document.getElementById('score-display'),
+                streakDisplay: document.getElementById('streak-display'),
+                toleranceDisplay: document.getElementById('tolerance-display'),
+                progressBar: document.getElementById('progress-bar'),
+                readingDisplay: document.getElementById('reading-display'),
+                measurementBreakdown: document.getElementById('measurement-breakdown'),
+                targetHint: document.getElementById('target-hint'),
+                optionsContainer: document.getElementById('options-container'),
+                slidingJaw: document.getElementById('sliding-jaw'),
+                mainScaleMarkings: document.getElementById('main-scale-markings'),
+                vernierScaleMarkings: document.getElementById('vernier-scale-markings'),
+                objectToMeasure: document.getElementById('object-to-measure'),
+                measurementHint: document.getElementById('measurement-hint'),
+                feedbackModal: document.getElementById('feedback-modal'),
+                modalContent: document.getElementById('modal-content'),
+                feedbackIcon: document.getElementById('feedback-icon'),
+                feedbackTitle: document.getElementById('feedback-title'),
+                feedbackText: document.getElementById('feedback-text'),
+                accuracyPercent: document.getElementById('accuracy-percent'),
+                responseTime: document.getElementById('response-time'),
+                nextBtn: document.getElementById('next-btn'),
+                tutorialOverlay: document.getElementById('tutorial-overlay'),
+                startTutorial: document.getElementById('start-tutorial'),
+                floatingScoreContainer: document.getElementById('floating-score-container'),
+                achievementToast: document.getElementById('achievement-toast'),
+                achievementText: document.getElementById('achievement-text')
+            };
+
+            // ========== GAME STATE ==========
+            const state = {
+                level: 1,
+                score: 0,
+                streak: 0,
+                bestStreak: 0,
+                targetMeasurement: 0,
+                currentMeasurement: 0,
+                tolerance: 0.05,
+                isDragging: false,
+                startDragX: 0,
+                startJawX: 0,
+                maxPixelDrag: 700,
+                maxMM: 50,
+                optionsLocked: false,
+                roundStartTime: 0,
+                totalAttempts: 0,
+                perfectMeasurements: 0,
+                achievements: new Set(),
+                tutorialCompleted: false
+            };
+
+            // ========== ENHANCED AUDIO SYSTEM ==========
+            const audio = {
+                context: null,
+                initialized: false
+            };
+
+            function initAudio() {
+                if (audio.initialized) return;
+                try {
+                    if (typeof Tone !== 'undefined') {
+                        audio.synth = new Tone.Synth({
+                            oscillator: { type: "triangle" },
+                            envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 0.4 }
+                        }).toDestination();
+                        
+                        audio.pluck = new Tone.PluckSynth({
+                            attackNoise: 1,
+                            dampening: 4000,
+                            resonance: 0.7
+                        }).toDestination();
+                        
+                        audio.snap = new Tone.MembraneSynth({ 
+                            pitchDecay: 0.05,
+                            envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 0.4 }
+                        }).toDestination();
+
+                        audio.snap.volume.value = -8;
+                        audio.initialized = true;
+                        console.log('Enhanced audio initialized');
+                    }
+                } catch (e) {
+                    console.warn('Audio initialization failed:', e);
+                }
+            }
+
+            function playSound(type, note = "C4", duration = "8n") {
+                if (!audio.initialized) return;
+                try {
+                    switch(type) {
+                        case 'drag':
+                            audio.pluck?.triggerAttackRelease("C3", "16n", Tone.now());
+                            break;
+                        case 'snap':
+                            audio.snap?.triggerAttackRelease("C4", "8n", Tone.now());
+                            break;
+                        case 'success':
+                            audio.synth?.triggerAttackRelease("C5", "8n", Tone.now());
+                            setTimeout(() => audio.synth?.triggerAttackRelease("E5", "8n", Tone.now()), 150);
+                            break;
+                        case 'error':
+                            audio.synth?.triggerAttackRelease("C3", "4n", Tone.now());
+                            break;
+                        case 'achievement':
+                            // Achievement chord
+                            setTimeout(() => audio.synth?.triggerAttackRelease("C5", "4n", Tone.now()), 0);
+                            setTimeout(() => audio.synth?.triggerAttackRelease("E5", "4n", Tone.now()), 200);
+                            setTimeout(() => audio.synth?.triggerAttackRelease("G5", "4n", Tone.now()), 400);
+                            break;
+                    }
+                } catch (e) {
+                    console.warn('Sound playback failed:', e);
+                }
+            }
+
+            // ========== ENHANCED CONSTANTS ==========
+            const PIXELS_PER_MM = state.maxPixelDrag / state.maxMM;
+            const OBJECT_TYPES = ['cube', 'cylinder', 'gear', 'rod', 'hexagon'];
+            
+            const LEVEL_SETTINGS = [
+                { tolerance: 0.05, minSize: 5, maxSize: 15, description: "Beginner" },
+                { tolerance: 0.05, minSize: 5, maxSize: 20, description: "Novice" },
+                { tolerance: 0.04, minSize: 8, maxSize: 22, description: "Apprentice" },
+                { tolerance: 0.03, minSize: 10, maxSize: 25, description: "Skilled" },
+                { tolerance: 0.03, minSize: 12, maxSize: 27, description: "Advanced" },
+                { tolerance: 0.02, minSize: 15, maxSize: 30, description: "Expert" },
+                { tolerance: 0.02, minSize: 18, maxSize: 32, description: "Professional" },
+                { tolerance: 0.015, minSize: 20, maxSize: 35, description: "Master" },
+                { tolerance: 0.01, minSize: 22, maxSize: 38, description: "Grandmaster" },
+                { tolerance: 0.01, minSize: 25, maxSize: 40, description: "Precision Master" }
+            ];
+
+            const ACHIEVEMENTS = {
+                first_perfect: { name: 'First Perfect', description: 'Perfect measurement on first try' },
+                streak_5: { name: 'Hot Streak', description: '5 perfect measurements in a row' },
+                streak_10: { name: 'Unstoppable', description: '10 perfect measurements in a row' },
+                speed_demon: { name: 'Speed Demon', description: 'Perfect measurement in under 1 second' },
+                precision_master: { name: 'Precision Master', description: 'Complete all 10 levels' }
+            };
+
+            // ========== ENHANCED VISUAL EFFECTS ==========
+            function createParticles(x, y, color = '#06b6d4', count = 8) {
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.left = `${x}px`;
+                    particle.style.top = `${y}px`;
+                    particle.style.width = '4px';
+                    particle.style.height = '4px';
+                    particle.style.background = color;
+                    particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '1000';
+                    
+                    const angle = (i / count) * Math.PI * 2;
+                    const distance = 20 + Math.random() * 10;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    
+                    particle.animate([
+                        { opacity: 1, transform: `translate(0, 0) scale(1)` },
+                        { opacity: 0, transform: `translate(${tx}px, ${ty}px) scale(0.3)` }
+                    ], {
+                        duration: 1200,
+                        easing: 'ease-out'
+                    });
+                    
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 1200);
+                }
+            }
+
+            function showFloatingScore(points, multiplier = 1) {
+                const floatingScore = document.createElement('div');
+                floatingScore.className = 'floating-score absolute text-2xl font-bold mono';
+                floatingScore.style.left = '50%';
+                floatingScore.style.top = '0';
+                floatingScore.style.transform = 'translateX(-50%)';
+                floatingScore.style.color = multiplier > 1 ? '#06b6d4' : '#10b981';
+                floatingScore.style.zIndex = '100';
+                
+                if (multiplier > 1) {
+                    floatingScore.innerHTML = `+${points}<span class="text-cyan-400 text-lg ml-1">x${multiplier.toFixed(1)}</span>`;
+                } else {
+                    floatingScore.textContent = `+${points}`;
+                }
+                
+                elements.floatingScoreContainer.appendChild(floatingScore);
+                setTimeout(() => floatingScore.remove(), 1500);
+            }
+
+            function showAchievement(achievementKey) {
+                if (state.achievements.has(achievementKey)) return;
+                
+                state.achievements.add(achievementKey);
+                const achievement = ACHIEVEMENTS[achievementKey];
+                
+                elements.achievementText.textContent = achievement.name;
+                elements.achievementToast.classList.remove('hidden');
+                elements.achievementToast.style.transform = 'translateX(0)';
+                
+                playSound('achievement');
+                
+                setTimeout(() => {
+                    elements.achievementToast.style.transform = 'translateX(100%)';
+                    setTimeout(() => elements.achievementToast.classList.add('hidden'), 500);
+                }, 3000);
+            }
+
+            function showHint(message, duration = 3000) {
+                elements.measurementHint.querySelector('p').textContent = message;
+                elements.measurementHint.classList.add('show');
+                setTimeout(() => {
+                    elements.measurementHint.classList.remove('show');
+                }, duration);
+            }
+
+            // ========== ENHANCED GAME FUNCTIONS ==========
+            function generateEnhancedScales() {
+                console.log('Generating enhanced scales...');
+                let mainMarkingsHTML = '';
+                for (let i = 0; i <= state.maxMM; i++) {
+                    const x = 50 + i * PIXELS_PER_MM;
+                    const isTen = i % 10 === 0;
+                    const isFive = i % 5 === 0;
+                    const height = isTen ? 20 : (isFive ? 15 : 8);
+                    const y = 100 - height;
+                    const strokeWidth = isTen ? 1.5 : (isFive ? 1 : 0.8);
+                    
+                    mainMarkingsHTML += `<line x1="${x}" y1="100" x2="${x}" y2="${y}" stroke-width="${strokeWidth}" stroke-linecap="round"/>`;
+                    
+                    if (isTen && i > 0) {
+                        mainMarkingsHTML += `<text x="${x}" y="${y - 6}" font-size="11" text-anchor="middle" fill="#111827" font-weight="700" font-family="JetBrains Mono">${i}</text>`;
+                    }
+                }
+                elements.mainScaleMarkings.innerHTML = mainMarkingsHTML;
+
+                let vernierMarkingsHTML = '';
+                const vernierLengthPixels = 19 * PIXELS_PER_MM;
+                
+                for (let i = 0; i <= 20; i++) {
+                    const x = 55 + (i / 20) * vernierLengthPixels;
+                    const isFive = i % 5 === 0;
+                    const height = isFive ? 12 : 8;
+                    const y = 50 - height;
+                    const strokeWidth = isFive ? 1 : 0.7;
+                    
+                    vernierMarkingsHTML += `<line x1="${x}" y1="50" x2="${x}" y2="${y}" stroke-width="${strokeWidth}" stroke-linecap="round"/>`;
+                    
+                    if (isFive) {
+                        vernierMarkingsHTML += `<text x="${x}" y="${y - 3}" font-size="7" text-anchor="middle" fill="#111827" font-weight="600" font-family="JetBrains Mono">${i/2}</text>`;
+                    }
+                }
+                elements.vernierScaleMarkings.innerHTML = vernierMarkingsHTML;
+            }
+
+            function generateTargetMeasurement() {
+                const levelSettings = LEVEL_SETTINGS[state.level - 1] || LEVEL_SETTINGS[0];
+                state.tolerance = levelSettings.tolerance;
+                
+                const increment = Math.max(0.01, state.tolerance);
+                const min = levelSettings.minSize;
+                const max = levelSettings.maxSize;
+                const steps = Math.floor((max - min) / increment);
+                const step = Math.floor(Math.random() * steps);
+                
+                state.targetMeasurement = parseFloat((min + step * increment).toFixed(2));
+                state.roundStartTime = Date.now();
+                console.log('Target:', state.targetMeasurement, 'Tolerance:', state.tolerance);
+            }
+
+            function drawEnhancedObject() {
+                const objectWidth = state.targetMeasurement * PIXELS_PER_MM;
+                const type = OBJECT_TYPES[Math.floor(Math.random() * OBJECT_TYPES.length)];
+                let svg = '';
+                const gradientId = `grad-${type}-${Date.now()}`;
+                
+                switch(type) {
+                    case 'cube':
+                        svg = `
+                            <defs>
+                                <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f472b6"/>
+                                    <stop offset="50%" stop-color="#ec4899"/>
+                                    <stop offset="100%" stop-color="#be185d"/>
+                                </linearGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <rect x="0" y="25" width="${objectWidth}" height="100" 
+                                      fill="url(#${gradientId})" stroke="#831843" stroke-width="2" rx="3"/>
+                                <rect x="${objectWidth * 0.1}" y="32" width="${objectWidth * 0.8}" height="86" 
+                                      fill="rgba(255,255,255,0.15)" stroke="#be185d" stroke-width="0.8" rx="2"/>
+                                <rect x="${objectWidth * 0.2}" y="40" width="${objectWidth * 0.6}" height="70" 
+                                      fill="rgba(255,255,255,0.08)" rx="1"/>
+                            </g>
+                        `;
+                        break;
+                        
+                    case 'cylinder':
+                        svg = `
+                            <defs>
+                                <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#60a5fa"/>
+                                    <stop offset="30%" stop-color="#3b82f6"/>
+                                    <stop offset="70%" stop-color="#2563eb"/>
+                                    <stop offset="100%" stop-color="#60a5fa"/>
+                                </linearGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <rect x="0" y="25" width="${objectWidth}" height="100" 
+                                      rx="${objectWidth/2}" fill="url(#${gradientId})" stroke="#1e3a8a" stroke-width="2"/>
+                                <ellipse cx="${objectWidth/2}" cy="25" rx="${objectWidth/2}" ry="12" 
+                                         fill="rgba(255,255,255,0.3)" stroke="#1e3a8a" stroke-width="1"/>
+                                <ellipse cx="${objectWidth/2}" cy="125" rx="${objectWidth/2}" ry="12" 
+                                         fill="rgba(0,0,0,0.2)" stroke="#1e3a8a" stroke-width="1"/>
+                                <ellipse cx="${objectWidth/2}" cy="75" rx="${objectWidth/3}" ry="8" 
+                                         fill="rgba(255,255,255,0.1)"/>
+                            </g>
+                        `;
+                        break;
+                        
+                    case 'gear':
+                        const r = objectWidth / 2;
+                        const teeth = Math.max(8, Math.floor(objectWidth / 6));
+                        let points = '';
+                        
+                        for(let i = 0; i < teeth * 2; i++) {
+                            const angle = (i / (teeth * 2)) * Math.PI * 2;
+                            const radius = i % 2 === 0 ? r : r * 0.75;
+                            const px = r + Math.cos(angle) * radius;
+                            const py = 75 + Math.sin(angle) * radius;
+                            points += `${px},${py} `;
+                        }
+                        
+                        svg = `
+                            <defs>
+                                <radialGradient id="${gradientId}">
+                                    <stop offset="0%" stop-color="#fde047"/>
+                                    <stop offset="50%" stop-color="#facc15"/>
+                                    <stop offset="100%" stop-color="#eab308"/>
+                                </radialGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <polygon points="${points}" fill="url(#${gradientId})" stroke="#92400e" stroke-width="2"/>
+                                <circle cx="${r}" cy="75" r="${r * 0.4}" fill="#eab308" stroke="#92400e" stroke-width="2"/>
+                                <circle cx="${r}" cy="75" r="${r * 0.15}" fill="#fde047"/>
+                            </g>
+                        `;
+                        break;
+
+                    case 'rod':
+                        svg = `
+                            <defs>
+                                <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#fb7185"/>
+                                    <stop offset="50%" stop-color="#f43f5e"/>
+                                    <stop offset="100%" stop-color="#e11d48"/>
+                                </linearGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <rect x="0" y="60" width="${objectWidth}" height="30" 
+                                      fill="url(#${gradientId})" stroke="#881337" stroke-width="2" rx="15"/>
+                                <ellipse cx="0" cy="75" rx="15" ry="15" 
+                                         fill="url(#${gradientId})" stroke="#881337" stroke-width="2"/>
+                                <ellipse cx="${objectWidth}" cy="75" rx="15" ry="15" 
+                                         fill="url(#${gradientId})" stroke="#881337" stroke-width="2"/>
+                            </g>
+                        `;
+                        break;
+
+                    case 'hexagon':
+                        const hexR = objectWidth / 2;
+                        let hexPoints = '';
+                        for(let i = 0; i < 6; i++) {
+                            const angle = (i / 6) * Math.PI * 2;
+                            const px = hexR + Math.cos(angle) * hexR;
+                            const py = 75 + Math.sin(angle) * hexR * 0.6;
+                            hexPoints += `${px},${py} `;
+                        }
+                        
+                        svg = `
+                            <defs>
+                                <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#a78bfa"/>
+                                    <stop offset="50%" stop-color="#8b5cf6"/>
+                                    <stop offset="100%" stop-color="#7c3aed"/>
+                                </linearGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <polygon points="${hexPoints}" fill="url(#${gradientId})" stroke="#581c87" stroke-width="2"/>
+                            </g>
+                        `;
+                        break;
+                        
+                    default: // prism
+                        svg = `
+                            <defs>
+                                <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#86efac"/>
+                                    <stop offset="50%" stop-color="#4ade80"/>
+                                    <stop offset="100%" stop-color="#22c55e"/>
+                                </linearGradient>
+                                <filter id="shadow-${gradientId}">
+                                    <feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+                                </filter>
+                            </defs>
+                            <g filter="url(#shadow-${gradientId})">
+                                <polygon points="0,125 ${objectWidth},125 ${objectWidth * 0.7},25 ${objectWidth * 0.3},25" 
+                                         fill="url(#${gradientId})" stroke="#14532d" stroke-width="2"/>
+                                <polygon points="${objectWidth * 0.3},25 ${objectWidth * 0.7},25 ${objectWidth * 0.7 + 15},0 ${objectWidth * 0.3 - 15},0" 
+                                         fill="rgba(255,255,255,0.4)" stroke="#14532d" stroke-width="1.5"/>
+                            </g>
+                        `;
+                        break;
+                }
+                
+                elements.objectToMeasure.innerHTML = svg;
+                elements.objectToMeasure.setAttribute('width', objectWidth);
+                console.log(`Drew ${type} with width ${state.targetMeasurement}mm`);
+            }
+
+            function startRound() {
+                console.log('Starting enhanced round...');
+                state.optionsLocked = false;
+                generateTargetMeasurement();
+                drawEnhancedObject();
+                updateEnhancedUI();
+                elements.optionsContainer.innerHTML = '';
+                state.currentMeasurement = 0;
+                elements.slidingJaw.style.transform = `translateX(0px)`;
+                updateEnhancedReadingDisplay();
+                
+                // Show target hint
+                elements.targetHint.textContent = `Target: ${state.targetMeasurement.toFixed(2)} mm (±${state.tolerance.toFixed(3)}mm)`;
+                elements.targetHint.style.opacity = '1';
+                
+                // Show hint for new players
+                if (state.totalAttempts < 3) {
+                    showHint("Drag the sliding jaw to measure the object", 4000);
+                }
+            }
+
+            function updateEnhancedUI() {
+                const levelSettings = LEVEL_SETTINGS[state.level - 1] || LEVEL_SETTINGS[0];
+                
+                elements.levelDisplay.textContent = state.level;
+                elements.levelDescription.textContent = levelSettings.description;
+                elements.scoreDisplay.textContent = state.score.toLocaleString();
+                elements.toleranceDisplay.textContent = `±${state.tolerance.toFixed(3)}mm`;
+                
+                const streakMultiplier = (1 + state.streak * 0.1).toFixed(1);
+                elements.streakDisplay.textContent = `x${streakMultiplier}`;
+                
+                // Enhanced streak effects
+                if (state.streak >= 5) {
+                    elements.streakDisplay.classList.add('streak-glow');
+                    elements.streakDisplay.style.color = state.streak >= 10 ? '#ef4444' : '#f59e0b';
+                } else if (state.streak >= 3) {
+                    elements.streakDisplay.classList.add('streak-glow');
+                    elements.streakDisplay.style.color = '#06b6d4';
+                } else {
+                    elements.streakDisplay.classList.remove('streak-glow');
+                    elements.streakDisplay.style.color = '#67e8f9';
+                }
+                
+                // Progress bar
+                const progress = Math.min((state.level - 1) / 9 * 100, 100);
+                elements.progressBar.style.width = `${progress}%`;
+            }
+            
+            function updateEnhancedReadingDisplay() {
+                const mainScaleReading = Math.floor(state.currentMeasurement);
+                const vernierFraction = state.currentMeasurement - mainScaleReading;
+                
+                elements.readingDisplay.textContent = `${state.currentMeasurement.toFixed(2)} mm`;
+                elements.measurementBreakdown.innerHTML = `
+                    Main: ${mainScaleReading}mm + Vernier: ${vernierFraction.toFixed(2)}mm
+                `;
+
+                // Show proximity feedback
+                if (state.targetMeasurement > 0) {
+                    const distance = Math.abs(state.currentMeasurement - state.targetMeasurement);
+                    if (distance <= state.tolerance * 3) {
+                        elements.measurementBreakdown.style.color = distance <= state.tolerance ? '#10b981' : '#f59e0b';
+                    } else {
+                        elements.measurementBreakdown.style.color = '#9ca3af';
+                    }
+                }
+            }
+
+            // ========== ENHANCED INTERACTION HANDLERS ==========
+            function handleEnhancedDragStart(e) {
+                if (e.target.closest('.caliper-body')) {
+                    console.log('Enhanced drag started');
+                    state.isDragging = true;
+                    elements.slidingJaw.style.cursor = 'grabbing';
+                    
+                    state.startDragX = e.clientX || e.touches[0].clientX;
+                    const transform = getComputedStyle(elements.slidingJaw).transform;
+                    if (transform !== 'none') {
+                        const matrix = new DOMMatrix(transform);
+                        state.startJawX = matrix.m41;
+                    } else {
+                        state.startJawX = 0;
+                    }
+                    
+                    playSound('drag');
+                    showHint("Drag to measure • Release near target for auto-snap", 2000);
+                }
+            }
+
+            function handleEnhancedDragMove(e) {
+                if (!state.isDragging) return;
+                e.preventDefault();
+                
+                const currentX = e.clientX || e.touches[0].clientX;
+                let deltaX = currentX - state.startDragX;
+                let newJawX = Math.max(0, Math.min(state.startJawX + deltaX, state.maxPixelDrag));
+                
+                elements.slidingJaw.style.transform = `translateX(${newJawX}px)`;
+                state.currentMeasurement = parseFloat((newJawX / PIXELS_PER_MM).toFixed(2));
+                updateEnhancedReadingDisplay();
+            }
+
+            function handleEnhancedDragEnd() {
+                if (!state.isDragging) return;
+                console.log('Enhanced drag ended');
+                state.isDragging = false;
+                elements.slidingJaw.style.cursor = 'grab';
+                
+                const distance = Math.abs(state.currentMeasurement - state.targetMeasurement);
+                
+                // Enhanced snap detection
+                if (distance <= state.tolerance * 2.5) {
+                    const perfectX = state.targetMeasurement * PIXELS_PER_MM;
+                    elements.slidingJaw.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+                    elements.slidingJaw.style.transform = `translateX(${perfectX}px)`;
+                    state.currentMeasurement = state.targetMeasurement;
+                    updateEnhancedReadingDisplay();
+                    
+                    playSound('snap');
+                    
+                    // Create snap particles
+                    const rect = elements.slidingJaw.getBoundingClientRect();
+                    createParticles(rect.right - 60, rect.top + 40, '#10b981', 8);
+                    
+                    // Check for first perfect achievement
+                    if (state.totalAttempts === 0 && !state.achievements.has('first_perfect')) {
+                        showAchievement('first_perfect');
+                    }
+                    
+                    setTimeout(() => {
+                        elements.slidingJaw.style.transition = '';
+                        presentEnhancedOptions();
+                    }, 300);
+                } else {
+                    presentEnhancedOptions();
+                }
+            }
+            
+            function presentEnhancedOptions() {
+                if (state.optionsLocked) return;
+                console.log('Presenting enhanced options...');
+                elements.optionsContainer.innerHTML = '';
+                
+                // Generate sophisticated options
+                const correctAnswer = state.targetMeasurement;
+                const tolerance = state.tolerance;
+                
+                const options = [
+                    correctAnswer,
+                    correctAnswer + tolerance * (Math.random() > 0.5 ? 1.8 : -1.8),
+                    correctAnswer + tolerance * (Math.random() > 0.5 ? 3.2 : -3.2),
+                    correctAnswer + (Math.random() > 0.5 ? 0.1 : -0.1)
+                ];
+                
+                // Ensure realistic options
+                for (let i = 1; i < options.length; i++) {
+                    options[i] = Math.max(0.01, Math.min(options[i], state.maxMM));
+                    options[i] = parseFloat(options[i].toFixed(2));
+                }
+                
+                // Remove duplicates
+                const uniqueOptions = [...new Set(options)];
+                while (uniqueOptions.length < 4) {
+                    const newOption = correctAnswer + (Math.random() - 0.5) * tolerance * 4;
+                    const rounded = Math.max(0.01, parseFloat(newOption.toFixed(2)));
+                    if (!uniqueOptions.includes(rounded)) {
+                        uniqueOptions.push(rounded);
+                    }
+                }
+                
+                // Shuffle options
+                for (let i = uniqueOptions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [uniqueOptions[i], uniqueOptions[j]] = [uniqueOptions[j], uniqueOptions[i]];
+                }
+                
+                // Create enhanced option buttons
+                uniqueOptions.slice(0, 4).forEach((option, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn glass-panel border border-gray-600/50 text-white font-bold py-3 px-6 rounded-lg shadow-lg option-btn-enter mono text-lg';
+                    btn.textContent = `${option.toFixed(2)} mm`;
+                    btn.style.animationDelay = `${index * 120}ms`;
+                    btn.onclick = () => checkEnhancedAnswer(option, btn);
+                    elements.optionsContainer.appendChild(btn);
+                });
+            }
+
+            function checkEnhancedAnswer(chosenAnswer, clickedBtn) {
+                if (state.optionsLocked) return;
+                console.log('Enhanced answer checked:', chosenAnswer);
+                state.optionsLocked = true;
+                state.totalAttempts++;
+                
+                const isCorrect = Math.abs(chosenAnswer - state.targetMeasurement) < 0.001;
+                const responseTime = (Date.now() - state.roundStartTime) / 1000;
+                
+                // Enhanced visual feedback
+                Array.from(elements.optionsContainer.children).forEach(btn => {
+                    const btnValue = parseFloat(btn.textContent);
+                    const isBtnCorrect = Math.abs(btnValue - state.targetMeasurement) < 0.001;
+                    
+                    if (isBtnCorrect) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                    
+                    btn.style.opacity = (btn === clickedBtn || isBtnCorrect) ? 1 : 0.3;
+                    btn.style.pointerEvents = 'none';
+                });
+
+                // Enhanced particle effects
+                const btnRect = clickedBtn.getBoundingClientRect();
+                const centerX = btnRect.left + btnRect.width / 2;
+                const centerY = btnRect.top + btnRect.height / 2;
+                
+                if (isCorrect) {
+                    createParticles(centerX, centerY, '#10b981', 12);
+                    
+                    // Check for speed achievement
+                    if (responseTime < 1 && !state.achievements.has('speed_demon')) {
+                        showAchievement('speed_demon');
+                    }
+                } else {
+                    createParticles(centerX, centerY, '#ef4444', 8);
+                }
+
+                setTimeout(() => {
+                    if (isCorrect) {
+                        handleEnhancedCorrectAnswer(responseTime);
+                    } else {
+                        handleEnhancedIncorrectAnswer(responseTime);
+                    }
+                }, 1200);
+            }
+
+            function handleEnhancedCorrectAnswer(responseTime) {
+                console.log('Enhanced correct answer!');
+                state.streak++;
+                state.bestStreak = Math.max(state.bestStreak, state.streak);
+                state.perfectMeasurements++;
+                
+                // Enhanced scoring
+                const basePoints = 10;
+                const levelMultiplier = state.level;
+                const streakMultiplier = 1 + state.streak * 0.15;
+                const toleranceBonus = state.tolerance <= 0.01 ? 2.5 : (state.tolerance <= 0.02 ? 2 : 1.5);
+                const speedBonus = responseTime < 2 ? 1.4 : (responseTime < 5 ? 1.2 : 1);
+                
+                const points = Math.round(basePoints * levelMultiplier * streakMultiplier * toleranceBonus * speedBonus);
+                state.score += points;
+                
+                showFloatingScore(points, streakMultiplier);
+                
+                // Level advancement
+                if (state.level < 10) {
+                    state.level++;
+                }
+                
+                // Check achievements
+                if (state.streak === 5 && !state.achievements.has('streak_5')) {
+                    showAchievement('streak_5');
+                }
+                if (state.streak === 10 && !state.achievements.has('streak_10')) {
+                    showAchievement('streak_10');
+                }
+                if (state.level === 10 && !state.achievements.has('precision_master')) {
+                    showAchievement('precision_master');
+                }
+                
+                showEnhancedFeedback(
+                    true, 
+                    "Excellent Precision!",
+                    `Perfect measurement achieved! +${points} points`,
+                    responseTime,
+                    100
+                );
+                
+                playSound('success');
+                updateEnhancedUI();
+            }
+
+            function handleEnhancedIncorrectAnswer(responseTime) {
+                console.log('Enhanced incorrect answer');
+                state.streak = 0;
+                
+                showEnhancedFeedback(
+                    false, 
+                    "Keep Practicing!",
+                    `Correct measurement: ${state.targetMeasurement.toFixed(2)} mm`,
+                    responseTime,
+                    0
+                );
+                
+                playSound('error');
+                updateEnhancedUI();
+            }
+
+            function showEnhancedFeedback(isCorrect, title, message, responseTime, accuracy) {
+                console.log('Showing enhanced feedback:', { isCorrect, title });
+                
+                // Update modal styling
+                if (isCorrect) {
+                    elements.modalContent.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15))';
+                    elements.modalContent.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+                } else {
+                    elements.modalContent.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15))';
+                    elements.modalContent.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                }
+                
+                // Update content
+                elements.feedbackIcon.textContent = isCorrect ? 
+                    (state.streak >= 5 ? '🔥' : '🎯') : '📐';
+                elements.feedbackTitle.textContent = title;
+                elements.feedbackText.textContent = message;
+                
+                // Update details
+                elements.accuracyPercent.textContent = `${accuracy}%`;
+                elements.responseTime.textContent = `${responseTime.toFixed(1)}s`;
+                
+                // Update button text
+                if (state.level >= 10) {
+                    elements.nextBtn.textContent = isCorrect ? 'Mastery Complete!' : 'Try Again';
+                } else {
+                    elements.nextBtn.textContent = isCorrect ? `Level ${state.level}` : 'Retry';
+                }
+                
+                // Show modal
+                elements.feedbackModal.classList.remove('modal-hidden');
+                elements.feedbackModal.classList.add('modal-visible');
+            }
+            
+            function startGame() {
+                console.log('Starting enhanced game...');
+                elements.tutorialOverlay.style.display = 'none';
+                state.tutorialCompleted = true;
+                
+                generateEnhancedScales();
+                startRound();
+                
+                // Initialize audio after user interaction
+                initAudio();
+                
+                // Try to start Tone.js
+                if (typeof Tone !== 'undefined') {
+                    Tone.start().then(() => console.log('Tone.js started'));
+                }
+            }
+
+            // ========== ENHANCED EVENT LISTENERS ==========
+            elements.slidingJaw.addEventListener('mousedown', handleEnhancedDragStart);
+            document.addEventListener('mousemove', handleEnhancedDragMove);
+            document.addEventListener('mouseup', handleEnhancedDragEnd);
+            
+            elements.slidingJaw.addEventListener('touchstart', handleEnhancedDragStart, { passive: true });
+            document.addEventListener('touchmove', handleEnhancedDragMove, { passive: false });
+            document.addEventListener('touchend', handleEnhancedDragEnd);
+            
+            elements.nextBtn.addEventListener('click', () => {
+                elements.feedbackModal.classList.add('modal-hidden');
+                elements.feedbackModal.classList.remove('modal-visible');
+                
+                if (state.level > 10) {
+                    state.level = 1;
+                }
+                startRound();
+            });
+            
+            elements.startTutorial.addEventListener('click', startGame);
+
+            // Enhanced keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (!elements.feedbackModal.classList.contains('modal-hidden')) {
+                        elements.nextBtn.click();
+                    } else if (elements.tutorialOverlay.style.display !== 'none') {
+                        elements.startTutorial.click();
+                    }
+                }
+            });
+
+            // ========== INITIALIZATION ==========
+            console.log('Enhanced Vernier Caliper Master initialized!');
+            
+            // Check for tutorial completion
+            try {
+                const tutorialCompleted = localStorage.getItem('vernier-tutorial-completed');
+                if (tutorialCompleted) {
+                    state.tutorialCompleted = true;
+                    elements.tutorialOverlay.style.display = 'none';
+                    generateEnhancedScales();
+                    startRound();
+                }
+            } catch (e) {
+                console.warn('localStorage not available');
+            }
+
+            // Initialize audio on first interaction
+            document.body.addEventListener('click', initAudio, { once: true });
+            document.body.addEventListener('touchstart', initAudio, { once: true });
+        });
+    </script>
+</body>
+</html>
