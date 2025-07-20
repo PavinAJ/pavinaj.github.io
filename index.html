@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9903686529727270"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9903686529727270"
+         crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pavin Anilkumar - Senior CNC Manufacturing Leader | Dubai UAE | Portfolio Development Services</title>
@@ -80,6 +82,10 @@
         gtag('js', new Date());
         gtag('config', 'G-X3XY0ZN511');
     </script>
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     
     <style>
         * {
@@ -195,13 +201,16 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* Enhanced Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             color: white;
-            padding: 120px 20px;
+            padding: 140px 20px;
             position: relative;
             overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -215,8 +224,28 @@
             opacity: 0.5;
         }
 
+        /* Animated background particles */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
             position: relative;
@@ -224,22 +253,25 @@
         }
 
         .hero h1 {
-            font-size: clamp(36px, 5vw, 56px);
-            margin-bottom: 20px;
+            font-size: clamp(40px, 6vw, 64px);
+            margin-bottom: 24px;
             animation: fadeInUp 0.8s ease-out;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: clamp(20px, 2.5vw, 28px);
+            font-size: clamp(22px, 3vw, 32px);
             margin-bottom: 20px;
             opacity: 0.95;
             animation: fadeInUp 0.8s ease-out 0.2s;
             animation-fill-mode: both;
+            font-weight: 300;
         }
 
         .hero-subtitle {
-            font-size: clamp(16px, 2vw, 20px);
-            margin-bottom: 40px;
+            font-size: clamp(18px, 2.5vw, 24px);
+            margin-bottom: 48px;
             opacity: 0.85;
             animation: fadeInUp 0.8s ease-out 0.3s;
             animation-fill-mode: both;
@@ -247,7 +279,7 @@
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.4s;
@@ -255,24 +287,27 @@
         }
 
         .btn {
-            padding: 12px 30px;
-            border-radius: 8px;
+            padding: 16px 36px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
             background: white;
             color: var(--primary-color);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
 
         .btn-secondary {
@@ -284,86 +319,31 @@
         .btn-secondary:hover {
             background: white;
             color: var(--primary-color);
+            transform: translateY(-3px);
         }
 
-        .btn-linkedin {
-            background: var(--linkedin-color);
+        /* LinkedIn Link in Contact Section Enhancement */
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: white;
-            border: none;
-        }
-
-        .btn-linkedin:hover {
-            background: #005885;
-            transform: translateY(-2px);
-        }
-
-        /* Quick Access Section */
-        .quick-access {
-            background: white;
-            padding: 60px 20px;
-            margin-top: -40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .quick-access-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .quick-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
             text-decoration: none;
-            color: var(--text-primary);
-            border: 2px solid transparent;
+            font-weight: 500;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
         }
 
-        .quick-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .quick-card-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .quick-card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .quick-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .new-badge {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 10px;
-            font-weight: 600;
-            margin-left: 5px;
-            animation: pulse 2s infinite;
+        .linkedin-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Experience Section */
         .experience {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: #fafbfc;
         }
 
@@ -374,18 +354,20 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(28px, 4vw, 36px);
-            margin-bottom: 20px;
+            font-size: clamp(32px, 4vw, 40px);
+            margin-bottom: 24px;
             color: var(--text-primary);
+            font-weight: 700;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 50px;
-            max-width: 600px;
+            margin-bottom: 60px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 18px;
         }
 
         .timeline {
@@ -417,6 +399,7 @@
 
         .timeline-item:hover {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
         }
 
         .timeline-item:nth-child(odd) {
@@ -491,7 +474,7 @@
         /* Skills Section */
         .skills {
             background: white;
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
 
         .skills-grid {
@@ -506,8 +489,27 @@
             background: #fafbfc;
             padding: 40px 30px;
             border-radius: 16px;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover::before {
+            transform: scaleX(1);
         }
 
         .skill-category:hover {
@@ -546,7 +548,7 @@
 
         /* Projects Section */
         .projects {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: #fafbfc;
         }
 
@@ -564,20 +566,21 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .project-image {
-            height: 200px;
+            height: 220px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 56px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -632,7 +635,7 @@
         /* Achievements Section */
         .achievements {
             background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
 
         .stats-grid {
@@ -645,7 +648,7 @@
         }
 
         .stat-item {
-            padding: 30px;
+            padding: 40px 30px;
             background: white;
             border-radius: 16px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -657,7 +660,7 @@
         }
 
         .stat-number {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: bold;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
@@ -667,18 +670,19 @@
 
         .stat-label {
             color: var(--text-secondary);
-            font-size: 16px;
+            font-size: 18px;
         }
 
         /* Contact Section */
         .contact {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             color: white;
+            position: relative;
         }
 
         .contact-content {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             text-align: center;
         }
@@ -692,15 +696,16 @@
             margin-top: 40px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             color: white;
+            font-size: 18px;
         }
 
         .contact-item a {
@@ -717,7 +722,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .social-link {
@@ -747,7 +752,7 @@
             padding: 40px 20px;
         }
 
-        /* Floating Action Button */
+        /* Enhanced Floating Action Button */
         .fab-container {
             position: fixed;
             bottom: 30px;
@@ -756,8 +761,8 @@
         }
 
         .fab-button {
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
@@ -766,15 +771,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s;
             position: relative;
         }
 
         .fab-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
         }
 
         .fab-button.active {
@@ -806,8 +811,8 @@
         }
 
         .fab-item-button {
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             background: white;
             color: var(--primary-color);
@@ -816,8 +821,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: all 0.3s;
             text-decoration: none;
             position: relative;
@@ -829,15 +834,16 @@
         .fab-item:nth-child(2) .fab-item-button { animation-delay: 0.2s; }
         .fab-item:nth-child(3) .fab-item-button { animation-delay: 0.3s; }
         .fab-item:nth-child(4) .fab-item-button { animation-delay: 0.4s; }
+        .fab-item:nth-child(5) .fab-item-button { animation-delay: 0.5s; }
 
         @keyframes fabItemAnimation {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px) scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -845,26 +851,29 @@
             transform: scale(1.1);
             background: var(--primary-color);
             color: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         .fab-label {
             position: absolute;
-            right: 65px;
+            right: 70px;
             background: #333;
             color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             white-space: nowrap;
             font-size: 14px;
+            font-weight: 500;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .fab-item:hover .fab-label {
             opacity: 1;
             visibility: visible;
-            right: 70px;
+            right: 75px;
         }
 
         /* Animations */
@@ -888,6 +897,21 @@
             }
         }
 
+        /* New Badge Enhancement */
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 5px;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-menu {
@@ -895,7 +919,7 @@
                 left: -100%;
                 top: 70px;
                 flex-direction: column;
-                background-color: var(--bg-white);
+                background-color: white;
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
@@ -914,12 +938,8 @@
             }
 
             .hero {
-                padding: 80px 20px;
-            }
-
-            .quick-access-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                padding: 100px 20px;
+                min-height: 60vh;
             }
 
             .timeline::before {
@@ -947,22 +967,42 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .fab-button {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+            }
+
+            .fab-item-button {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
         }
 
         @media (max-width: 480px) {
-            .quick-access-container {
-                grid-template-columns: 1fr;
-            }
-
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
             }
 
             .btn {
                 width: 100%;
                 justify-content: center;
+                max-width: 280px;
             }
+        }
+
+        /* Performance optimizations */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -991,7 +1031,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Removed LinkedIn button -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Pavin Anilkumar Jayakumari</h1>
@@ -999,49 +1039,12 @@
             <p class="hero-subtitle">10+ Years Expertise in Aerospace, Marine & Automotive Industries | UAE</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Contact Me</a>
-                <a href="https://www.linkedin.com/in/pavinjanilkumar" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    LinkedIn Profile
-                </a>
                 <a href="#projects" class="btn btn-secondary">View My Work</a>
             </div>
         </div>
     </section>
 
-    <!-- Quick Access Section -->
-    <section class="quick-access">
-        <div class="quick-access-container">
-            <a href="/tools/" class="quick-card">
-                <span class="quick-card-icon">🔧</span>
-                <h3>Manufacturing Tools</h3>
-                <p>Professional calculators & converters</p>
-            </a>
-            <a href="/games/" class="quick-card">
-                <span class="quick-card-icon">🎮</span>
-                <h3>Learning Games <span class="new-badge">NEW</span></h3>
-                <p>Master manufacturing skills through play</p>
-            </a>
-            <a href="/services/" class="quick-card">
-                <span class="quick-card-icon">📁</span>
-                <h3>Portfolio Services</h3>
-                <p>Professional portfolio development</p>
-            </a>
-            <a href="/courses/" class="quick-card">
-                <span class="quick-card-icon">📚</span>
-                <h3>Courses</h3>
-                <p>Coming soon - Expert-led training</p>
-            </a>
-            <a href="/jobs/" class="quick-card">
-                <span class="quick-card-icon">💼</span>
-                <h3>Job Portal</h3>
-                <p>Manufacturing opportunities in UAE</p>
-            </a>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
+    <!-- Experience Section (Directly after Hero) -->
     <section id="experience" class="experience">
         <div class="experience-container">
             <h2 class="section-title">Professional Experience</h2>
@@ -1239,7 +1242,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section - LinkedIn moved here -->
     <section id="contact" class="contact">
         <div class="contact-content">
             <h2 class="section-title">Get In Touch</h2>
@@ -1259,7 +1262,7 @@
                 </div>
             </div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/pavinjanilkumar" target="_blank" rel="noopener noreferrer" class="social-link">
+                <a href="https://www.linkedin.com/in/pavinjanilkumar" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
                     <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
@@ -1278,27 +1281,31 @@
         <p>Serving Dubai, Sharjah, Abu Dhabi, Ajman, Ras Al Khaimah, and across UAE & GCC</p>
     </footer>
 
-    <!-- Floating Action Button -->
+    <!-- Enhanced Floating Action Button -->
     <div class="fab-container">
         <div class="fab-menu" id="fabMenu">
             <div class="fab-item">
-                <span class="fab-label">Job Portal</span>
-                <a href="/jobs/" class="fab-item-button">💼</a>
+                <span class="fab-label">Manufacturing Tools</span>
+                <a href="/tools/" class="fab-item-button">🔧</a>
+            </div>
+            <div class="fab-item">
+                <span class="fab-label">Learning Games</span>
+                <a href="/games/" class="fab-item-button">🎮</a>
+            </div>
+            <div class="fab-item">
+                <span class="fab-label">Portfolio Services</span>
+                <a href="/services/" class="fab-item-button">📁</a>
             </div>
             <div class="fab-item">
                 <span class="fab-label">Courses</span>
                 <a href="/courses/" class="fab-item-button">📚</a>
             </div>
             <div class="fab-item">
-                <span class="fab-label">Games</span>
-                <a href="/games/" class="fab-item-button">🎮</a>
-            </div>
-            <div class="fab-item">
-                <span class="fab-label">Tools</span>
-                <a href="/tools/" class="fab-item-button">🔧</a>
+                <span class="fab-label">Job Portal</span>
+                <a href="/jobs/" class="fab-item-button">💼</a>
             </div>
         </div>
-        <button class="fab-button" id="fabButton">
+        <button class="fab-button" id="fabButton" aria-label="Quick Access Menu">
             <span>+</span>
         </button>
     </div>
@@ -1372,6 +1379,14 @@
         fabButton.addEventListener('click', () => {
             fabButton.classList.toggle('active');
             fabMenu.classList.toggle('active');
+            
+            // Track FAB usage in Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'fab_toggle', {
+                    'event_category': 'UI',
+                    'event_label': fabMenu.classList.contains('active') ? 'open' : 'close'
+                });
+            }
         });
 
         // Close FAB menu when clicking outside
@@ -1380,6 +1395,19 @@
                 fabButton.classList.remove('active');
                 fabMenu.classList.remove('active');
             }
+        });
+
+        // Track FAB item clicks
+        document.querySelectorAll('.fab-item-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const label = e.target.closest('.fab-item').querySelector('.fab-label').textContent;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'fab_click', {
+                        'event_category': 'Navigation',
+                        'event_label': label
+                    });
+                }
+            });
         });
 
         // Add animation on scroll
@@ -1392,14 +1420,33 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                    entry.target.style.opacity = '1';
                 }
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('.timeline-item, .skill-category, .project-card, .stat-item, .quick-card').forEach(item => {
+        // Observe all sections for animation
+        document.querySelectorAll('.timeline-item, .skill-category, .project-card, .stat-item').forEach(item => {
+            item.style.opacity = '0';
             observer.observe(item);
         });
+
+        // Performance optimization - Lazy load
+        if ('IntersectionObserver' in window) {
+            const lazyElements = document.querySelectorAll('.lazy-load');
+            const lazyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        lazyObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            lazyElements.forEach(element => {
+                lazyObserver.observe(element);
+            });
+        }
     </script>
 </body>
 </html>
