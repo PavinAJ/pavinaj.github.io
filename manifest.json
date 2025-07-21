@@ -1,0 +1,170 @@
+{
+  "name": "PavinTech - Manufacturing Excellence Hub",
+  "short_name": "PavinTech",
+  "description": "Senior CNC Manufacturing Leader portfolio, professional services, engineering tools, and learning resources for UAE & GCC manufacturing professionals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a365d",
+  "theme_color": "#1a365d",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "PavinTech Manufacturing Portfolio Homepage"
+    },
+    {
+      "src": "/assets/screenshots/mobile-tools.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Manufacturing Tools & Calculators"
+    },
+    {
+      "src": "/assets/screenshots/mobile-games.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Interactive Learning Games"
+    }
+  ],
+  
+  "categories": [
+    "business",
+    "education",
+    "productivity",
+    "utilities"
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Manufacturing Tools",
+      "short_name": "Tools",
+      "description": "Access precision measurement tools and calculators",
+      "url": "/tools/",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-tools.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Learning Games",
+      "short_name": "Games",
+      "description": "Interactive manufacturing skill games",
+      "url": "/games/",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-games.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Portfolio Services",
+      "short_name": "Services",
+      "description": "Professional portfolio development services",
+      "url": "/services/",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-services.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch for manufacturing expertise",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-contact.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://pavintech.com/manifest.json"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/#contact?email=%s"
+    }
+  ]
+}
