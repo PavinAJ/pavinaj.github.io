@@ -1895,5 +1895,101 @@
             }
         });
     </script>
+// Service Worker Registration - Add this script to index.html before </body>
+<script>
+// Service Worker Registration for PWA functionality
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('PavinTech Service Worker registered successfully:', registration.scope);
+        
+        // Check for updates
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New content is available, show update notification
+              console.log('New content available, page will refresh...');
+              if (confirm('New version available! Reload to update?')) {
+                window.location.reload();
+              }
+            }
+          });
+        });
+      })
+      .catch(function(registrationError) {
+        console.log('PavinTech Service Worker registration failed:', registrationError);
+      });
+  });
+  
+  // Listen for service worker messages
+  navigator.serviceWorker.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'CACHE_UPDATED') {
+      console.log('Cache updated:', event.data.url);
+    }
+  });
+}
+
+// PWA Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  
+  // Show install button/notification (optional)
+  showInstallPromotion();
+});
+
+function showInstallPromotion() {
+  // You can show a custom install button here
+  console.log('PWA install prompt available');
+  
+  // Example: Show a notification or button
+  // const installBanner = document.getElementById('installBanner');
+  // if (installBanner) installBanner.style.display = 'block';
+}
+
+// Handle PWA install button click (if you add one)
+function installPWA() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the PWA install prompt');
+        trackUserEngagement('pwa_install_accepted', 'PWA', 'Install Prompt');
+      } else {
+        console.log('User dismissed the PWA install prompt');
+        trackUserEngagement('pwa_install_dismissed', 'PWA', 'Install Prompt');
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+
+// Track PWA usage
+window.addEventListener('appinstalled', (evt) => {
+  console.log('PavinTech PWA was installed');
+  if (typeof trackUserEngagement === 'function') {
+    trackUserEngagement('pwa_installed', 'PWA', 'App Installed');
+  }
+});
+
+// Check if running as PWA
+function isPWA() {
+  return window.matchMedia('(display-mode: standalone)').matches || 
+         window.navigator.standalone || 
+         document.referrer.includes('android-app://');
+}
+
+if (isPWA()) {
+  console.log('Running as PWA');
+  if (typeof trackUserEngagement === 'function') {
+    trackUserEngagement('pwa_launch', 'PWA', 'Standalone Mode');
+  }
+}
+</script>
 </body>
 </html>
