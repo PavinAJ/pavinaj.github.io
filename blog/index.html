@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Insights Blog - PavinTech | CNC Programming Tips, Industry Trends, & Professional Development</title>
+    <meta name="description" content="Expert insights on CNC programming, manufacturing processes, and industry trends from Pavin Anilkumar, Senior Manufacturing Leader in UAE. Tips, tutorials, and professional development for manufacturing professionals.">
+    <meta name="keywords" content="manufacturing blog UAE, CNC programming tips, machining tutorials, aerospace manufacturing, marine engineering, automotive CNC, KUKA robotics, PowerMill tutorials, manufacturing career advice Dubai">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* PavinTech Brand Colors */
+            --brand-navy: #1a365d;
+            --brand-blue: #2d7dd2;
+            --brand-orange: #f7941d;
+            --precision-gold: #ffd700;
+            --steel-gray: #64748b;
+            --success-green: #059669;
+            
+            /* Neutrals */
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            
+            /* Gradients */
+            --hero-gradient: linear-gradient(135deg, #1a365d 0%, #2d7dd2 50%, #3b82f6 100%);
+            --accent-gradient: linear-gradient(135deg, #f7941d 0%, #ffd700 100%);
+            --card-gradient: linear-gradient(135deg, rgba(26, 54, 93, 0.05) 0%, rgba(45, 125, 210, 0.05) 100%);
+            
+            /* Shadows */
+            --shadow-brand: 0 8px 25px rgba(26, 54, 93, 0.15);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--hero-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo::before {
+            content: "📝";
+            background: none;
+            -webkit-text-fill-color: initial;
+            font-size: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-orange);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-navy);
+        }
+
+        .nav-link.active {
+            color: var(--brand-navy);
+            font-weight: 600;
+        }
+
+        .brand-badge {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--hero-gradient);
+            color: white;
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 24px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            margin-bottom: 16px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2vw, 20px);
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 60px;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-brand);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .featured-image {
+            height: 400px;
+            background: var(--hero-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: var(--brand-orange);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .featured-content {
+            padding: 40px;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .featured-title {
+            font-size: 32px;
+            color: var(--brand-navy);
+            margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            color: var(--text-secondary);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--hero-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-brand);
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            gap: 32px;
+        }
+
+        .article-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-brand);
+        }
+
+        .article-image {
+            height: 220px;
+            background: var(--card-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--brand-blue);
+            position: relative;
+        }
+
+        .article-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--brand-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .article-content {
+            padding: 32px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .article-title {
+            font-size: 22px;
+            color: var(--brand-navy);
+            margin-bottom: 12px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            color: var(--brand-navy);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .widget-title {
+            font-size: 20px;
+            color: var(--brand-navy);
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--bg-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .category-count {
+            background: var(--card-gradient);
+            color: var(--brand-navy);
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .newsletter-input {
+            padding: 12px 16px;
+            border: 1px solid var(--text-light);
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--brand-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(45, 125, 210, 0.1);
+        }
+
+        .newsletter-btn {
+            padding: 12px 20px;
+            background: var(--hero-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-brand);
+        }
+
+        /* Recent Posts */
+        .recent-posts {
+            list-style: none;
+        }
+
+        .recent-post {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .recent-post:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post-title {
+            font-size: 14px;
+            color: var(--brand-navy);
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .recent-post-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Load More Section */
+        .load-more {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .load-more-btn {
+            padding: 16px 32px;
+            background: var(--hero-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-brand);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 60px 24px;
+            }
+
+            .sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 70px;
+                padding: 0 16px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                height: calc(100vh - 70px);
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: var(--shadow-lg);
+                padding: 32px 0;
+                gap: 24px;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero {
+                padding: 80px 16px;
+            }
+
+            .featured-content {
+                padding: 32px 24px;
+            }
+
+            .featured-title {
+                font-size: 28px;
+            }
+
+            .article-content {
+                padding: 24px;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg); 
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+        }
+
+        .mobile-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--brand-navy);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+    
+    <!-- Enhanced Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                PavinTech
+                <span class="brand-badge">Blog</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/#experience" class="nav-link">Experience</a></li>
+                <li><a href="/#skills" class="nav-link">Skills</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="/services/" class="nav-link">Services</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
+                <li><a href="/games/" class="nav-link">Games</a></li>
+                <li><a href="/courses/" class="nav-link">Courses</a></li>
+                <li><a href="/jobs/" class="nav-link">Jobs</a></li>
+                <li><a href="/blog/" class="nav-link active">Blog</a></li>
+                <li><a href="/#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>📝</span> Manufacturing Insights
+            </div>
+            <h1>Manufacturing Excellence Hub</h1>
+            <p class="hero-subtitle">Expert insights, tutorials, and industry trends for manufacturing professionals</p>
+            <p class="hero-description">Stay ahead in CNC programming, machining techniques, quality control, and manufacturing career development with insights from 10+ years of UAE industry experience.</p>
+        </div>
+    </section>
+
+    <!-- Blog Container -->
+    <div class="blog-container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Featured Article -->
+            <article class="featured-article">
+                <div class="featured-image">
+                    <span class="featured-badge">Featured</span>
+                    🏭
+                </div>
+                <div class="featured-content">
+                    <div class="featured-meta">
+                        <span>📅 January 15, 2024</span>
+                        <span>👤 Pavin Anilkumar</span>
+                        <span>⏱️ 8 min read</span>
+                    </div>
+                    <h2 class="featured-title">Mastering KUKA 7-Axis Programming: Advanced Techniques for Yacht Manufacturing</h2>
+                    <p class="featured-excerpt">Deep dive into advanced KUKA robotics programming techniques used in luxury yacht manufacturing at Sunreef. Learn complex milling strategies, collision avoidance, and precision optimization for large composite structures.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>📖</span> Read Full Article
+                    </a>
+                </div>
+            </article>
+
+            <!-- Articles Grid -->
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">CNC Programming</span>
+                        ⚙️
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 January 10, 2024</span>
+                            <span>⏱️ 5 min read</span>
+                        </div>
+                        <h3 class="article-title">PowerMill CAM Strategies for Aerospace Components</h3>
+                        <p class="article-excerpt">Optimizing PowerMill CAM strategies for aerospace-grade aluminum and titanium machining. Focus on surface finish, tool life, and dimensional accuracy.</p>
+                        <div class="article-tags">
+                            <span class="tag">PowerMill</span>
+                            <span class="tag">Aerospace</span>
+                            <span class="tag">CAM Programming</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">Quality Control</span>
+                        🔍
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 January 5, 2024</span>
+                            <span>⏱️ 6 min read</span>
+                        </div>
+                        <h3 class="article-title">AS9100D Implementation in UAE Manufacturing</h3>
+                        <p class="article-excerpt">Step-by-step guide to implementing AS9100D quality management systems in UAE manufacturing facilities, with real-world examples and best practices.</p>
+                        <div class="article-tags">
+                            <span class="tag">Quality</span>
+                            <span class="tag">AS9100</span>
+                            <span class="tag">UAE</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">Career Development</span>
+                        📈
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 December 28, 2023</span>
+                            <span>⏱️ 7 min read</span>
+                        </div>
+                        <h3 class="article-title">Building a Manufacturing Career in UAE: Complete Guide</h3>
+                        <p class="article-excerpt">Comprehensive guide for manufacturing professionals looking to advance their careers in UAE's growing aerospace, marine, and automotive sectors.</p>
+                        <div class="article-tags">
+                            <span class="tag">Career</span>
+                            <span class="tag">UAE Jobs</span>
+                            <span class="tag">Professional Development</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">Machining Tips</span>
+                        🔧
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 December 20, 2023</span>
+                            <span>⏱️ 4 min read</span>
+                        </div>
+                        <h3 class="article-title">Optimizing Tool Life in 5-Axis Machining</h3>
+                        <p class="article-excerpt">Practical techniques for extending cutting tool life in 5-axis CNC operations. Cover feeds, speeds, cooling strategies, and tool path optimization.</p>
+                        <div class="article-tags">
+                            <span class="tag">5-Axis</span>
+                            <span class="tag">Tool Life</span>
+                            <span class="tag">Optimization</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">Industry Trends</span>
+                        📊
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 December 15, 2023</span>
+                            <span>⏱️ 8 min read</span>
+                        </div>
+                        <h3 class="article-title">ENATA's Vision 2025: Advanced Manufacturing Revolution</h3>
+                        <p class="article-excerpt">Inside look at ENATA Industries' ambitious plans for scaling advanced manufacturing capabilities and the technologies driving the future of UAE manufacturing.</p>
+                        <div class="article-tags">
+                            <span class="tag">Industry 4.0</span>
+                            <span class="tag">ENATA</span>
+                            <span class="tag">Future Tech</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <span class="article-category">Tutorial</span>
+                        🎓
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>📅 December 10, 2023</span>
+                            <span>⏱️ 10 min read</span>
+                        </div>
+                        <h3 class="article-title">Precision Measurement: Mastering Vernier Calipers</h3>
+                        <p class="article-excerpt">Complete tutorial on vernier caliper usage, calibration, and best practices for precision measurement in manufacturing quality control.</p>
+                        <div class="article-tags">
+                            <span class="tag">Measurement</span>
+                            <span class="tag">Tutorial</span>
+                            <span class="tag">Quality Control</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more">
+                <button class="load-more-btn">
+                    Load More Articles
+                </button>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Categories -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>📂</span> Categories
+                </h3>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <span class="category-name">CNC Programming</span>
+                        <span class="category-count">12</span>
+                    </li>
+                    <li class="category-item">
+                        <span class="category-name">Quality Control</span>
+                        <span class="category-count">8</span>
+                    </li>
+                    <li class="category-item">
+                        <span class="category-name">Career Development</span>
+                        <span class="category-count">6</span>
+                    </li>
+                    <li class="category-item">
+                        <span class="category-name">Machining Tips</span>
+                        <span class="category-count">15</span>
+                    </li>
+                    <li class="category-item">
+                        <span class="category-name">Industry Trends</span>
+                        <span class="category-count">5</span>
+                    </li>
+                    <li class="category-item">
+                        <span class="category-name">Tutorials</span>
+                        <span class="category-count">9</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>✉️</span> Manufacturing Insights
+                </h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 14px;">Get weekly manufacturing tips, CNC programming tutorials, and industry insights delivered to your inbox.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Recent Posts -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>📝</span> Recent Posts
+                </h3>
+                <ul class="recent-posts">
+                    <li class="recent-post">
+                        <div class="recent-post-title">Advanced Surface Finishing Techniques</div>
+                        <div class="recent-post-date">January 12, 2024</div>
+                    </li>
+                    <li class="recent-post">
+                        <div class="recent-post-title">Marine Grade Materials: Machining Guide</div>
+                        <div class="recent-post-date">January 8, 2024</div>
+                    </li>
+                    <li class="recent-post">
+                        <div class="recent-post-title">Cost Optimization in CNC Operations</div>
+                        <div class="recent-post-date">January 3, 2024</div>
+                    </li>
+                    <li class="recent-post">
+                        <div class="recent-post-title">Safety Protocols in Advanced Manufacturing</div>
+                        <div class="recent-post-date">December 25, 2023</div>
+                    </li>
+                    <li class="recent-post">
+                        <div class="recent-post-title">Lean Manufacturing Implementation</div>
+                        <div class="recent-post-date">December 18, 2023</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tags Cloud -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>🏷️</span> Popular Tags
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <span class="tag">CNC</span>
+                    <span class="tag">Programming</span>
+                    <span class="tag">Quality</span>
+                    <span class="tag">Aerospace</span>
+                    <span class="tag">Marine</span>
+                    <span class="tag">Automotive</span>
+                    <span class="tag">KUKA</span>
+                    <span class="tag">PowerMill</span>
+                    <span class="tag">UAE</span>
+                    <span class="tag">Career</span>
+                    <span class="tag">Machining</span>
+                    <span class="tag">Tools</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-primary); color: white; text-align: center; padding: 48px 24px;">
+        <p style="margin-bottom: 8px;">&copy; 2024 Pavin Anilkumar Jayakumari - PavinTech Manufacturing Hub</p>
+        <p style="opacity: 0.8; font-size: 15px;">Manufacturing Insights Blog • Expert Knowledge • Professional Development • UAE</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileMenu && navMenu) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when clicking links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Newsletter form handling
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('.newsletter-btn');
+            const input = event.target.querySelector('.newsletter-input');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '✓ Subscribed!';
+            btn.style.background = 'var(--success-green)';
+            input.value = '';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 3000);
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe article cards
+        document.querySelectorAll('.article-card, .sidebar-widget').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Article card click handlers
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Add navigation logic here
+                console.log('Navigate to article:', card.querySelector('.article-title').textContent);
+            });
+        });
+
+        // Load more functionality
+        document.querySelector('.load-more-btn').addEventListener('click', () => {
+            const btn = document.querySelector('.load-more-btn');
+            btn.textContent = 'Loading...';
+            btn.disabled = true;
+            
+            // Simulate loading
+            setTimeout(() => {
+                btn.textContent = 'Load More Articles';
+                btn.disabled = false;
+                // Add logic to load more articles here
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
