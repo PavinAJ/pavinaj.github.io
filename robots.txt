@@ -1,0 +1,78 @@
+# Robots.txt for PavinTech.com
+# Manufacturing Professional Portfolio & Services
+
+User-agent: *
+Allow: /
+
+# Priority Pages for Crawling
+Allow: /services/
+Allow: /tools/
+Allow: /games/
+Allow: /courses/
+Allow: /jobs/
+
+# Specific Game Pages
+Allow: /games/vernier-caliper/
+
+# Block access to development/admin areas (if any)
+Disallow: /admin/
+Disallow: /dev/
+Disallow: /test/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Block access to sensitive files
+Disallow: /*.log
+Disallow: /*.sql
+Disallow: /*.bak
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+
+# Allow CSS, JS, and Images for proper rendering
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+Allow: /*.webp
+
+# Crawl-delay for heavy bots (optional)
+Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://pavintech.com/sitemap.xml
+
+# Additional Sitemaps (for future expansion)
+# Sitemap: https://pavintech.com/tools-sitemap.xml
+# Sitemap: https://pavintech.com/games-sitemap.xml
+# Sitemap: https://pavintech.com/blog-sitemap.xml
+
+# Special instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block malicious bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
