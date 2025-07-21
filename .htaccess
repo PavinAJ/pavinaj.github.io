@@ -1,0 +1,204 @@
+# .htaccess for PavinTech.com
+# Manufacturing Professional Portfolio - Security & Performance
+
+# ===============================================
+# SECURITY HEADERS
+# ===============================================
+
+<IfModule mod_headers.c>
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com *.googleapis.com unpkg.com cdnjs.cloudflare.com pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com unpkg.com cdnjs.cloudflare.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: *.googletagmanager.com *.google-analytics.com; connect-src 'self' *.google-analytics.com *.googletagmanager.com; frame-src 'self' *.google.com; object-src 'none'; base-uri 'self'; form-action 'self';"
+    
+    # XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Clickjacking protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Feature Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # HSTS (HTTP Strict Transport Security)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ===============================================
+# PERFORMANCE OPTIMIZATION
+# ===============================================
+
+# Enable Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive on
+    
+    # Images
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/ico "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    
+    # HTML, XML, JSON
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType application/xml "access plus 1 hour"
+    ExpiresByType text/xml "access plus 1 hour"
+    ExpiresByType application/json "access plus 1 hour"
+    
+    # Manifest and other files
+    ExpiresByType application/manifest+json "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 month"
+</IfModule>
+
+# ===============================================
+# URL REWRITING & REDIRECTS
+# ===============================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Force WWW removal (if using apex domain)
+    RewriteCond %{HTTP_HOST} ^www\.pavintech\.com [NC]
+    RewriteRule ^(.*)$ https://pavintech.com/$1 [L,R=301]
+    
+    # Clean URLs - Remove .html extension
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
+    
+    # Redirect old URLs to new structure (if needed)
+    # RewriteRule ^old-page/?$ /new-page/ [R=301,L]
+    
+    # Block malicious requests
+    RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|ê|"|;|\?|\*|=$).* [NC,OR]
+    RewriteCond %{QUERY_STRING} ^.*(â|á|é|ë|í|ï|ó|ô|ú|ü|ÿ|ç|ñ|ß|µ|€|£|¥).* [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# ===============================================
+# FILE ACCESS CONTROL
+# ===============================================
+
+# Protect sensitive files
+<Files ~ "^\.">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Block access to backup and log files
+<FilesMatch "\.(bak|log|old|orig|original|php~|php#|php.save|php.swp|php.swo|rej|sql|sh|txt~)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to configuration files
+<FilesMatch "^(wp-config|config|configuration|settings)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ===============================================
+# MIME TYPES
+# ===============================================
+
+<IfModule mod_mime.c>
+    # Web fonts
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+    AddType application/vnd.ms-fontobject .eot
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+    
+    # Modern image formats
+    AddType image/webp .webp
+    AddType image/avif .avif
+    
+    # Manifest
+    AddType application/manifest+json .webmanifest
+    AddType application/x-web-app-manifest+json .webapp
+    
+    # Service Worker
+    AddType application/javascript .js
+    AddType text/javascript .js
+</IfModule>
+
+# ===============================================
+# CUSTOM ERROR PAGES
+# ===============================================
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html
+
+# ===============================================
+# BLOCK BAD BOTS & USER AGENTS
+# ===============================================
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} ^(-|curl|wget|libwww-perl|python|nikto|scan|java|winhttp|clshttp|loader) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} (bot|crawler|spider|scraper|extractor|harvester) [NC]
+    RewriteCond %{HTTP_USER_AGENT} !(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot|linkedinbot|whatsapp) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ===============================================
+# MANUFACTURING-SPECIFIC OPTIMIZATIONS
+# ===============================================
+
+# Cache CAD/CAM related file types (if serving files)
+<IfModule mod_expires.c>
+    ExpiresByType application/octet-stream "access plus 1 week"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/zip "access plus 1 week"
+</IfModule>
+
+# Enable CORS for fonts and assets
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
