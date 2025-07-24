@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering 5-Axis CNC Programming: Essential Strategies for Complex Geometries | PavinTech Blog</title>
+    <meta name="description" content="Expert guide to 5-axis CNC programming techniques from 10+ years UAE manufacturing experience. Learn advanced strategies for complex geometries, tool path optimization, and collision avoidance.">
+    <meta name="keywords" content="5-axis CNC programming, complex geometries, tool path optimization, collision avoidance, CNC machining UAE, manufacturing expertise">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-navy: #1a365d;
+            --brand-blue: #2d7dd2;
+            --brand-orange: #f7941d;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --hero-gradient: linear-gradient(135deg, #1a365d 0%, #2d7dd2 50%, #3b82f6 100%);
+            --accent-gradient: linear-gradient(135deg, #f7941d 0%, #ffd700 100%);
+            --shadow-brand: 0 8px 25px rgba(26, 54, 93, 0.15);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 800;
+            background: var(--hero-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .logo::before {
+            content: "📝";
+            background: none;
+            -webkit-text-fill-color: initial;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-navy);
+            background: rgba(26, 54, 93, 0.05);
+        }
+
+        /* Article Header */
+        .article-header {
+            background: var(--hero-gradient);
+            color: white;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .article-title {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            opacity: 0.9;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .article-excerpt {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .article-content {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            min-height: 100vh;
+        }
+
+        .article-content h2 {
+            font-size: 28px;
+            color: var(--brand-navy);
+            margin: 48px 0 24px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .article-content h3 {
+            font-size: 22px;
+            color: var(--brand-navy);
+            margin: 36px 0 16px;
+            font-weight: 600;
+        }
+
+        .article-content p {
+            margin-bottom: 24px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 24px 0;
+            padding-left: 24px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 32px 0;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(45, 125, 210, 0.05), rgba(59, 130, 246, 0.05));
+            border-left: 4px solid var(--brand-blue);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            color: var(--brand-navy);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--brand-navy);
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-item {
+            margin-bottom: 8px;
+        }
+
+        .toc-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 4px 0;
+        }
+
+        .toc-link:hover {
+            color: var(--brand-navy);
+            padding-left: 8px;
+        }
+
+        .author-bio {
+            text-align: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--hero-gradient);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--brand-navy);
+            margin-bottom: 8px;
+        }
+
+        .author-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .author-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--brand-blue);
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .article-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .article-sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-content {
+                padding: 32px 24px;
+            }
+
+            .article-header {
+                padding: 60px 16px 40px;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/blog/" class="logo">
+                PavinTech Blog
+            </a>
+            <div class="nav-links">
+                <a href="/blog/" class="nav-link">← Back to Blog</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="article-header-content">
+            <span class="article-category">CNC Programming</span>
+            <h1 class="article-title">Mastering 5-Axis CNC Programming: Essential Strategies for Complex Geometries</h1>
+            <div class="article-meta">
+                <span>📅 December 18, 2024</span>
+                <span>👤 Pavin Anilkumar</span>
+                <span>⏱️ 12 min read</span>
+            </div>
+            <p class="article-excerpt">Dive deep into advanced 5-axis CNC programming techniques that I've refined over a decade in UAE's manufacturing sector. From workpiece setup and tool path optimization to collision avoidance strategies.</p>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="article-container">
+        <!-- Main Content -->
+        <main class="article-content">
+            <p><strong>After 10+ years programming CNC machines across aerospace, marine, and automotive sectors in the UAE, I've learned that 5-axis machining isn't just about having the right equipment—it's about understanding the intricate dance between geometry, tooling, and machine dynamics.</strong></p>
+
+            <p>In this comprehensive guide, I'll share the strategies and techniques that have helped me consistently deliver precision parts while minimizing cycle times and maximizing tool life. Whether you're transitioning from 3-axis programming or looking to refine your 5-axis skills, these insights come from real-world production floors where mistakes are expensive and deadlines are non-negotiable.</p>
+
+            <h2>Understanding 5-Axis Fundamentals</h2>
+
+            <p>Before diving into advanced strategies, let's establish a solid foundation. 5-axis machining adds two rotational axes (typically A and B, or B and C) to the conventional X, Y, and Z linear axes. This capability transforms manufacturing possibilities but introduces complexity that requires systematic approach.</p>
+
+            <h3>Machine Configuration Types</h3>
+
+            <p>Understanding your machine configuration is crucial for effective programming:</p>
+
+            <ul>
+                <li><strong>Trunnion Style (Table/Table):</strong> Workpiece rotates on two axes while the spindle remains stationary</li>
+                <li><strong>Swivel-Head Style (Head/Head):</strong> Spindle rotates while workpiece remains stationary</li>
+                <li><strong>Mixed Configuration (Head/Table):</strong> One rotational axis on spindle, one on table</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Pro Tip from the Field</h4>
+                <p>In my experience with Sunreef's yacht hull manufacturing, trunnion-style machines excel for heavy workpieces, while swivel-head configurations offer superior surface finishes on smaller, complex geometries. Know your machine's strengths and program accordingly.</p>
+            </div>
+
+            <h2>Coordinate System Mastery</h2>
+
+            <p>Coordinate system management separates novice 5-axis programmers from experts. Here's my systematic approach:</p>
+
+            <h3>1. Work Coordinate System (WCS) Strategy</h3>
+
+            <p>Establish your WCS with these priorities:</p>
+            <ul>
+                <li>Position origin at a stable, accessible reference point</li>
+                <li>Align axes with primary machining directions when possible</li>
+                <li>Consider part stability throughout the machining sequence</li>
+                <li>Plan for probe accessibility and verification points</li>
+            </ul>
+
+            <h3>2. Tool Coordinate System Management</h3>
+
+            <p>Tool length and radius compensation become critical in 5-axis work. I use this workflow:</p>
+
+            <div class="code-block">
+; Tool Length Compensation Setup
+G43 H01 Z100.0    ; Activate tool length compensation
+G01 Z50.0 F1000   ; Position for machining
+; Always verify tool compensation before critical operations
+            </div>
+
+            <h2>Advanced Tool Path Strategies</h2>
+
+            <p>Effective 5-axis programming requires understanding how tool orientation affects cutting forces, surface finish, and tool life.</p>
+
+            <h3>Lead/Lag Angle Optimization</h3>
+
+            <p>Lead and lag angles significantly impact cutting performance:</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Material Type</th>
+                            <th>Recommended Lead Angle</th>
+                            <th>Lag Angle</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Aluminum Alloys</td>
+                            <td>15-20°</td>
+                            <td>0-5°</td>
+                            <td>Prevents built-up edge</td>
+                        </tr>
+                        <tr>
+                            <td>Stainless Steel</td>
+                            <td>10-15°</td>
+                            <td>2-8°</td>
+                            <td>Manages work hardening</td>
+                        </tr>
+                        <tr>
+                            <td>Titanium</td>
+                            <td>5-10°</td>
+                            <td>0-3°</td>
+                            <td>Minimizes heat generation</td>
+                        </tr>
+                        <tr>
+                            <td>Carbon Fiber</td>
+                            <td>0-5°</td>
+                            <td>0°</td>
+                            <td>Prevents delamination</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Simultaneous 5-Axis vs. 3+2 Positioning</h3>
+
+            <p>Choosing between simultaneous 5-axis and 3+2 positioning depends on part geometry and requirements:</p>
+
+            <p><strong>Use Simultaneous 5-Axis when:</strong></p>
+            <ul>
+                <li>Machining sculptured surfaces requiring continuous tool orientation changes</li>
+                <li>Avoiding undercuts without repositioning</li>
+                <li>Maintaining consistent scallop height on complex surfaces</li>
+                <li>Achieving superior surface finish on organic shapes</li>
+            </ul>
+
+            <p><strong>Use 3+2 Positioning when:</strong></p>
+            <ul>
+                <li>Part geometry allows discrete angular positions</li>
+                <li>Machine rigidity is paramount</li>
+                <li>Programming complexity needs to be minimized</li>
+                <li>Debugging and verification are priorities</li>
+            </ul>
+
+            <h2>Collision Avoidance Strategies</h2>
+
+            <p>Collision avoidance in 5-axis machining requires systematic planning and verification. Here's my proven methodology:</p>
+
+            <h3>1. Pre-Programming Analysis</h3>
+
+            <ul>
+                <li><strong>Envelope Study:</strong> Analyze machine's working envelope with workpiece installed</li>
+                <li><strong>Interference Zones:</strong> Identify potential collision points between tool holder, spindle, and workpiece/fixture</li>
+                <li><strong>Safe Zones:</strong> Establish collision-free approach and retract paths</li>
+            </ul>
+
+            <h3>2. Tooling Selection for Collision Avoidance</h3>
+
+            <p>Tool selection significantly impacts collision potential:</p>
+
+            <div class="highlight-box">
+                <h4>Tooling Strategy from Aerospace Experience</h4>
+                <p>When machining aircraft engine components, I prioritize tools with minimal overhang and maximum rigidity. A shorter, more rigid tool often delivers better results than a longer tool that allows deeper cuts but introduces vibration and collision risks.</p>
+            </div>
+
+            <h3>3. Machine Simulation and Verification</h3>
+
+            <p>Never trust programming software alone for collision detection. My verification process includes:</p>
+
+            <ol>
+                <li>CAM software collision checking with accurate machine and fixture models</li>
+                <li>Independent verification using machine-specific simulation software</li>
+                <li>Physical dry-run at reduced feedrates (10-25% of programmed values)</li>
+                <li>Gradual speed increase after verification of each operation</li>
+            </ol>
+
+            <h2>Workholding and Fixturing Considerations</h2>
+
+            <p>5-axis machining places unique demands on workholding systems. Key considerations include:</p>
+
+            <h3>Fixture Design Principles</h3>
+
+            <ul>
+                <li><strong>Accessibility:</strong> Ensure all machining surfaces remain accessible throughout the program</li>
+                <li><strong>Rigidity:</strong> Design fixtures to withstand cutting forces from multiple directions</li>
+                <li><strong>Reference Stability:</strong> Maintain consistent datum references across operations</li>
+                <li><strong>Clearance:</strong> Provide adequate clearance for tool and spindle movement</li>
+            </ul>
+
+            <h2>Programming Best Practices</h2>
+
+            <p>These programming practices have saved me countless hours of debugging and rework:</p>
+
+            <h3>1. Modular Programming Approach</h3>
+
+            <p>Break complex parts into logical machining sequences:</p>
+
+            <div class="code-block">
+; Main Program Structure
+O1234 (5-AXIS COMPLEX PART)
+
+; Setup and Initialization
+G90 G54 G17 G40 G49 G80
+M6 T01 (FACE MILL)
+G43 H01 Z100.0
+
+; Operation 1: Face Operations
+M98 P1000 (FACE_OPS_SUB)
+
+; Operation 2: Rough Profiling  
+M98 P2000 (ROUGH_PROFILE_SUB)
+
+; Operation 3: Finish Operations
+M98 P3000 (FINISH_OPS_SUB)
+
+M30
+            </div>
+
+            <h3>2. Safe Programming Practices</h3>
+
+            <ul>
+                <li>Always include safe start positions and orientations</li>
+                <li>Use incremental moves for rotary axes when possible</li>
+                <li>Implement tool breakage detection where available</li>
+                <li>Include intermediate positions for manual verification</li>
+                <li>Document all program assumptions and setup requirements</li>
+            </ul>
+
+            <h3>3. Optimization Strategies</h3>
+
+            <p>Cycle time optimization without compromising quality:</p>
+
+            <ul>
+                <li><strong>Tool Path Optimization:</strong> Minimize rapid moves and rotary axis movements</li>
+                <li><strong>Multi-Tool Strategy:</strong> Group operations by tool to minimize changes</li>
+                <li><strong>Adaptive Feedrates:</strong> Vary feedrates based on material engagement</li>
+                <li><strong>Look-Ahead Optimization:</strong> Leverage machine capabilities for smooth motion</li>
+            </ul>
+
+            <h2>Quality Control and Measurement</h2>
+
+            <p>5-axis parts often require sophisticated measurement strategies:</p>
+
+            <h3>In-Process Measurement</h3>
+
+            <p>Implement these verification strategies:</p>
+
+            <ul>
+                <li>Strategic use of probing cycles for critical dimensions</li>
+                <li>Tool condition monitoring to prevent quality issues</li>
+                <li>Surface finish verification on test coupons</li>
+                <li>Statistical process control for repeatable features</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Real-World Example: Marine Propeller Manufacturing</h4>
+                <p>On a recent marine propeller project, we implemented in-process probing to verify blade twist angles at 25%, 50%, and 75% radial positions. This caught a programming error that would have resulted in scrapping a $15,000 casting. The 3-minute probing cycle saved thousands in material costs and schedule delays.</p>
+            </div>
+
+            <h2>Troubleshooting Common Issues</h2>
+
+            <p>Based on my experience, here are the most common 5-axis programming issues and solutions:</p>
+
+            <h3>Surface Finish Problems</h3>
+
+            <ul>
+                <li><strong>Issue:</strong> Inconsistent surface finish across complex surfaces</li>
+                <li><strong>Solution:</strong> Optimize lead/lag angles and maintain consistent tool engagement</li>
+            </ul>
+
+            <h3>Dimensional Accuracy Issues</h3>
+
+            <ul>
+                <li><strong>Issue:</strong> Parts out of tolerance despite accurate programming</li>
+                <li><strong>Solution:</strong> Verify machine compensation values and thermal stability</li>
+            </ul>
+
+            <h3>Excessive Cycle Times</h3>
+
+            <ul>
+                <li><strong>Issue:</strong> Programs running slower than expected</li>
+                <li><strong>Solution:</strong> Review rotary axis acceleration limits and tool path optimization</li>
+            </ul>
+
+            <h2>Conclusion and Next Steps</h2>
+
+            <p>Mastering 5-axis CNC programming requires patience, systematic approach, and continuous learning. The techniques I've shared here represent years of trial, error, and refinement across diverse manufacturing environments.</p>
+
+            <p>Start with simple geometries and gradually increase complexity as your confidence grows. Invest time in understanding your specific machine's characteristics—each machine has its personality and optimal operating parameters.</p>
+
+            <p>Most importantly, never stop questioning your processes. The manufacturing landscape constantly evolves, and staying current with new techniques, tooling, and technologies is essential for continued success.</p>
+
+            <div class="highlight-box">
+                <h4>What's Your Experience?</h4>
+                <p>I'd love to hear about your 5-axis programming challenges and successes. Connect with me on LinkedIn or drop me an email to continue the conversation. Manufacturing excellence is built through shared knowledge and continuous improvement.</p>
+            </div>
+
+            <p><em>Have questions about specific 5-axis programming challenges? I offer consulting services for complex manufacturing projects. Reach out to discuss how we can optimize your operations.</em></p>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Table of Contents -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>📋</span> Contents
+                </h3>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#fundamentals" class="toc-link">Understanding 5-Axis Fundamentals</a></li>
+                    <li class="toc-item"><a href="#coordinates" class="toc-link">Coordinate System Mastery</a></li>
+                    <li class="toc-item"><a href="#toolpath" class="toc-link">Advanced Tool Path Strategies</a></li>
+                    <li class="toc-item"><a href="#collision" class="toc-link">Collision Avoidance Strategies</a></li>
+                    <li class="toc-item"><a href="#fixturing" class="toc-link">Workholding and Fixturing</a></li>
+                    <li class="toc-item"><a href="#programming" class="toc-link">Programming Best Practices</a></li>
+                    <li class="toc-item"><a href="#quality" class="toc-link">Quality Control and Measurement</a></li>
+                    <li class="toc-item"><a href="#troubleshooting" class="toc-link">Troubleshooting Common Issues</a></li>
+                </ul>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>👤</span> About the Author
+                </h3>
+                <div class="author-bio">
+                    <div class="author-avatar">PA</div>
+                    <div class="author-name">Pavin Anilkumar</div>
+                    <div class="author-title">CNC Manufacturing Leader</div>
+                    <p class="author-description">10+ years experience in UAE manufacturing sector, specializing in CNC programming, KUKA robotics, and advanced manufacturing processes across aerospace, marine, and automotive industries.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/pavinjanilkumar" class="social-link">💼</a>
+                        <a href="mailto:pavinjanilkumar@gmail.com" class="social-link">✉️</a>
+                        <a href="/" class="social-link">🌐</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">
+                    <span>📚</span> Related Articles
+                </h3>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#" class="toc-link">PowerMill CAM Optimization Techniques</a></li>
+                    <li class="toc-item"><a href="#" class="toc-link">KUKA Robot Programming for CNC</a></li>
+                    <li class="toc-item"><a href="#" class="toc-link">Statistical Process Control in CNC</a></li>
+                    <li class="toc-item"><a href="#" class="toc-link">Troubleshooting CNC Machining Problems</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Smooth scrolling for table of contents
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add smooth reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.article-content > *, .sidebar-widget').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
